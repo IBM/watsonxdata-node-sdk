@@ -19,7 +19,7 @@ script:
 - npm run lint
 - npm run check-packages
 
-#To enable semantic-release, uncomment this section.
+# To enable semantic-release, uncomment this section.
 deploy:
 - provider: script
   skip_cleanup: true
