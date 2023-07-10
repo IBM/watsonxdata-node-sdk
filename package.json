@@ -4,11 +4,11 @@
   "description": "IBM Cloud Watsonx.data Node.js SDK",
   "repository": {
     "type": "git",
-    "url": "https://github.com/IBM/watsonxdata-node-sdk"
+    "url": "git+https://github.com/IBM/watsonxdata-node-sdk.git"
   },
   "keywords": [
     "ibm",
-    "wastonx.data"
+    "watsonx.data"
   ],
   "author": "IBM Corp.",
   "scripts": {
@@ -75,5 +75,15 @@
       "<rootDir>/examples/"
     ],
     "testEnvironment": "node"
+  },
+  "bugs": {
+    "url": "https://github.com/IBM/watsonxdata-node-sdk/issues"
+  },
+  "homepage": "https://github.com/IBM/watsonxdata-node-sdk#readme",
+  "main": ".eslintrc.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "test": "test"
   }
 }
