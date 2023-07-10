@@ -1,3 +1,10 @@
+## [0.0.3](https://github.com/IBM/watsonxdata-node-sdk/compare/v0.0.2...v0.0.3) (2023-07-10)
+
+
+### Bug Fixes
+
+* initial npm scope ([ba0ea6b](https://github.com/IBM/watsonxdata-node-sdk/commit/ba0ea6bb3b021e1874a4e631863b794cc26b7ced))
+
 ## [0.0.2](https://github.com/IBM/watsonxdata-node-sdk/compare/v0.0.1...v0.0.2) (2023-07-10)
 
 
