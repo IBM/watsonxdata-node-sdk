@@ -75,7 +75,7 @@ describe('WatsonxDataV2_integration', () => {
       managedBy: 'ibm',
       tableType: 'iceberg',
       bucketDisplayName: 'sample-bucket-displayname',
-      bucketTags: ['read customer data', 'write customer data''],
+      bucketTags: ['read customer data', 'write customer data'],
       catalogTags: ['catalog_tag_1', 'catalog_tag_2'],
       region: 'us-south',
       state: 'active',
