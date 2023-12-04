@@ -780,7 +780,8 @@ describe('WatsonxDataV2_integration', () => {
     const params = {
       engineId: 'testString',
       applicationDetails: sparkApplicationDetailsModel,
-      jobEndpoint: '<host>/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/engine_applications',
+      jobEndpoint:
+        '<host>/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/engine_applications',
       serviceInstanceId: 'testString',
       type: 'iae',
       authInstanceId: 'testString',
