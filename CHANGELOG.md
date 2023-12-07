@@ -1,3 +1,10 @@
+# [0.1.0](https://github.com/IBM/watsonxdata-node-sdk/compare/v0.0.3...v0.1.0) (2023-12-07)
+
+
+### Features
+
+* add v2 sdk ([afc1e75](https://github.com/IBM/watsonxdata-node-sdk/commit/afc1e756588b1203120a56ef56e4810207af8fe5))
+
 ## [0.0.3](https://github.com/IBM/watsonxdata-node-sdk/compare/v0.0.2...v0.0.3) (2023-07-10)
 
 
