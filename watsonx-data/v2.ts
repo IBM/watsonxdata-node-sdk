@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2023.
+ * (C) Copyright IBM Corp. 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ import { getSdkHeaders } from '../lib/common';
  */
 
 class WatsonxDataV2 extends BaseService {
-  static DEFAULT_SERVICE_URL: string = 'https://ibmcloud/lakehouse/api/v2';
+  static DEFAULT_SERVICE_URL: string = 'https://region.lakehouse.cloud.ibm.com/lakehouse/api/v2';
 
   static DEFAULT_SERVICE_NAME: string = 'watsonx_data';
 
@@ -104,11 +104,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {Object} [params] - The parameters to send to the service.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListBucketRegistrationsOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.BucketRegistrationCollection>>}
    */
   public listBucketRegistrations(
     params?: WatsonxDataV2.ListBucketRegistrationsParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListBucketRegistrationsOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.BucketRegistrationCollection>> {
     const _params = { ...params };
     const _requiredParams = [];
     const _validParams = ['authInstanceId', 'headers'];
@@ -152,43 +152,30 @@ class WatsonxDataV2 extends BaseService {
    * @param {Object} params - The parameters to send to the service.
    * @param {BucketDetails} params.bucketDetails - bucket details.
    * @param {string} params.bucketType - bucket type.
-   * @param {string} params.catalogName - catalog name.
    * @param {string} params.description - bucket description.
    * @param {string} params.managedBy - managed by.
-   * @param {string} params.tableType - Table type.
+   * @param {BucketCatalog} [params.associatedCatalog] - bucket catalog.
    * @param {string} [params.bucketDisplayName] - bucket display name.
-   * @param {string[]} [params.bucketTags] - tags.
-   * @param {string[]} [params.catalogTags] - catalog tags.
    * @param {string} [params.region] - region where the bucket is located.
-   * @param {string} [params.state] - mark bucket active or inactive.
+   * @param {string[]} [params.tags] - tags.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateBucketRegistrationCreatedBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.BucketRegistration>>}
    */
   public createBucketRegistration(
     params: WatsonxDataV2.CreateBucketRegistrationParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateBucketRegistrationCreatedBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.BucketRegistration>> {
     const _params = { ...params };
-    const _requiredParams = [
-      'bucketDetails',
-      'bucketType',
-      'catalogName',
-      'description',
-      'managedBy',
-      'tableType',
-    ];
+    const _requiredParams = ['bucketDetails', 'bucketType', 'description', 'managedBy'];
     const _validParams = [
       'bucketDetails',
       'bucketType',
-      'catalogName',
       'description',
       'managedBy',
-      'tableType',
+      'associatedCatalog',
       'bucketDisplayName',
-      'bucketTags',
-      'catalogTags',
       'region',
-      'state',
+      'tags',
       'authInstanceId',
       'headers',
     ];
@@ -200,15 +187,12 @@ class WatsonxDataV2 extends BaseService {
     const body = {
       'bucket_details': _params.bucketDetails,
       'bucket_type': _params.bucketType,
-      'catalog_name': _params.catalogName,
       'description': _params.description,
       'managed_by': _params.managedBy,
-      'table_type': _params.tableType,
+      'associated_catalog': _params.associatedCatalog,
       'bucket_display_name': _params.bucketDisplayName,
-      'bucket_tags': _params.bucketTags,
-      'catalog_tags': _params.catalogTags,
       'region': _params.region,
-      'state': _params.state,
+      'tags': _params.tags,
     };
 
     const sdkHeaders = getSdkHeaders(
@@ -249,11 +233,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.bucketId - bucket id.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.GetBucketRegistrationOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.BucketRegistration>>}
    */
   public getBucketRegistration(
     params: WatsonxDataV2.GetBucketRegistrationParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.GetBucketRegistrationOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.BucketRegistration>> {
     const _params = { ...params };
     const _requiredParams = ['bucketId'];
     const _validParams = ['bucketId', 'authInstanceId', 'headers'];
@@ -357,11 +341,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {JsonPatchOperation[]} params.body - Request body.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateBucketRegistrationOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.BucketRegistration>>}
    */
   public updateBucketRegistration(
     params: WatsonxDataV2.UpdateBucketRegistrationParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateBucketRegistrationOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.BucketRegistration>> {
     const _params = { ...params };
     const _requiredParams = ['bucketId', 'body'];
     const _validParams = ['bucketId', 'body', 'authInstanceId', 'headers'];
@@ -521,11 +505,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.bucketId - bucket id.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListBucketObjectsOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.BucketRegistrationObjectCollection>>}
    */
   public listBucketObjects(
     params: WatsonxDataV2.ListBucketObjectsParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListBucketObjectsOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.BucketRegistrationObjectCollection>> {
     const _params = { ...params };
     const _requiredParams = ['bucketId'];
     const _validParams = ['bucketId', 'authInstanceId', 'headers'];
@@ -652,52 +636,57 @@ class WatsonxDataV2 extends BaseService {
    * Add or create a new database with driver.
    *
    * @param {Object} params - The parameters to send to the service.
+   * @param {NodeJS.ReadableStream | Buffer} params.driver - Driver file to upload.
+   * @param {string} params.driverFileName - Name of the driver file.
    * @param {string} params.databaseDisplayName - Database display name.
    * @param {string} params.databaseType - Connector type.
    * @param {string} params.catalogName - Catalog name.
    * @param {string} params.hostname - Host name.
    * @param {string} params.port - Port.
-   * @param {NodeJS.ReadableStream | Buffer} [params.driver] - Driver file to upload.
+   * @param {string} params.username - Username.
+   * @param {string} params.password - Psssword.
+   * @param {string} params.databaseName - Database name.
    * @param {string} [params.driverContentType] - The content type of driver.
-   * @param {string} [params.driverFileName] - Name of the driver file.
    * @param {string} [params.certificate] - contents of a pem/crt file.
    * @param {string} [params.certificateExtension] - extension of the certificate file.
    * @param {string} [params.ssl] - SSL Mode.
-   * @param {string} [params.username] - Username.
-   * @param {string} [params.password] - Psssword.
-   * @param {string} [params.databaseName] - Database name.
    * @param {string} [params.description] - Database description.
    * @param {string} [params.createdOn] - Created on.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateDriverDatabaseCatalogCreatedBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.DatabaseRegistration>>}
    */
   public createDriverDatabaseCatalog(
     params: WatsonxDataV2.CreateDriverDatabaseCatalogParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateDriverDatabaseCatalogCreatedBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.DatabaseRegistration>> {
     const _params = { ...params };
     const _requiredParams = [
-      'databaseDisplayName',
-      'databaseType',
-      'catalogName',
-      'hostname',
-      'port',
-    ];
-    const _validParams = [
-      'databaseDisplayName',
-      'databaseType',
-      'catalogName',
-      'hostname',
-      'port',
       'driver',
-      'driverContentType',
       'driverFileName',
-      'certificate',
-      'certificateExtension',
-      'ssl',
+      'databaseDisplayName',
+      'databaseType',
+      'catalogName',
+      'hostname',
+      'port',
       'username',
       'password',
       'databaseName',
+    ];
+    const _validParams = [
+      'driver',
+      'driverFileName',
+      'databaseDisplayName',
+      'databaseType',
+      'catalogName',
+      'hostname',
+      'port',
+      'username',
+      'password',
+      'databaseName',
+      'driverContentType',
+      'certificate',
+      'certificateExtension',
+      'ssl',
       'description',
       'createdOn',
       'authInstanceId',
@@ -709,22 +698,22 @@ class WatsonxDataV2 extends BaseService {
     }
 
     const formData = {
-      'database_display_name': _params.databaseDisplayName,
-      'database_type': _params.databaseType,
-      'catalog_name': _params.catalogName,
-      'hostname': _params.hostname,
-      'port': _params.port,
       'driver': {
         data: _params.driver,
         contentType: _params.driverContentType,
       },
       'driver_file_name': _params.driverFileName,
-      'certificate': _params.certificate,
-      'certificate_extension': _params.certificateExtension,
-      'ssl': _params.ssl,
+      'database_display_name': _params.databaseDisplayName,
+      'database_type': _params.databaseType,
+      'catalog_name': _params.catalogName,
+      'hostname': _params.hostname,
+      'port': _params.port,
       'username': _params.username,
       'password': _params.password,
       'database_name': _params.databaseName,
+      'certificate': _params.certificate,
+      'certificate_extension': _params.certificateExtension,
+      'ssl': _params.ssl,
       'description': _params.description,
       'created_on': _params.createdOn,
     };
@@ -766,11 +755,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {Object} [params] - The parameters to send to the service.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListDatabaseRegistrationsOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.DatabaseRegistrationCollection>>}
    */
   public listDatabaseRegistrations(
     params?: WatsonxDataV2.ListDatabaseRegistrationsParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListDatabaseRegistrationsOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.DatabaseRegistrationCollection>> {
     const _params = { ...params };
     const _requiredParams = [];
     const _validParams = ['authInstanceId', 'headers'];
@@ -812,28 +801,28 @@ class WatsonxDataV2 extends BaseService {
    * Add or create a new database.
    *
    * @param {Object} params - The parameters to send to the service.
-   * @param {string} params.catalogName - Catalog name.
    * @param {string} params.databaseDisplayName - Database display name.
    * @param {string} params.databaseType - Connector type.
-   * @param {number} [params.createdOn] - Created on.
-   * @param {RegisterDatabaseCatalogBodyDatabaseDetails} [params.databaseDetails] - database details.
-   * @param {RegisterDatabaseCatalogBodyDatabasePropertiesItems[]} [params.databaseProperties] - This will hold all the
-   * properties for a custom database.
+   * @param {DatabaseCatalog} [params.associatedCatalog] - database catalog.
+   * @param {string} [params.createdOn] - Created on.
+   * @param {DatabaseDetails} [params.databaseDetails] - database details.
+   * @param {DatabaseRegistrationPrototypeDatabasePropertiesItems[]} [params.databaseProperties] - This will hold all
+   * the properties for a custom database.
    * @param {string} [params.description] - Database description.
    * @param {string[]} [params.tags] - tags.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateDatabaseRegistrationCreatedBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.DatabaseRegistration>>}
    */
   public createDatabaseRegistration(
     params: WatsonxDataV2.CreateDatabaseRegistrationParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateDatabaseRegistrationCreatedBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.DatabaseRegistration>> {
     const _params = { ...params };
-    const _requiredParams = ['catalogName', 'databaseDisplayName', 'databaseType'];
+    const _requiredParams = ['databaseDisplayName', 'databaseType'];
     const _validParams = [
-      'catalogName',
       'databaseDisplayName',
       'databaseType',
+      'associatedCatalog',
       'createdOn',
       'databaseDetails',
       'databaseProperties',
@@ -848,9 +837,9 @@ class WatsonxDataV2 extends BaseService {
     }
 
     const body = {
-      'catalog_name': _params.catalogName,
       'database_display_name': _params.databaseDisplayName,
       'database_type': _params.databaseType,
+      'associated_catalog': _params.associatedCatalog,
       'created_on': _params.createdOn,
       'database_details': _params.databaseDetails,
       'database_properties': _params.databaseProperties,
@@ -890,17 +879,17 @@ class WatsonxDataV2 extends BaseService {
   /**
    * Get database.
    *
-   * Get list of databases.
+   * Get a registered databases.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.databaseId - database id.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.GetDatabaseOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.DatabaseRegistration>>}
    */
   public getDatabase(
     params: WatsonxDataV2.GetDatabaseParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.GetDatabaseOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.DatabaseRegistration>> {
     const _params = { ...params };
     const _requiredParams = ['databaseId'];
     const _validParams = ['databaseId', 'authInstanceId', 'headers'];
@@ -1000,11 +989,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {JsonPatchOperation[]} params.body - Request body.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateDatabaseOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.DatabaseRegistration>>}
    */
   public updateDatabase(
     params: WatsonxDataV2.UpdateDatabaseParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateDatabaseOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.DatabaseRegistration>> {
     const _params = { ...params };
     const _requiredParams = ['databaseId', 'body'];
     const _validParams = ['databaseId', 'body', 'authInstanceId', 'headers'];
@@ -1055,11 +1044,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} [params.certificate] - contents of a pem/crt file.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ValidateDatabaseConnectionOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.TestDatabaseConnectionResponse>>}
    */
   public validateDatabaseConnection(
     params: WatsonxDataV2.ValidateDatabaseConnectionParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ValidateDatabaseConnectionOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.TestDatabaseConnectionResponse>> {
     const _params = { ...params };
     const _requiredParams = ['databaseDetails', 'databaseType'];
     const _validParams = [
@@ -1120,11 +1109,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {Object} [params] - The parameters to send to the service.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListDb2EnginesOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.Db2EngineCollection>>}
    */
   public listDb2Engines(
     params?: WatsonxDataV2.ListDb2EnginesParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListDb2EnginesOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Db2EngineCollection>> {
     const _params = { ...params };
     const _requiredParams = [];
     const _validParams = ['authInstanceId', 'headers'];
@@ -1165,16 +1154,16 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.origin - Origin - created or registered.
    * @param {string} params.type - Engine type.
    * @param {string} [params.description] - Engine description.
-   * @param {CreateDb2EngineDetails} [params.engineDetails] - External engine details.
+   * @param {Db2EngineDetailsBody} [params.engineDetails] - External engine details.
    * @param {string} [params.engineDisplayName] - Engine display name.
    * @param {string[]} [params.tags] - Tags.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateDb2EngineCreatedBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.Db2Engine>>}
    */
   public createDb2Engine(
     params: WatsonxDataV2.CreateDb2EngineParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateDb2EngineCreatedBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Db2Engine>> {
     const _params = { ...params };
     const _requiredParams = ['origin', 'type'];
     const _validParams = [
@@ -1285,11 +1274,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {JsonPatchOperation[]} params.body - Update Engine Body.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateDb2EngineOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.Db2Engine>>}
    */
   public updateDb2Engine(
     params: WatsonxDataV2.UpdateDb2EngineParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateDb2EngineOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Db2Engine>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'body'];
     const _validParams = ['engineId', 'body', 'authInstanceId', 'headers'];
@@ -1337,11 +1326,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {Object} [params] - The parameters to send to the service.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListEnginesOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.Engines>>}
    */
-  public listEngines(
-    params?: WatsonxDataV2.ListEnginesParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListEnginesOKBody>> {
+  public getEngines(
+    params?: WatsonxDataV2.GetEnginesParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Engines>> {
     const _params = { ...params };
     const _requiredParams = [];
     const _validParams = ['authInstanceId', 'headers'];
@@ -1350,7 +1339,7 @@ class WatsonxDataV2 extends BaseService {
       return Promise.reject(_validationErrors);
     }
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listEngines');
+    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getEngines');
 
     const parameters = {
       options: {
@@ -1425,11 +1414,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {Object} [params] - The parameters to send to the service.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListNetezzaEnginesOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.NetezzaEngineCollection>>}
    */
   public listNetezzaEngines(
     params?: WatsonxDataV2.ListNetezzaEnginesParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListNetezzaEnginesOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.NetezzaEngineCollection>> {
     const _params = { ...params };
     const _requiredParams = [];
     const _validParams = ['authInstanceId', 'headers'];
@@ -1474,16 +1463,16 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.origin - Origin - created or registered.
    * @param {string} params.type - Engine type.
    * @param {string} [params.description] - Engine description.
-   * @param {CreateNetezzaEngineDetails} [params.engineDetails] - External engine details.
+   * @param {NetezzaEngineDetailsBody} [params.engineDetails] - External engine details.
    * @param {string} [params.engineDisplayName] - Engine display name.
    * @param {string[]} [params.tags] - Tags.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateNetezzaEngineCreatedBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.NetezzaEngine>>}
    */
   public createNetezzaEngine(
     params: WatsonxDataV2.CreateNetezzaEngineParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateNetezzaEngineCreatedBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.NetezzaEngine>> {
     const _params = { ...params };
     const _requiredParams = ['origin', 'type'];
     const _validParams = [
@@ -1602,11 +1591,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {JsonPatchOperation[]} params.body - Update Engine Body.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateNetezzaEngineOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.NetezzaEngine>>}
    */
   public updateNetezzaEngine(
     params: WatsonxDataV2.UpdateNetezzaEngineParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateNetezzaEngineOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.NetezzaEngine>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'body'];
     const _validParams = ['engineId', 'body', 'authInstanceId', 'headers'];
@@ -1658,11 +1647,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {Object} [params] - The parameters to send to the service.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListOtherEnginesOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.OtherEngineCollection>>}
    */
   public listOtherEngines(
     params?: WatsonxDataV2.ListOtherEnginesParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListOtherEnginesOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.OtherEngineCollection>> {
     const _params = { ...params };
     const _requiredParams = [];
     const _validParams = ['authInstanceId', 'headers'];
@@ -1699,25 +1688,29 @@ class WatsonxDataV2 extends BaseService {
    *
    * Create a new engine.
    *
-   * @param {Object} [params] - The parameters to send to the service.
+   * @param {Object} params - The parameters to send to the service.
+   * @param {OtherEngineDetailsBody} params.engineDetails - External engine details.
+   * @param {string} params.engineDisplayName - engine display name.
    * @param {string} [params.description] - engine description.
-   * @param {OtherEngineDetails} [params.engineDetails] - External engine details.
-   * @param {string} [params.engineDisplayName] - engine display name.
+   * @param {string} [params.origin] - Origin - created or registered.
    * @param {string[]} [params.tags] - other engine tags.
+   * @param {string} [params.type] - Engine type.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateOtherEngineCreatedBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.OtherEngine>>}
    */
   public createOtherEngine(
-    params?: WatsonxDataV2.CreateOtherEngineParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateOtherEngineCreatedBody>> {
+    params: WatsonxDataV2.CreateOtherEngineParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.OtherEngine>> {
     const _params = { ...params };
-    const _requiredParams = [];
+    const _requiredParams = ['engineDetails', 'engineDisplayName'];
     const _validParams = [
-      'description',
       'engineDetails',
       'engineDisplayName',
+      'description',
+      'origin',
       'tags',
+      'type',
       'authInstanceId',
       'headers',
     ];
@@ -1727,10 +1720,12 @@ class WatsonxDataV2 extends BaseService {
     }
 
     const body = {
-      'description': _params.description,
       'engine_details': _params.engineDetails,
       'engine_display_name': _params.engineDisplayName,
+      'description': _params.description,
+      'origin': _params.origin,
       'tags': _params.tags,
+      'type': _params.type,
     };
 
     const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createOtherEngine');
@@ -1808,6 +1803,884 @@ class WatsonxDataV2 extends BaseService {
   }
 
   /**
+   * Get list of prestissimo engines.
+   *
+   * Get list of all prestissimo engines.
+   *
+   * @param {Object} [params] - The parameters to send to the service.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestissimoEngineCollection>>}
+   */
+  public listPrestissimoEngines(
+    params?: WatsonxDataV2.ListPrestissimoEnginesParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestissimoEngineCollection>> {
+    const _params = { ...params };
+    const _requiredParams = [];
+    const _validParams = ['authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listPrestissimoEngines'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines',
+        method: 'GET',
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Create prestissimo engine.
+   *
+   * Create a new prestissimo engine.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.origin - Origin - created or registered.
+   * @param {string} params.type - Engine type prestissimo, others like netezza.
+   * @param {string[]} [params.associatedCatalogs] - Associated catalogs.
+   * @param {string} [params.description] - Engine description.
+   * @param {PrestissimoEngineDetails} [params.engineDetails] - External engine details.
+   * @param {string} [params.engineDisplayName] - Engine display name.
+   * @param {string} [params.region] - Region (cloud).
+   * @param {string[]} [params.tags] - Tags.
+   * @param {string} [params.version] - Version like 0.278 for prestissimo or else.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestissimoEngine>>}
+   */
+  public createPrestissimoEngine(
+    params: WatsonxDataV2.CreatePrestissimoEngineParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestissimoEngine>> {
+    const _params = { ...params };
+    const _requiredParams = ['origin', 'type'];
+    const _validParams = [
+      'origin',
+      'type',
+      'associatedCatalogs',
+      'description',
+      'engineDetails',
+      'engineDisplayName',
+      'region',
+      'tags',
+      'version',
+      'authInstanceId',
+      'headers',
+    ];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const body = {
+      'origin': _params.origin,
+      'type': _params.type,
+      'associated_catalogs': _params.associatedCatalogs,
+      'description': _params.description,
+      'engine_details': _params.engineDetails,
+      'engine_display_name': _params.engineDisplayName,
+      'region': _params.region,
+      'tags': _params.tags,
+      'version': _params.version,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createPrestissimoEngine'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines',
+        method: 'POST',
+        body,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Get prestissimo engine.
+   *
+   * Get details of one prestissimo engine.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestissimoEngine>>}
+   */
+  public getPrestissimoEngine(
+    params: WatsonxDataV2.GetPrestissimoEngineParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestissimoEngine>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId'];
+    const _validParams = ['engineId', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const path = {
+      'engine_id': _params.engineId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getPrestissimoEngine'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}',
+        method: 'GET',
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Delete prestissimo engine.
+   *
+   * Delete a prestissimo engine.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.EmptyObject>>}
+   */
+  public deletePrestissimoEngine(
+    params: WatsonxDataV2.DeletePrestissimoEngineParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.EmptyObject>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId'];
+    const _validParams = ['engineId', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const path = {
+      'engine_id': _params.engineId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deletePrestissimoEngine'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}',
+        method: 'DELETE',
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Update prestissimo engine.
+   *
+   * Update details of prestissimo engine.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {JsonPatchOperation[]} params.body - Update prestissimo engine body.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestissimoEngine>>}
+   */
+  public updatePrestissimoEngine(
+    params: WatsonxDataV2.UpdatePrestissimoEngineParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestissimoEngine>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId', 'body'];
+    const _validParams = ['engineId', 'body', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const { body } = _params;
+    const path = {
+      'engine_id': _params.engineId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'updatePrestissimoEngine'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}',
+        method: 'PATCH',
+        body,
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json-patch+json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Get prestissimo engine catalogs.
+   *
+   * Get list of all catalogs attached a prestissimo engine.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CatalogCollection>>}
+   */
+  public listPrestissimoEngineCatalogs(
+    params: WatsonxDataV2.ListPrestissimoEngineCatalogsParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CatalogCollection>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId'];
+    const _validParams = ['engineId', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const path = {
+      'engine_id': _params.engineId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listPrestissimoEngineCatalogs'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}/catalogs',
+        method: 'GET',
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Associate catalogs to a prestissimo engine.
+   *
+   * Associate one or more catalogs to a prestissimo engine.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} params.catalogNames - comma separated catalog names.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CatalogCollection>>}
+   */
+  public replacePrestissimoEngineCatalogs(
+    params: WatsonxDataV2.ReplacePrestissimoEngineCatalogsParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CatalogCollection>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId', 'catalogNames'];
+    const _validParams = ['engineId', 'catalogNames', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const query = {
+      'catalog_names': _params.catalogNames,
+    };
+
+    const path = {
+      'engine_id': _params.engineId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'replacePrestissimoEngineCatalogs'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}/catalogs',
+        method: 'PUT',
+        qs: query,
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Disassociate catalogs from a prestissimo engine.
+   *
+   * Disassociate one or more catalogs from a prestissimo engine.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} params.catalogNames - Catalog id(s) to be stopped, comma separated.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.EmptyObject>>}
+   */
+  public deletePrestissimoEngineCatalogs(
+    params: WatsonxDataV2.DeletePrestissimoEngineCatalogsParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.EmptyObject>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId', 'catalogNames'];
+    const _validParams = ['engineId', 'catalogNames', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const query = {
+      'catalog_names': _params.catalogNames,
+    };
+
+    const path = {
+      'engine_id': _params.engineId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deletePrestissimoEngineCatalogs'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}/catalogs',
+        method: 'DELETE',
+        qs: query,
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Get prestissimo engine catalog.
+   *
+   * Get catalog attached to a prestissimo engine.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} params.catalogId - catalog id.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.Catalog>>}
+   */
+  public getPrestissimoEngineCatalog(
+    params: WatsonxDataV2.GetPrestissimoEngineCatalogParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Catalog>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId', 'catalogId'];
+    const _validParams = ['engineId', 'catalogId', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const path = {
+      'engine_id': _params.engineId,
+      'catalog_id': _params.catalogId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getPrestissimoEngineCatalog'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}/catalogs/{catalog_id}',
+        method: 'GET',
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Pause prestissimo engine.
+   *
+   * Pause a running prestissimo engine.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.SuccessResponse>>}
+   */
+  public createPrestissimoEnginePause(
+    params: WatsonxDataV2.CreatePrestissimoEnginePauseParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SuccessResponse>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId'];
+    const _validParams = ['engineId', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const path = {
+      'engine_id': _params.engineId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createPrestissimoEnginePause'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}/pause',
+        method: 'POST',
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Explain query.
+   *
+   * Explain a query statement.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - Engine id.
+   * @param {string} params.statement - Presto query to determine explain plan.
+   * @param {string} [params.format] - Format.
+   * @param {string} [params.type] - Type.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ResultPrestissimoExplainStatement>>}
+   */
+  public runPrestissimoExplainStatement(
+    params: WatsonxDataV2.RunPrestissimoExplainStatementParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ResultPrestissimoExplainStatement>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId', 'statement'];
+    const _validParams = ['engineId', 'statement', 'format', 'type', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const body = {
+      'statement': _params.statement,
+      'format': _params.format,
+      'type': _params.type,
+    };
+
+    const path = {
+      'engine_id': _params.engineId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'runPrestissimoExplainStatement'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}/query_explain',
+        method: 'POST',
+        body,
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Explain analyze.
+   *
+   * Return query metrics after query is complete.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - Engine id.
+   * @param {string} params.statement - Presto query to show explain analyze.
+   * @param {boolean} [params.verbose] - Verbose.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ResultRunPrestissimoExplainAnalyzeStatement>>}
+   */
+  public runPrestissimoExplainAnalyzeStatement(
+    params: WatsonxDataV2.RunPrestissimoExplainAnalyzeStatementParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ResultRunPrestissimoExplainAnalyzeStatement>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId', 'statement'];
+    const _validParams = ['engineId', 'statement', 'verbose', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const body = {
+      'statement': _params.statement,
+      'verbose': _params.verbose,
+    };
+
+    const path = {
+      'engine_id': _params.engineId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'runPrestissimoExplainAnalyzeStatement'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}/query_explain_analyze',
+        method: 'POST',
+        body,
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Restart a prestissimo engine.
+   *
+   * Restart an existing prestissimo engine.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.SuccessResponse>>}
+   */
+  public createPrestissimoEngineRestart(
+    params: WatsonxDataV2.CreatePrestissimoEngineRestartParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SuccessResponse>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId'];
+    const _validParams = ['engineId', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const path = {
+      'engine_id': _params.engineId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createPrestissimoEngineRestart'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}/restart',
+        method: 'POST',
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Resume prestissimo engine.
+   *
+   * Resume a paused prestissimo engine.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.SuccessResponse>>}
+   */
+  public createPrestissimoEngineResume(
+    params: WatsonxDataV2.CreatePrestissimoEngineResumeParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SuccessResponse>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId'];
+    const _validParams = ['engineId', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const path = {
+      'engine_id': _params.engineId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createPrestissimoEngineResume'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}/resume',
+        method: 'POST',
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Scale a prestissimo engine.
+   *
+   * Scale an existing prestissimo engine.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {PrestissimoNodeDescriptionBody} [params.coordinator] - Node details.
+   * @param {PrestissimoNodeDescriptionBody} [params.worker] - Node details.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.SuccessResponse>>}
+   */
+  public createPrestissimoEngineScale(
+    params: WatsonxDataV2.CreatePrestissimoEngineScaleParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SuccessResponse>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId'];
+    const _validParams = ['engineId', 'coordinator', 'worker', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const body = {
+      'coordinator': _params.coordinator,
+      'worker': _params.worker,
+    };
+
+    const path = {
+      'engine_id': _params.engineId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createPrestissimoEngineScale'
+    );
+
+    const parameters = {
+      options: {
+        url: '/prestissimo_engines/{engine_id}/scale',
+        method: 'POST',
+        body,
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
    * Get list of presto engines.
    *
    * Get list of all presto engines.
@@ -1815,11 +2688,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {Object} [params] - The parameters to send to the service.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListPrestoEnginesOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestoEngineCollection>>}
    */
   public listPrestoEngines(
     params?: WatsonxDataV2.ListPrestoEnginesParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListPrestoEnginesOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestoEngineCollection>> {
     const _params = { ...params };
     const _requiredParams = [];
     const _validParams = ['authInstanceId', 'headers'];
@@ -1858,22 +2731,21 @@ class WatsonxDataV2 extends BaseService {
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.origin - Origin - created or registered.
-   * @param {string} params.type - Engine type presto, others like netezza.
+   * @param {string} params.type - Engine type presto.
    * @param {string[]} [params.associatedCatalogs] - Associated catalogs.
    * @param {string} [params.description] - Engine description.
    * @param {EngineDetailsBody} [params.engineDetails] - Node details.
    * @param {string} [params.engineDisplayName] - Engine display name.
-   * @param {boolean} [params.firstTimeUse] - Optional parameter for UI - set as true when first time use.
    * @param {string} [params.region] - Region (cloud).
    * @param {string[]} [params.tags] - Tags.
    * @param {string} [params.version] - Version like 0.278 for presto or else.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateEngineCreatedBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestoEngine>>}
    */
-  public createEngine(
-    params: WatsonxDataV2.CreateEngineParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateEngineCreatedBody>> {
+  public createPrestoEngine(
+    params: WatsonxDataV2.CreatePrestoEngineParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestoEngine>> {
     const _params = { ...params };
     const _requiredParams = ['origin', 'type'];
     const _validParams = [
@@ -1883,7 +2755,6 @@ class WatsonxDataV2 extends BaseService {
       'description',
       'engineDetails',
       'engineDisplayName',
-      'firstTimeUse',
       'region',
       'tags',
       'version',
@@ -1902,13 +2773,16 @@ class WatsonxDataV2 extends BaseService {
       'description': _params.description,
       'engine_details': _params.engineDetails,
       'engine_display_name': _params.engineDisplayName,
-      'first_time_use': _params.firstTimeUse,
       'region': _params.region,
       'tags': _params.tags,
       'version': _params.version,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createPrestoEngine'
+    );
 
     const parameters = {
       options: {
@@ -1942,11 +2816,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.engineId - engine id.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.GetPrestoEngineOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestoEngine>>}
    */
   public getPrestoEngine(
     params: WatsonxDataV2.GetPrestoEngineParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.GetPrestoEngineOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestoEngine>> {
     const _params = { ...params };
     const _requiredParams = ['engineId'];
     const _validParams = ['engineId', 'authInstanceId', 'headers'];
@@ -2042,11 +2916,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {JsonPatchOperation[]} params.body - Update Engine Body.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateEngineOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestoEngine>>}
    */
-  public updateEngine(
-    params: WatsonxDataV2.UpdateEngineParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateEngineOKBody>> {
+  public updatePrestoEngine(
+    params: WatsonxDataV2.UpdatePrestoEngineParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestoEngine>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'body'];
     const _validParams = ['engineId', 'body', 'authInstanceId', 'headers'];
@@ -2060,7 +2934,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'updateEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'updatePrestoEngine'
+    );
 
     const parameters = {
       options: {
@@ -2095,11 +2973,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.engineId - engine id.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListPrestoEngineCatalogsOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CatalogCollection>>}
    */
   public listPrestoEngineCatalogs(
     params: WatsonxDataV2.ListPrestoEngineCatalogsParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListPrestoEngineCatalogsOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CatalogCollection>> {
     const _params = { ...params };
     const _requiredParams = ['engineId'];
     const _validParams = ['engineId', 'authInstanceId', 'headers'];
@@ -2150,11 +3028,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.catalogNames - comma separated catalog names.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ReplacePrestoEngineCatalogsCreatedBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CatalogCollection>>}
    */
   public replacePrestoEngineCatalogs(
     params: WatsonxDataV2.ReplacePrestoEngineCatalogsParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ReplacePrestoEngineCatalogsCreatedBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CatalogCollection>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'catalogNames'];
     const _validParams = ['engineId', 'catalogNames', 'authInstanceId', 'headers'];
@@ -2269,11 +3147,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.catalogId - catalog id.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.GetPrestoEngineCatalogOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.Catalog>>}
    */
   public getPrestoEngineCatalog(
     params: WatsonxDataV2.GetPrestoEngineCatalogParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.GetPrestoEngineCatalogOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Catalog>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'catalogId'];
     const _validParams = ['engineId', 'catalogId', 'authInstanceId', 'headers'];
@@ -2366,7 +3244,7 @@ class WatsonxDataV2 extends BaseService {
   }
 
   /**
-   * Explain query.
+   * Explain presto query.
    *
    * Explain a query statement.
    *
@@ -2431,7 +3309,7 @@ class WatsonxDataV2 extends BaseService {
   }
 
   /**
-   * Explain analyze.
+   * Explain presto analyze.
    *
    * Return query metrics after query is complete.
    *
@@ -2668,11 +3546,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {Object} [params] - The parameters to send to the service.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListSparkEnginesOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngineCollection>>}
    */
   public listSparkEngines(
     params?: WatsonxDataV2.ListSparkEnginesParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListSparkEnginesOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngineCollection>> {
     const _params = { ...params };
     const _requiredParams = [];
     const _validParams = ['authInstanceId', 'headers'];
@@ -2718,11 +3596,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string[]} [params.tags] - Tags.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateSparkEngineCreatedBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngine>>}
    */
   public createSparkEngine(
     params: WatsonxDataV2.CreateSparkEngineParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateSparkEngineCreatedBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngine>> {
     const _params = { ...params };
     const _requiredParams = ['origin', 'type'];
     const _validParams = [
@@ -2833,11 +3711,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {JsonPatchOperation[]} params.body - Update Engine Body.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateSparkEngineOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngine>>}
    */
   public updateSparkEngine(
     params: WatsonxDataV2.UpdateSparkEngineParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateSparkEngineOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngine>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'body'];
     const _validParams = ['engineId', 'body', 'authInstanceId', 'headers'];
@@ -2886,11 +3764,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.engineId - engine id.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListSparkEngineApplicationsOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngineApplicationStatusCollection>>}
    */
   public listSparkEngineApplications(
     params: WatsonxDataV2.ListSparkEngineApplicationsParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListSparkEngineApplicationsOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngineApplicationStatusCollection>> {
     const _params = { ...params };
     const _requiredParams = ['engineId'];
     const _validParams = ['engineId', 'authInstanceId', 'headers'];
@@ -2944,11 +3822,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} [params.type] - Engine Type.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateSparkEngineApplicationCreatedBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngineApplicationStatus>>}
    */
   public createSparkEngineApplication(
     params: WatsonxDataV2.CreateSparkEngineApplicationParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateSparkEngineApplicationCreatedBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngineApplicationStatus>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'applicationDetails'];
     const _validParams = [
@@ -3075,11 +3953,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.applicationId - Application id.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.GetSparkEngineApplicationStatusOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngineApplicationStatus>>}
    */
   public getSparkEngineApplicationStatus(
     params: WatsonxDataV2.GetSparkEngineApplicationStatusParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.GetSparkEngineApplicationStatusOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngineApplicationStatus>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'applicationId'];
     const _validParams = ['engineId', 'applicationId', 'authInstanceId', 'headers'];
@@ -3177,11 +4055,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {Object} [params] - The parameters to send to the service.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListCatalogsOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.CatalogCollection>>}
    */
   public listCatalogs(
     params?: WatsonxDataV2.ListCatalogsParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListCatalogsOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CatalogCollection>> {
     const _params = { ...params };
     const _requiredParams = [];
     const _validParams = ['authInstanceId', 'headers'];
@@ -3222,11 +4100,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.catalogId - catalog ID.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.GetCatalogOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.Catalog>>}
    */
   public getCatalog(
     params: WatsonxDataV2.GetCatalogParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.GetCatalogOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Catalog>> {
     const _params = { ...params };
     const _requiredParams = ['catalogId'];
     const _validParams = ['catalogId', 'authInstanceId', 'headers'];
@@ -3452,7 +4330,7 @@ class WatsonxDataV2 extends BaseService {
   }
 
   /**
-   * Get tables.
+   * List all tables.
    *
    * List all tables in a schema in a catalog for a given engine.
    *
@@ -3462,11 +4340,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.engineId - engine id.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListTablesOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.TableCollection>>}
    */
   public listTables(
     params: WatsonxDataV2.ListTablesParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListTablesOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.TableCollection>> {
     const _params = { ...params };
     const _requiredParams = ['catalogId', 'schemaId', 'engineId'];
     const _validParams = ['catalogId', 'schemaId', 'engineId', 'authInstanceId', 'headers'];
@@ -3510,9 +4388,9 @@ class WatsonxDataV2 extends BaseService {
   }
 
   /**
-   * Get columns.
+   * Get table details.
    *
-   * List columns in given catalog/schema and table.
+   * Get details of a given table in a catalog and schema.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.catalogId - catalog id.
@@ -3521,11 +4399,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.engineId - engine id.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.GetTableOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.Table>>}
    */
   public getTable(
     params: WatsonxDataV2.GetTableParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.GetTableOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Table>> {
     const _params = { ...params };
     const _requiredParams = ['catalogId', 'schemaId', 'tableId', 'engineId'];
     const _validParams = [
@@ -3579,7 +4457,7 @@ class WatsonxDataV2 extends BaseService {
   /**
    * Delete table.
    *
-   * Delete one or multiple tables for a given schema and catalog.
+   * Delete table for a given schema and catalog.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.catalogId - catalog id.
@@ -3645,7 +4523,7 @@ class WatsonxDataV2 extends BaseService {
   /**
    * Alter table.
    *
-   * Update the given table - rename table, add/drop/rename columns.
+   * Rename table.
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.catalogId - catalog id.
@@ -3655,11 +4533,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {JsonPatchOperation[]} params.body - Request body.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateTableOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.Table>>}
    */
   public updateTable(
     params: WatsonxDataV2.UpdateTableParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateTableOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Table>> {
     const _params = { ...params };
     const _requiredParams = ['catalogId', 'schemaId', 'tableId', 'engineId', 'body'];
     const _validParams = [
@@ -3715,6 +4593,292 @@ class WatsonxDataV2 extends BaseService {
   }
 
   /**
+   * List all columns of a table.
+   *
+   * List all columns of a table in a given a schema for a given catalog.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} params.catalogId - catalog id.
+   * @param {string} params.schemaId - URL encoded schema name.
+   * @param {string} params.tableId - URL encoded schema name.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ColumnCollection>>}
+   */
+  public listColumns(
+    params: WatsonxDataV2.ListColumnsParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ColumnCollection>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId', 'catalogId', 'schemaId', 'tableId'];
+    const _validParams = [
+      'engineId',
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'authInstanceId',
+      'headers',
+    ];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const query = {
+      'engine_id': _params.engineId,
+    };
+
+    const path = {
+      'catalog_id': _params.catalogId,
+      'schema_id': _params.schemaId,
+      'table_id': _params.tableId,
+    };
+
+    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listColumns');
+
+    const parameters = {
+      options: {
+        url: '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/columns',
+        method: 'GET',
+        qs: query,
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Add column(s).
+   *
+   * Add one or multiple columns to a table in a schema for a given catalog.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} params.catalogId - catalog id.
+   * @param {string} params.schemaId - URL encoded schema name.
+   * @param {string} params.tableId - URL encoded schema name.
+   * @param {Column[]} [params.columns] - List of the tables present in the schema.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ColumnCollection>>}
+   */
+  public createColumns(
+    params: WatsonxDataV2.CreateColumnsParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ColumnCollection>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId', 'catalogId', 'schemaId', 'tableId'];
+    const _validParams = [
+      'engineId',
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'columns',
+      'authInstanceId',
+      'headers',
+    ];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const body = {
+      'columns': _params.columns,
+    };
+
+    const query = {
+      'engine_id': _params.engineId,
+    };
+
+    const path = {
+      'catalog_id': _params.catalogId,
+      'schema_id': _params.schemaId,
+      'table_id': _params.tableId,
+    };
+
+    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createColumns');
+
+    const parameters = {
+      options: {
+        url: '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/columns',
+        method: 'POST',
+        body,
+        qs: query,
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Delete column.
+   *
+   * Delete column in a table for a given schema and catalog.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} params.catalogId - catalog id.
+   * @param {string} params.schemaId - URL encoded schema name.
+   * @param {string} params.tableId - URL encoded schema name.
+   * @param {string} params.columnId - URL encoded schema name.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.EmptyObject>>}
+   */
+  public deleteColumn(
+    params: WatsonxDataV2.DeleteColumnParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.EmptyObject>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId', 'catalogId', 'schemaId', 'tableId', 'columnId'];
+    const _validParams = [
+      'engineId',
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'columnId',
+      'authInstanceId',
+      'headers',
+    ];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const query = {
+      'engine_id': _params.engineId,
+    };
+
+    const path = {
+      'catalog_id': _params.catalogId,
+      'schema_id': _params.schemaId,
+      'table_id': _params.tableId,
+      'column_id': _params.columnId,
+    };
+
+    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deleteColumn');
+
+    const parameters = {
+      options: {
+        url: '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/columns/{column_id}',
+        method: 'DELETE',
+        qs: query,
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Alter column.
+   *
+   * Update the given column - rename column.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.engineId - engine id.
+   * @param {string} params.catalogId - catalog id.
+   * @param {string} params.schemaId - URL encoded schema name.
+   * @param {string} params.tableId - URL encoded schema name.
+   * @param {string} params.columnId - URL encoded schema name.
+   * @param {JsonPatchOperation[]} params.body - Request body.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.Column>>}
+   */
+  public updateColumn(
+    params: WatsonxDataV2.UpdateColumnParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Column>> {
+    const _params = { ...params };
+    const _requiredParams = ['engineId', 'catalogId', 'schemaId', 'tableId', 'columnId', 'body'];
+    const _validParams = [
+      'engineId',
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'columnId',
+      'body',
+      'authInstanceId',
+      'headers',
+    ];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const { body } = _params;
+    const query = {
+      'engine_id': _params.engineId,
+    };
+
+    const path = {
+      'catalog_id': _params.catalogId,
+      'schema_id': _params.schemaId,
+      'table_id': _params.tableId,
+      'column_id': _params.columnId,
+    };
+
+    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'updateColumn');
+
+    const parameters = {
+      options: {
+        url: '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/columns/{column_id}',
+        method: 'PATCH',
+        body,
+        qs: query,
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json-patch+json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
    * Get table snapshots.
    *
    * List all table snapshots.
@@ -3726,11 +4890,11 @@ class WatsonxDataV2 extends BaseService {
    * @param {string} params.tableId - Table ID.
    * @param {string} [params.authInstanceId] - Instance ID.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
-   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.ListTableSnapshotsOKBody>>}
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.TableSnapshotCollection>>}
    */
   public listTableSnapshots(
     params: WatsonxDataV2.ListTableSnapshotsParams
-  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ListTableSnapshotsOKBody>> {
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.TableSnapshotCollection>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'catalogId', 'schemaId', 'tableId'];
     const _validParams = [
@@ -3908,6 +5072,289 @@ class WatsonxDataV2 extends BaseService {
 
     return this.createRequest(parameters);
   }
+  /*************************
+   * services
+   ************************/
+
+  /**
+   * Get list of milvus services.
+   *
+   * Get list milvus services.
+   *
+   * @param {Object} [params] - The parameters to send to the service.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.MilvusServiceCollection>>}
+   */
+  public listMilvusServices(
+    params?: WatsonxDataV2.ListMilvusServicesParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.MilvusServiceCollection>> {
+    const _params = { ...params };
+    const _requiredParams = [];
+    const _validParams = ['authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listMilvusServices'
+    );
+
+    const parameters = {
+      options: {
+        url: '/milvus_services',
+        method: 'GET',
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Create milvus service.
+   *
+   * Create milvus service.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.origin - Origin - place holder.
+   * @param {string} params.type - service type.
+   * @param {string} [params.description] - Service description.
+   * @param {string} [params.serviceDisplayName] - Service display name.
+   * @param {string[]} [params.tags] - Tags.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.MilvusService>>}
+   */
+  public createMilvusService(
+    params: WatsonxDataV2.CreateMilvusServiceParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.MilvusService>> {
+    const _params = { ...params };
+    const _requiredParams = ['origin', 'type'];
+    const _validParams = [
+      'origin',
+      'type',
+      'description',
+      'serviceDisplayName',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const body = {
+      'origin': _params.origin,
+      'type': _params.type,
+      'description': _params.description,
+      'service_display_name': _params.serviceDisplayName,
+      'tags': _params.tags,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createMilvusService'
+    );
+
+    const parameters = {
+      options: {
+        url: '/milvus_services',
+        method: 'POST',
+        body,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Get milvus service.
+   *
+   * Get milvus service.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.serviceId - service id.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.MilvusService>>}
+   */
+  public getMilvusService(
+    params: WatsonxDataV2.GetMilvusServiceParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.MilvusService>> {
+    const _params = { ...params };
+    const _requiredParams = ['serviceId'];
+    const _validParams = ['serviceId', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const path = {
+      'service_id': _params.serviceId,
+    };
+
+    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getMilvusService');
+
+    const parameters = {
+      options: {
+        url: '/milvus_services/{service_id}',
+        method: 'GET',
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Delete milvus service.
+   *
+   * Delete milvus service.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.serviceId - service id.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.EmptyObject>>}
+   */
+  public deleteMilvusService(
+    params: WatsonxDataV2.DeleteMilvusServiceParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.EmptyObject>> {
+    const _params = { ...params };
+    const _requiredParams = ['serviceId'];
+    const _validParams = ['serviceId', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const path = {
+      'service_id': _params.serviceId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deleteMilvusService'
+    );
+
+    const parameters = {
+      options: {
+        url: '/milvus_services/{service_id}',
+        method: 'DELETE',
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
+
+  /**
+   * Update milvus service.
+   *
+   * Update details of milvus service.
+   *
+   * @param {Object} params - The parameters to send to the service.
+   * @param {string} params.serviceId - service id.
+   * @param {JsonPatchOperation[]} params.body - Update milvus service.
+   * @param {string} [params.authInstanceId] - Instance ID.
+   * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
+   * @returns {Promise<WatsonxDataV2.Response<WatsonxDataV2.MilvusService>>}
+   */
+  public updateMilvusService(
+    params: WatsonxDataV2.UpdateMilvusServiceParams
+  ): Promise<WatsonxDataV2.Response<WatsonxDataV2.MilvusService>> {
+    const _params = { ...params };
+    const _requiredParams = ['serviceId', 'body'];
+    const _validParams = ['serviceId', 'body', 'authInstanceId', 'headers'];
+    const _validationErrors = validateParams(_params, _requiredParams, _validParams);
+    if (_validationErrors) {
+      return Promise.reject(_validationErrors);
+    }
+
+    const { body } = _params;
+    const path = {
+      'service_id': _params.serviceId,
+    };
+
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'updateMilvusService'
+    );
+
+    const parameters = {
+      options: {
+        url: '/milvus_services/{service_id}',
+        method: 'PATCH',
+        body,
+        path,
+      },
+      defaultOptions: extend(true, {}, this.baseOptions, {
+        headers: extend(
+          true,
+          sdkHeaders,
+          {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json-patch+json',
+            'AuthInstanceId': _params.authInstanceId,
+          },
+          _params.headers
+        ),
+      }),
+    };
+
+    return this.createRequest(parameters);
+  }
 }
 
 /*************************
@@ -3951,24 +5398,18 @@ namespace WatsonxDataV2 {
     bucketDetails: BucketDetails;
     /** bucket type. */
     bucketType: CreateBucketRegistrationConstants.BucketType | string;
-    /** catalog name. */
-    catalogName: string;
     /** bucket description. */
     description: string;
     /** managed by. */
     managedBy: CreateBucketRegistrationConstants.ManagedBy | string;
-    /** Table type. */
-    tableType: string;
+    /** bucket catalog. */
+    associatedCatalog?: BucketCatalog;
     /** bucket display name. */
     bucketDisplayName?: string;
-    /** tags. */
-    bucketTags?: string[];
-    /** catalog tags. */
-    catalogTags?: string[];
     /** region where the bucket is located. */
     region?: string;
-    /** mark bucket active or inactive. */
-    state?: CreateBucketRegistrationConstants.State | string;
+    /** tags. */
+    tags?: string[];
     /** Instance ID. */
     authInstanceId?: string;
     headers?: OutgoingHttpHeaders;
@@ -3987,11 +5428,6 @@ namespace WatsonxDataV2 {
     export enum ManagedBy {
       IBM = 'ibm',
       CUSTOMER = 'customer',
-    }
-    /** mark bucket active or inactive. */
-    export enum State {
-      ACTIVE = 'active',
-      INACTIVE = 'inactive',
     }
   }
 
@@ -4084,6 +5520,10 @@ namespace WatsonxDataV2 {
 
   /** Parameters for the `createDriverDatabaseCatalog` operation. */
   export interface CreateDriverDatabaseCatalogParams {
+    /** Driver file to upload. */
+    driver: NodeJS.ReadableStream | Buffer;
+    /** Name of the driver file. */
+    driverFileName: string;
     /** Database display name. */
     databaseDisplayName: string;
     /** Connector type. */
@@ -4094,24 +5534,20 @@ namespace WatsonxDataV2 {
     hostname: string;
     /** Port. */
     port: string;
-    /** Driver file to upload. */
-    driver?: NodeJS.ReadableStream | Buffer;
+    /** Username. */
+    username: string;
+    /** Psssword. */
+    password: string;
+    /** Database name. */
+    databaseName: string;
     /** The content type of driver. */
     driverContentType?: string;
-    /** Name of the driver file. */
-    driverFileName?: string;
     /** contents of a pem/crt file. */
     certificate?: string;
     /** extension of the certificate file. */
     certificateExtension?: string;
     /** SSL Mode. */
     ssl?: string;
-    /** Username. */
-    username?: string;
-    /** Psssword. */
-    password?: string;
-    /** Database name. */
-    databaseName?: string;
     /** Database description. */
     description?: string;
     /** Created on. */
@@ -4130,18 +5566,18 @@ namespace WatsonxDataV2 {
 
   /** Parameters for the `createDatabaseRegistration` operation. */
   export interface CreateDatabaseRegistrationParams {
-    /** Catalog name. */
-    catalogName: string;
     /** Database display name. */
     databaseDisplayName: string;
     /** Connector type. */
     databaseType: string;
+    /** database catalog. */
+    associatedCatalog?: DatabaseCatalog;
     /** Created on. */
-    createdOn?: number;
+    createdOn?: string;
     /** database details. */
-    databaseDetails?: RegisterDatabaseCatalogBodyDatabaseDetails;
+    databaseDetails?: DatabaseDetails;
     /** This will hold all the properties for a custom database. */
-    databaseProperties?: RegisterDatabaseCatalogBodyDatabasePropertiesItems[];
+    databaseProperties?: DatabaseRegistrationPrototypeDatabasePropertiesItems[];
     /** Database description. */
     description?: string;
     /** tags. */
@@ -4224,7 +5660,7 @@ namespace WatsonxDataV2 {
     /** Engine description. */
     description?: string;
     /** External engine details. */
-    engineDetails?: CreateDb2EngineDetails;
+    engineDetails?: Db2EngineDetailsBody;
     /** Engine display name. */
     engineDisplayName?: string;
     /** Tags. */
@@ -4264,8 +5700,8 @@ namespace WatsonxDataV2 {
     headers?: OutgoingHttpHeaders;
   }
 
-  /** Parameters for the `listEngines` operation. */
-  export interface ListEnginesParams {
+  /** Parameters for the `getEngines` operation. */
+  export interface GetEnginesParams {
     /** Instance ID. */
     authInstanceId?: string;
     headers?: OutgoingHttpHeaders;
@@ -4294,7 +5730,7 @@ namespace WatsonxDataV2 {
     /** Engine description. */
     description?: string;
     /** External engine details. */
-    engineDetails?: CreateNetezzaEngineDetails;
+    engineDetails?: NetezzaEngineDetailsBody;
     /** Engine display name. */
     engineDisplayName?: string;
     /** Tags. */
@@ -4343,23 +5779,235 @@ namespace WatsonxDataV2 {
 
   /** Parameters for the `createOtherEngine` operation. */
   export interface CreateOtherEngineParams {
+    /** External engine details. */
+    engineDetails: OtherEngineDetailsBody;
+    /** engine display name. */
+    engineDisplayName: string;
     /** engine description. */
     description?: string;
-    /** External engine details. */
-    engineDetails?: OtherEngineDetails;
-    /** engine display name. */
-    engineDisplayName?: string;
+    /** Origin - created or registered. */
+    origin?: CreateOtherEngineConstants.Origin | string;
     /** other engine tags. */
     tags?: string[];
+    /** Engine type. */
+    type?: string;
     /** Instance ID. */
     authInstanceId?: string;
     headers?: OutgoingHttpHeaders;
+  }
+
+  /** Constants for the `createOtherEngine` operation. */
+  export namespace CreateOtherEngineConstants {
+    /** Origin - created or registered. */
+    export enum Origin {
+      NATIVE = 'native',
+      EXTERNAL = 'external',
+      DISCOVER = 'discover',
+    }
   }
 
   /** Parameters for the `deleteOtherEngine` operation. */
   export interface DeleteOtherEngineParams {
     /** engine id. */
     engineId: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `listPrestissimoEngines` operation. */
+  export interface ListPrestissimoEnginesParams {
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `createPrestissimoEngine` operation. */
+  export interface CreatePrestissimoEngineParams {
+    /** Origin - created or registered. */
+    origin: CreatePrestissimoEngineConstants.Origin | string;
+    /** Engine type prestissimo, others like netezza. */
+    type: string;
+    /** Associated catalogs. */
+    associatedCatalogs?: string[];
+    /** Engine description. */
+    description?: string;
+    /** External engine details. */
+    engineDetails?: PrestissimoEngineDetails;
+    /** Engine display name. */
+    engineDisplayName?: string;
+    /** Region (cloud). */
+    region?: string;
+    /** Tags. */
+    tags?: string[];
+    /** Version like 0.278 for prestissimo or else. */
+    version?: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Constants for the `createPrestissimoEngine` operation. */
+  export namespace CreatePrestissimoEngineConstants {
+    /** Origin - created or registered. */
+    export enum Origin {
+      NATIVE = 'native',
+      EXTERNAL = 'external',
+      DISCOVER = 'discover',
+    }
+  }
+
+  /** Parameters for the `getPrestissimoEngine` operation. */
+  export interface GetPrestissimoEngineParams {
+    /** engine id. */
+    engineId: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `deletePrestissimoEngine` operation. */
+  export interface DeletePrestissimoEngineParams {
+    /** engine id. */
+    engineId: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `updatePrestissimoEngine` operation. */
+  export interface UpdatePrestissimoEngineParams {
+    /** engine id. */
+    engineId: string;
+    /** Update prestissimo engine body. */
+    body: JsonPatchOperation[];
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `listPrestissimoEngineCatalogs` operation. */
+  export interface ListPrestissimoEngineCatalogsParams {
+    /** engine id. */
+    engineId: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `replacePrestissimoEngineCatalogs` operation. */
+  export interface ReplacePrestissimoEngineCatalogsParams {
+    /** engine id. */
+    engineId: string;
+    /** comma separated catalog names. */
+    catalogNames: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `deletePrestissimoEngineCatalogs` operation. */
+  export interface DeletePrestissimoEngineCatalogsParams {
+    /** engine id. */
+    engineId: string;
+    /** Catalog id(s) to be stopped, comma separated. */
+    catalogNames: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `getPrestissimoEngineCatalog` operation. */
+  export interface GetPrestissimoEngineCatalogParams {
+    /** engine id. */
+    engineId: string;
+    /** catalog id. */
+    catalogId: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `createPrestissimoEnginePause` operation. */
+  export interface CreatePrestissimoEnginePauseParams {
+    /** engine id. */
+    engineId: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `runPrestissimoExplainStatement` operation. */
+  export interface RunPrestissimoExplainStatementParams {
+    /** Engine id. */
+    engineId: string;
+    /** Presto query to determine explain plan. */
+    statement: string;
+    /** Format. */
+    format?: RunPrestissimoExplainStatementConstants.Format | string;
+    /** Type. */
+    type?: RunPrestissimoExplainStatementConstants.Type | string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Constants for the `runPrestissimoExplainStatement` operation. */
+  export namespace RunPrestissimoExplainStatementConstants {
+    /** Format. */
+    export enum Format {
+      TEXT = 'text',
+      GRAPHVIZ = 'graphviz',
+      JSON = 'json',
+    }
+    /** Type. */
+    export enum Type {
+      LOGICAL = 'logical',
+      DISTRIBUTED = 'distributed',
+      VALIDATE = 'validate',
+      IO = 'io',
+    }
+  }
+
+  /** Parameters for the `runPrestissimoExplainAnalyzeStatement` operation. */
+  export interface RunPrestissimoExplainAnalyzeStatementParams {
+    /** Engine id. */
+    engineId: string;
+    /** Presto query to show explain analyze. */
+    statement: string;
+    /** Verbose. */
+    verbose?: boolean;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `createPrestissimoEngineRestart` operation. */
+  export interface CreatePrestissimoEngineRestartParams {
+    /** engine id. */
+    engineId: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `createPrestissimoEngineResume` operation. */
+  export interface CreatePrestissimoEngineResumeParams {
+    /** engine id. */
+    engineId: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `createPrestissimoEngineScale` operation. */
+  export interface CreatePrestissimoEngineScaleParams {
+    /** engine id. */
+    engineId: string;
+    /** Node details. */
+    coordinator?: PrestissimoNodeDescriptionBody;
+    /** Node details. */
+    worker?: PrestissimoNodeDescriptionBody;
     /** Instance ID. */
     authInstanceId?: string;
     headers?: OutgoingHttpHeaders;
@@ -4372,11 +6020,11 @@ namespace WatsonxDataV2 {
     headers?: OutgoingHttpHeaders;
   }
 
-  /** Parameters for the `createEngine` operation. */
-  export interface CreateEngineParams {
+  /** Parameters for the `createPrestoEngine` operation. */
+  export interface CreatePrestoEngineParams {
     /** Origin - created or registered. */
-    origin: CreateEngineConstants.Origin | string;
-    /** Engine type presto, others like netezza. */
+    origin: CreatePrestoEngineConstants.Origin | string;
+    /** Engine type presto. */
     type: string;
     /** Associated catalogs. */
     associatedCatalogs?: string[];
@@ -4386,8 +6034,6 @@ namespace WatsonxDataV2 {
     engineDetails?: EngineDetailsBody;
     /** Engine display name. */
     engineDisplayName?: string;
-    /** Optional parameter for UI - set as true when first time use. */
-    firstTimeUse?: boolean;
     /** Region (cloud). */
     region?: string;
     /** Tags. */
@@ -4399,8 +6045,8 @@ namespace WatsonxDataV2 {
     headers?: OutgoingHttpHeaders;
   }
 
-  /** Constants for the `createEngine` operation. */
-  export namespace CreateEngineConstants {
+  /** Constants for the `createPrestoEngine` operation. */
+  export namespace CreatePrestoEngineConstants {
     /** Origin - created or registered. */
     export enum Origin {
       NATIVE = 'native',
@@ -4427,8 +6073,8 @@ namespace WatsonxDataV2 {
     headers?: OutgoingHttpHeaders;
   }
 
-  /** Parameters for the `updateEngine` operation. */
-  export interface UpdateEngineParams {
+  /** Parameters for the `updatePrestoEngine` operation. */
+  export interface UpdatePrestoEngineParams {
     /** engine id. */
     engineId: string;
     /** Update Engine Body. */
@@ -4595,7 +6241,6 @@ namespace WatsonxDataV2 {
   export namespace CreateSparkEngineConstants {
     /** Origin - created or registered. */
     export enum Origin {
-      NATIVE = 'native',
       EXTERNAL = 'external',
       DISCOVER = 'discover',
     }
@@ -4800,6 +6445,74 @@ namespace WatsonxDataV2 {
     headers?: OutgoingHttpHeaders;
   }
 
+  /** Parameters for the `listColumns` operation. */
+  export interface ListColumnsParams {
+    /** engine id. */
+    engineId: string;
+    /** catalog id. */
+    catalogId: string;
+    /** URL encoded schema name. */
+    schemaId: string;
+    /** URL encoded schema name. */
+    tableId: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `createColumns` operation. */
+  export interface CreateColumnsParams {
+    /** engine id. */
+    engineId: string;
+    /** catalog id. */
+    catalogId: string;
+    /** URL encoded schema name. */
+    schemaId: string;
+    /** URL encoded schema name. */
+    tableId: string;
+    /** List of the tables present in the schema. */
+    columns?: Column[];
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `deleteColumn` operation. */
+  export interface DeleteColumnParams {
+    /** engine id. */
+    engineId: string;
+    /** catalog id. */
+    catalogId: string;
+    /** URL encoded schema name. */
+    schemaId: string;
+    /** URL encoded schema name. */
+    tableId: string;
+    /** URL encoded schema name. */
+    columnId: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `updateColumn` operation. */
+  export interface UpdateColumnParams {
+    /** engine id. */
+    engineId: string;
+    /** catalog id. */
+    catalogId: string;
+    /** URL encoded schema name. */
+    schemaId: string;
+    /** URL encoded schema name. */
+    tableId: string;
+    /** URL encoded schema name. */
+    columnId: string;
+    /** Request body. */
+    body: JsonPatchOperation[];
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
   /** Parameters for the `listTableSnapshots` operation. */
   export interface ListTableSnapshotsParams {
     /** Engine name. */
@@ -4843,9 +6556,72 @@ namespace WatsonxDataV2 {
     headers?: OutgoingHttpHeaders;
   }
 
+  /** Parameters for the `listMilvusServices` operation. */
+  export interface ListMilvusServicesParams {
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `createMilvusService` operation. */
+  export interface CreateMilvusServiceParams {
+    /** Origin - place holder. */
+    origin: string;
+    /** service type. */
+    type: string;
+    /** Service description. */
+    description?: string;
+    /** Service display name. */
+    serviceDisplayName?: string;
+    /** Tags. */
+    tags?: string[];
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `getMilvusService` operation. */
+  export interface GetMilvusServiceParams {
+    /** service id. */
+    serviceId: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `deleteMilvusService` operation. */
+  export interface DeleteMilvusServiceParams {
+    /** service id. */
+    serviceId: string;
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
+  /** Parameters for the `updateMilvusService` operation. */
+  export interface UpdateMilvusServiceParams {
+    /** service id. */
+    serviceId: string;
+    /** Update milvus service. */
+    body: JsonPatchOperation[];
+    /** Instance ID. */
+    authInstanceId?: string;
+    headers?: OutgoingHttpHeaders;
+  }
+
   /*************************
    * model interfaces
    ************************/
+
+  /** bucket catalog. */
+  export interface BucketCatalog {
+    /** catalog name. */
+    catalog_name?: string;
+    /** catalog tags. */
+    catalog_tags?: string[];
+    /** catalog type. */
+    catalog_type?: string;
+  }
 
   /** bucket details. */
   export interface BucketDetails {
@@ -4861,19 +6637,17 @@ namespace WatsonxDataV2 {
 
   /** Bucket. */
   export interface BucketRegistration {
-    /** access key. */
-    access_key?: string;
     /** Actions. */
     actions?: string[];
-    /** Associated catalogs. */
-    associated_catalogs: string[];
+    /** bucket catalog. */
+    associated_catalog: BucketCatalog;
+    /** bucket details. */
+    bucket_details?: BucketDetails;
     /** bucket display name. */
     bucket_display_name?: string;
     /** bucket ID auto generated during bucket registration. */
     bucket_id?: string;
-    /** actual bucket name. */
-    bucket_name: string;
-    /** Bucket type. */
+    /** bucket type. */
     bucket_type: BucketRegistration.Constants.BucketType | string;
     /** Username who created the bucket. */
     created_by: string;
@@ -4881,22 +6655,18 @@ namespace WatsonxDataV2 {
     created_on: string;
     /** bucket description. */
     description: string;
-    /** bucket endpoint. */
-    endpoint: string;
     /** managed by. */
     managed_by: BucketRegistration.Constants.ManagedBy | string;
     /** Region where the bucket is located. */
     region?: string;
-    /** secret key. */
-    secret_key?: string;
     /** mark bucket active or inactive. */
     state: BucketRegistration.Constants.State | string;
-    /** Tags. */
-    tags: string[];
+    /** tags. */
+    tags?: string[];
   }
   export namespace BucketRegistration {
     export namespace Constants {
-      /** Bucket type. */
+      /** bucket type. */
       export enum BucketType {
         AMAZON_S3 = 'amazon_s3',
         AWS_S3 = 'aws_s3',
@@ -4917,6 +6687,18 @@ namespace WatsonxDataV2 {
     }
   }
 
+  /** List bucket registrations. */
+  export interface BucketRegistrationCollection {
+    /** Buckets. */
+    bucket_registrations?: BucketRegistration[];
+  }
+
+  /** List bucket objects. */
+  export interface BucketRegistrationObjectCollection {
+    /** bucket object. */
+    objects?: string[];
+  }
+
   /** object defining the response of checking if the credentials of a bucket are valid. */
   export interface BucketStatusResponse {
     /** bucket credentials are valid or not. */
@@ -4925,16 +6707,8 @@ namespace WatsonxDataV2 {
     state_message: string;
   }
 
-  /** EngineCatalog. */
-  export interface Catalog {
-    /** Name for the catalog. */
-    catalog_name?: string;
-    /** Creation date. */
-    creation_date?: string;
-  }
-
   /** Define the catalog details. */
-  export interface CatalogDetail {
+  export interface Catalog {
     /** list of allowed actions. */
     actions?: string[];
     /** Associated buckets items. */
@@ -4958,7 +6732,7 @@ namespace WatsonxDataV2 {
     /** Last sync time. */
     last_sync_at?: string;
     /** Managed by. */
-    managed_by?: CatalogDetail.Constants.ManagedBy | string;
+    managed_by?: Catalog.Constants.ManagedBy | string;
     /** Catalog name. */
     metastore?: string;
     /** IBM thrift uri port. */
@@ -4976,7 +6750,7 @@ namespace WatsonxDataV2 {
     /** Customer thrift uri. */
     thrift_uri?: string;
   }
-  export namespace CatalogDetail {
+  export namespace Catalog {
     export namespace Constants {
       /** Managed by. */
       export enum ManagedBy {
@@ -4984,6 +6758,12 @@ namespace WatsonxDataV2 {
         CUSTOMER = 'customer',
       }
     }
+  }
+
+  /** GetCatalogs OK. */
+  export interface CatalogCollection {
+    /** Catalogs. */
+    catalogs?: Catalog[];
   }
 
   /** Column. */
@@ -4994,68 +6774,32 @@ namespace WatsonxDataV2 {
     comment?: string;
     /** Extra. */
     extra?: string;
+    /** length. */
+    length?: string;
+    /** scale. */
+    scale?: string;
     /** Data type. */
     type?: string;
+  }
+
+  /** list of columns in a table. */
+  export interface ColumnCollection {
+    /** List of the columns present in the table. */
+    columns?: Column[];
+  }
+
+  /** check connection response details are valid or not. */
+  export interface ConnectionResponse {
+    /** Whether the connection details are valid or not. */
+    state?: boolean;
+    /** Connection message received by connector libraries for failed connection. */
+    state_message?: string;
   }
 
   /** Activate bucket. */
   export interface CreateActivateBucketCreatedBody {
     /** Response of success. */
     response?: SuccessResponse;
-  }
-
-  /** CreateBucketRegistrations OK. */
-  export interface CreateBucketRegistrationCreatedBody {
-    /** Bucket. */
-    bucket_registration: BucketRegistration;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** database register response. */
-  export interface CreateDatabaseRegistrationCreatedBody {
-    /** database registration object. */
-    database_registration: DatabaseRegistration;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** create engine successful. */
-  export interface CreateDb2EngineCreatedBody {
-    /** Db2 engine details. */
-    engine: Db2Engine;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** External engine details. */
-  export interface CreateDb2EngineDetails {
-    /** External engine connection string. */
-    connection_string?: string;
-  }
-
-  /** response obj. */
-  export interface CreateDriverDatabaseCatalogCreatedBody {
-    /** response database. */
-    database: CreateDriverDatabaseCatalogCreatedBodyDatabase;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** response database. */
-  export interface CreateDriverDatabaseCatalogCreatedBodyDatabase {
-    /** Database display name. */
-    database_display_name?: string;
-    /** Database ID. */
-    database_id?: string;
-  }
-
-  /** create presto engine successful. */
-  export interface CreateEngineCreatedBody {
-    /** EngineDetail. */
-    engine: PrestoEngine;
-    /** Response of success. */
-    response: SuccessResponse;
   }
 
   /** Pause. */
@@ -5082,83 +6826,37 @@ namespace WatsonxDataV2 {
     response?: SuccessResponse;
   }
 
-  /** create engine successful. */
-  export interface CreateNetezzaEngineCreatedBody {
-    /** Netezza engine details. */
-    engine: NetezzaEngine;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** External engine details. */
-  export interface CreateNetezzaEngineDetails {
-    /** External engine connection string. */
-    connection_string?: string;
-  }
-
-  /** create engine successful. */
-  export interface CreateOtherEngineCreatedBody {
-    /** external engine details. */
-    engine: OtherEngine;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
   /** success response. */
   export interface CreateSchemaCreatedBody {
     /** Response of success. */
     response?: SuccessResponse;
   }
 
-  /** create engine successful. */
-  export interface CreateSparkEngineApplicationCreatedBody {
-    /** Response of success. */
-    response: SuccessResponse;
-    /** EngineSubmitApplicationBody. */
-    spark_engine_application: SparkEngineApplication;
-  }
-
-  /** Create spark engine successful. */
-  export interface CreateSparkEngineCreatedBody {
-    /** EngineDetail. */
-    engine: SparkEngine;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** database registration object. */
-  export interface DatabaseRegistration {
-    /** actions. */
-    actions?: string[];
-    /** associated catalogs. */
-    associated_catalogs?: string[];
-    /** Created by. */
-    created_by?: string;
-    /** Created on. */
-    created_on?: string;
-    /** database details. */
-    database_details: DatabaseRegistrationDatabaseDetails;
-    /** Database display name. */
-    database_display_name: string;
-    /** Database ID. */
-    database_id?: string;
-    /** String containing the property key values saved for custom database. */
-    database_properties?: string[];
-    /** Connector type. */
-    database_type: string;
-    /** Database description. */
-    description?: string;
-    /** tags. */
-    tags?: string[];
+  /** database catalog. */
+  export interface DatabaseCatalog {
+    /** catalog name. */
+    catalog_name?: string;
+    /** catalog tags. */
+    catalog_tags?: string[];
+    /** catalog type. */
+    catalog_type?: string;
   }
 
   /** database details. */
-  export interface DatabaseRegistrationDatabaseDetails {
+  export interface DatabaseDetails {
+    /** contents of a pem/crt file. */
+    certificate?: string;
+    /** extension of the certificate file. */
+    certificate_extension?: string;
     /** Database name. */
     database_name?: string;
     /** Host name. */
     hostname: string;
-    /** Password. */
+    /** Hostname in certificate. */
+    hostname_in_certificate?: string;
+    /** String of hostname:port. */
+    hosts?: string;
+    /** Psssword. */
     password?: string;
     /** Port. */
     port: number;
@@ -5170,6 +6868,62 @@ namespace WatsonxDataV2 {
     tables?: string;
     /** Username. */
     username?: string;
+    /** Verify certificate. */
+    validate_server_certificate?: boolean;
+  }
+
+  /** database registration object. */
+  export interface DatabaseRegistration {
+    /** actions. */
+    actions?: string[];
+    /** database catalog. */
+    associated_catalog?: DatabaseCatalog;
+    /** Catalog name. */
+    catalog_name?: string;
+    /** Created by. */
+    created_by?: string;
+    /** Created on. */
+    created_on?: string;
+    /** database details. */
+    database_details: DatabaseDetails;
+    /** Database display name. */
+    database_display_name: string;
+    /** Database ID. */
+    database_id?: string;
+    /** This will hold all the properties for a custom database. */
+    database_properties?: DatabaseRegistrationDatabasePropertiesItems[];
+    /** Connector type. */
+    database_type: string;
+    /** Database description. */
+    description?: string;
+    /** tags. */
+    tags?: string[];
+  }
+
+  /** list database registrations. */
+  export interface DatabaseRegistrationCollection {
+    /** Database body. */
+    database_registrations?: DatabaseRegistration[];
+  }
+
+  /** Key value object. */
+  export interface DatabaseRegistrationDatabasePropertiesItems {
+    /** Wether the value is to be encrypted before storing. */
+    encrypt: boolean;
+    /** Key of the database property. */
+    key: string;
+    /** Value of the database property. */
+    value: string;
+  }
+
+  /** Key value object. */
+  export interface DatabaseRegistrationPrototypeDatabasePropertiesItems {
+    /** Wether the value is to be encrypted before storing. */
+    encrypt: boolean;
+    /** Key of the database property. */
+    key: string;
+    /** Value of the database property. */
+    value: string;
   }
 
   /** Db2 engine details. */
@@ -5204,12 +6958,24 @@ namespace WatsonxDataV2 {
     type?: string;
   }
 
+  /** list db2 engines. */
+  export interface Db2EngineCollection {
+    /** list db2 engines. */
+    db2_engines?: Db2Engine[];
+  }
+
   /** External engine details. */
   export interface Db2EngineDetails {
     /** External engine connection string. */
     connection_string?: string;
     /** Metastore host. */
     metastore_host?: string;
+  }
+
+  /** External engine details. */
+  export interface Db2EngineDetailsBody {
+    /** External engine connection string. */
+    connection_string?: string;
   }
 
   /** Deployment. */
@@ -5256,24 +7022,6 @@ namespace WatsonxDataV2 {
     deployment?: Deployment;
   }
 
-  /** Endpoints. */
-  export interface Endpoints {
-    /** Application API. */
-    applications_api?: string;
-    /** History server endpoint. */
-    history_server_endpoint?: string;
-    /** Spark kernel endpoint. */
-    spark_access_endpoint?: string;
-    /** Spark jobs V4 endpoint. */
-    spark_jobs_v4_endpoint?: string;
-    /** Spark kernel endpoint. */
-    spark_kernel_endpoint?: string;
-    /** View history server. */
-    view_history_server?: string;
-    /** Wxd application endpoint. */
-    wxd_application_endpoint?: string;
-  }
-
   /** All engine details. */
   export interface Engine {
     /** list of db2 engines. */
@@ -5288,16 +7036,6 @@ namespace WatsonxDataV2 {
     presto_engines?: PrestoEngine[];
     /** list of spark engines. */
     spark_engines?: SparkEngine[];
-  }
-
-  /** External engine details. */
-  export interface EngineDetails {
-    /** External engine connection string. */
-    connection_string?: string;
-    /** Endpoints. */
-    endpoints?: Endpoints;
-    /** Metastore host. */
-    metastore_host?: string;
   }
 
   /** Node details. */
@@ -5332,66 +7070,16 @@ namespace WatsonxDataV2 {
     }
   }
 
-  /** GetBucketRegistration OK. */
-  export interface GetBucketRegistrationOKBody {
-    /** Bucket. */
-    bucket_registration: BucketRegistration;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** GetCatalog OK. */
-  export interface GetCatalogOKBody {
-    /** Define the catalog details. */
-    catalog: CatalogDetail;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** get databases success response body. */
-  export interface GetDatabaseOKBody {
-    /** database registration object. */
-    database: DatabaseRegistration;
-    /** Response of success. */
-    response: SuccessResponse;
+  /** List all engines. */
+  export interface Engines {
+    /** All engine details. */
+    engines?: Engine;
   }
 
   /** Response body structure for get deployments. */
   export interface GetDeploymentsOKBody {
     /** DeploymentsResponse. */
     deploymentresponse: DeploymentsResponse;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** getEngineCatalogs OK. */
-  export interface GetPrestoEngineCatalogOKBody {
-    /** Define the catalog details. */
-    catalog: CatalogDetail;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** get engine. */
-  export interface GetPrestoEngineOKBody {
-    /** EngineDetail. */
-    engine: PrestoEngine;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** getSparkApplication. */
-  export interface GetSparkEngineApplicationStatusOKBody {
-    /** Engine Application Status. */
-    application: SparkEngineApplicationStatus;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** GetColumns OK. */
-  export interface GetTableOKBody {
-    /** Columns. */
-    columns: Column[];
     /** Response of success. */
     response: SuccessResponse;
   }
@@ -5421,162 +7109,12 @@ namespace WatsonxDataV2 {
     }
   }
 
-  /** GetBucketObjects OK. */
-  export interface ListBucketObjectsOKBody {
-    /** bucket objects. */
-    objects: string[];
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** GetBucketRegistrations OK. */
-  export interface ListBucketRegistrationsOKBody {
-    /** Buckets. */
-    bucket_registrations: BucketRegistration[];
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** GetCatalogs OK. */
-  export interface ListCatalogsOKBody {
-    /** Catalogs. */
-    catalogs: CatalogDetail[];
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** list db api response. */
-  export interface ListDatabaseRegistrationsOKBody {
-    /** Database body. */
-    database_registrations: DatabaseRegistration[];
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** list db2 engines. */
-  export interface ListDb2EnginesOKBody {
-    /** list db2 engines. */
-    db2_engines: Db2Engine[];
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** getEngines. */
-  export interface ListEnginesOKBody {
-    /** All engine details. */
-    engines: Engine;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** list netezza engines. */
-  export interface ListNetezzaEnginesOKBody {
-    /** list netezza engines. */
-    netezza_engines: NetezzaEngine[];
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** list other engines. */
-  export interface ListOtherEnginesOKBody {
-    /** list other engines. */
-    other_engines: OtherEngine[];
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** get engine catalogs. */
-  export interface ListPrestoEngineCatalogsOKBody {
-    /** Engine Catalogs. */
-    catalogs: Catalog[];
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** list Engines. */
-  export interface ListPrestoEnginesOKBody {
-    /** list presto engines. */
-    presto_engines: PrestoEngine[];
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
   /** GetSchemas OK. */
   export interface ListSchemasOKBody {
     /** Response of success. */
     response: SuccessResponse;
     /** Schemas. */
     schemas: string[];
-  }
-
-  /** Engine Application Detail. */
-  export interface ListSparkEngineApplication {
-    /** Application ID. */
-    application_id?: string;
-    /** Auto Termination Time. */
-    auto_termination_time?: string;
-    /** Creation Time. */
-    creation_time?: string;
-    /** End Time. */
-    end_time?: string;
-    /** Failed Time. */
-    failed_time?: string;
-    /** Finish Time. */
-    finish_time?: string;
-    /** Application ID. */
-    id?: string;
-    /** application run time. */
-    runtime?: ListSparkEngineApplicationRuntime;
-    /** Spark application ID. */
-    spark_application_id?: string;
-    /** Spark application name. */
-    spark_application_name?: string;
-    /** Start Time. */
-    start_time?: string;
-    /** Application State. */
-    state?: string;
-    /** Application submission time. */
-    submission_time?: string;
-    /** Submission Time. */
-    template_id?: string;
-  }
-
-  /** application run time. */
-  export interface ListSparkEngineApplicationRuntime {
-    /** Spark Version. */
-    spark_version?: string;
-  }
-
-  /** list Applications. */
-  export interface ListSparkEngineApplicationsOKBody {
-    /** list spark engines. */
-    applications: ListSparkEngineApplication[];
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** List spark engines. */
-  export interface ListSparkEnginesOKBody {
-    /** Response of success. */
-    response: SuccessResponse;
-    /** List spark engines. */
-    spark_engines: SparkEngine[];
-  }
-
-  /** TableSnapshot OK. */
-  export interface ListTableSnapshotsOKBody {
-    /** Response of success. */
-    response: SuccessResponse;
-    /** Snapshots. */
-    snapshots: TableSnapshot[];
-  }
-
-  /** GetTables OK. */
-  export interface ListTablesOKBody {
-    /** Response of success. */
-    response: SuccessResponse;
-    /** List of the tables present in the schema. */
-    tables: string[];
   }
 
   /** milvus service details. */
@@ -5589,10 +7127,14 @@ namespace WatsonxDataV2 {
     created_on?: number;
     /** Service description. */
     description?: string;
+    /** milvus grpc_host. */
+    grpc_host?: string;
     /** milvus port. */
     grpc_port?: number;
     /** milvus display name. */
     host_name?: string;
+    /** milvus https_host. */
+    https_host?: string;
     /** milvus port. */
     https_port?: number;
     /** Origin - place holder. */
@@ -5619,6 +7161,12 @@ namespace WatsonxDataV2 {
         STOPPED = 'stopped',
       }
     }
+  }
+
+  /** List milvus services. */
+  export interface MilvusServiceCollection {
+    /** milvus service body. */
+    milvus_services?: MilvusService[];
   }
 
   /** Netezza engine details. */
@@ -5653,12 +7201,24 @@ namespace WatsonxDataV2 {
     type?: string;
   }
 
+  /** list Netezza engines. */
+  export interface NetezzaEngineCollection {
+    /** list Netezza engines. */
+    netezza_engines?: NetezzaEngine[];
+  }
+
   /** External engine details. */
   export interface NetezzaEngineDetails {
     /** External engine connection string. */
     connection_string?: string;
     /** Metastore host. */
     metastore_host?: string;
+  }
+
+  /** External engine details. */
+  export interface NetezzaEngineDetailsBody {
+    /** External engine connection string. */
+    connection_string?: string;
   }
 
   /** NodeDescription. */
@@ -5679,6 +7239,8 @@ namespace WatsonxDataV2 {
 
   /** external engine details. */
   export interface OtherEngine {
+    /** Actions. */
+    actions?: string[];
     /** created user name. */
     created_by?: string;
     /** created time in epoch format. */
@@ -5691,26 +7253,42 @@ namespace WatsonxDataV2 {
     engine_display_name?: string;
     /** engine programmatic name. */
     engine_id?: string;
+    /** Engine host name. In case of OCP based clusters, this is internal hostname. */
+    host_name?: string;
     /** origin. */
     origin?: string;
+    /** Engine port. */
+    port?: number;
     /** engine status. */
     status?: string;
-    /** engine status code. */
-    status_code?: number;
     /** Tags. */
     tags?: string[];
     /** Type like presto, netezza, external,.. */
     type?: string;
   }
 
+  /** list other engines. */
+  export interface OtherEngineCollection {
+    /** list other engines. */
+    other_engines?: OtherEngine[];
+  }
+
   /** External engine details. */
   export interface OtherEngineDetails {
     /** external engine connection string. */
-    connection_string?: string;
+    connection_string: string;
     /** Actual engine type. */
-    engine_type?: string;
-    /** metastore host. */
+    engine_type: string;
+    /** metastore host - not required while registering an engine. */
     metastore_host?: string;
+  }
+
+  /** External engine details. */
+  export interface OtherEngineDetailsBody {
+    /** External engine connection string. */
+    connection_string: string;
+    /** Actual engine type. */
+    engine_type: string;
   }
 
   /** Endpoints. */
@@ -5760,20 +7338,20 @@ namespace WatsonxDataV2 {
     /** Engine host name. In case of OCP based clusters, this is internal hostname. */
     host_name?: string;
     /** Origin - place holder. */
-    origin?: string;
+    origin?: PrestissimoEngine.Constants.Origin | string;
     /** Engine port. */
     port?: number;
     /** Region - place holder. */
     region?: string;
     /** Size config. */
     size_config?: string;
-    /** Recipe status. */
+    /** Engine status. */
     status?: PrestissimoEngine.Constants.Status | string;
     /** Engine status code. */
     status_code: number;
     /** Tags. */
     tags?: string[];
-    /** Type like prestissimo, netezza,.. */
+    /** Engine type. */
     type?: string;
     /** Version of the engine. */
     version?: string;
@@ -5782,7 +7360,13 @@ namespace WatsonxDataV2 {
   }
   export namespace PrestissimoEngine {
     export namespace Constants {
-      /** Recipe status. */
+      /** Origin - place holder. */
+      export enum Origin {
+        NATIVE = 'native',
+        EXTERNAL = 'external',
+        DISCOVER = 'discover',
+      }
+      /** Engine status. */
       export enum Status {
         RUNNING = 'running',
         PENDING = 'pending',
@@ -5791,14 +7375,46 @@ namespace WatsonxDataV2 {
     }
   }
 
+  /** list Prestissimo Engines. */
+  export interface PrestissimoEngineCollection {
+    /** list prestissimo engines. */
+    prestissimo_engines?: PrestissimoEngine[];
+  }
+
   /** External engine details. */
   export interface PrestissimoEngineDetails {
+    /** api key to work with the saas IAE instance. */
+    api_key?: string;
     /** External engine connection string. */
     connection_string?: string;
+    /** Node details. */
+    coordinator?: PrestissimoNodeDescriptionBody;
     /** Endpoints. */
     endpoints?: PrestissimoEndpoints;
+    /** Instance to access the instance. */
+    instance_id?: string;
+    /** How is the spark instance managed. */
+    managed_by?: string;
     /** Metastore host. */
     metastore_host?: string;
+    /** Size config. */
+    size_config?: PrestissimoEngineDetails.Constants.SizeConfig | string;
+    /** Node details. */
+    worker?: PrestissimoNodeDescriptionBody;
+  }
+  export namespace PrestissimoEngineDetails {
+    export namespace Constants {
+      /** Size config. */
+      export enum SizeConfig {
+        STARTER = 'starter',
+        CACHE_OPTIMIZED = 'cache_optimized',
+        COMPUTE_OPTIMIZED = 'compute_optimized',
+        SMALL = 'small',
+        MEDIUM = 'medium',
+        LARGE = 'large',
+        CUSTOM = 'custom',
+      }
+    }
   }
 
   /** Node details. */
@@ -5813,7 +7429,7 @@ namespace WatsonxDataV2 {
   export interface PrestoEngine {
     /** Actions. */
     actions?: string[];
-    /** Associated catalog. */
+    /** Associated catalogs. */
     associated_catalogs?: string[];
     /** watsonx.data build version. */
     build_version?: string;
@@ -5825,8 +7441,8 @@ namespace WatsonxDataV2 {
     created_on?: number;
     /** Engine description. */
     description?: string;
-    /** External engine details. */
-    engine_details?: EngineDetails;
+    /** Node details. */
+    engine_details?: EngineDetailsBody;
     /** Engine display name. */
     engine_display_name?: string;
     /** Engine programmatic name. */
@@ -5837,11 +7453,11 @@ namespace WatsonxDataV2 {
     group_id?: string;
     /** Engine host name. In case of OCP based clusters, this is internal hostname. */
     host_name?: string;
-    /** Origin - place holder. */
-    origin?: string;
+    /** Origin - created or registered. */
+    origin?: PrestoEngine.Constants.Origin | string;
     /** Engine port. */
     port?: number;
-    /** Region - place holder. */
+    /** Region (cloud). */
     region?: string;
     /** Size config. */
     size_config?: string;
@@ -5851,7 +7467,7 @@ namespace WatsonxDataV2 {
     status_code: number;
     /** Tags. */
     tags?: string[];
-    /** Type like presto, netezza,.. */
+    /** Engine type presto. */
     type?: string;
     /** Version of the engine. */
     version?: string;
@@ -5860,6 +7476,12 @@ namespace WatsonxDataV2 {
   }
   export namespace PrestoEngine {
     export namespace Constants {
+      /** Origin - created or registered. */
+      export enum Origin {
+        NATIVE = 'native',
+        EXTERNAL = 'external',
+        DISCOVER = 'discover',
+      }
       /** Engine status. */
       export enum Status {
         RUNNING = 'running',
@@ -5869,54 +7491,28 @@ namespace WatsonxDataV2 {
     }
   }
 
-  /** database details. */
-  export interface RegisterDatabaseCatalogBodyDatabaseDetails {
-    /** contents of a pem/crt file. */
-    certificate?: string;
-    /** extension of the certificate file. */
-    certificate_extension?: string;
-    /** Database name. */
-    database_name?: string;
-    /** Host name. */
-    hostname: string;
-    /** String of hostname:port. */
-    hosts?: string;
-    /** Psssword. */
-    password?: string;
-    /** Port. */
-    port: number;
-    /** SASL Mode. */
-    sasl?: boolean;
-    /** SSL Mode. */
-    ssl?: boolean;
-    /** Only for Kafka - Add kafka tables. */
-    tables?: string;
-    /** Username. */
-    username?: string;
-  }
-
-  /** Key value object. */
-  export interface RegisterDatabaseCatalogBodyDatabasePropertiesItems {
-    /** Wether the value is to be encrypted before storing. */
-    encrypt: boolean;
-    /** Key of the database property. */
-    key: string;
-    /** Value of the database property. */
-    value: string;
-  }
-
-  /** get engine catalogs. */
-  export interface ReplacePrestoEngineCatalogsCreatedBody {
-    /** Engine Catalogs. */
-    catalogs: Catalog[];
-    /** Response of success. */
-    response: SuccessResponse;
+  /** List Presto engines. */
+  export interface PrestoEngineCollection {
+    /** Presto engine. */
+    presto_engines?: PrestoEngine[];
   }
 
   /** success response. */
   export interface ReplaceSnapshotCreatedBody {
     /** Response of success. */
     response?: SuccessResponse;
+  }
+
+  /** ExplainStatement OK. */
+  export interface ResultPrestissimoExplainStatement {
+    /** Result. */
+    result?: string;
+  }
+
+  /** explainAnalyzeStatement OK. */
+  export interface ResultRunPrestissimoExplainAnalyzeStatement {
+    /** explainAnalyzeStatement result. */
+    result?: string;
   }
 
   /** explainAnalyzeStatement OK. */
@@ -5942,11 +7538,61 @@ namespace WatsonxDataV2 {
     /** List of arguments. */
     arguments: string[];
     /** Application. */
-    conf: JsonObject;
+    conf: SparkApplicationDetailsConf;
     /** Application. */
     env: JsonObject;
     /** Display name of the spark application. */
     name?: string;
+  }
+
+  /** Application. */
+  export interface SparkApplicationDetailsConf {
+    /** Spark application name. */
+    spark_app_name?: string;
+    /** Hive Metastore authentication mode. */
+    spark_hive_metastore_client_auth_mode?: string;
+    /** Hive Metastore plain password. */
+    spark_hive_metastore_client_plain_password?: string;
+    /** Hive Metastore plain username. */
+    spark_hive_metastore_client_plain_username?: string;
+    /** Truststore password. */
+    spark_hive_metastore_truststore_password?: string;
+    /** Truststore path. */
+    spark_hive_metastore_truststore_path?: string;
+    /** Truststore type. */
+    spark_hive_metastore_truststore_type?: string;
+    /** Enable or disable SSL for Hive Metastore. */
+    spark_hive_metastore_use_ssl?: string;
+    /** SQL catalog implementation. */
+    spark_sql_catalog_implementation?: string;
+    /** Lakehouse catalog name. */
+    spark_sql_catalog_lakehouse?: string;
+    /** Lakehouse catalog type. */
+    spark_sql_catalog_lakehouse_type?: string;
+    /** Lakehouse catalog URI. */
+    spark_sql_catalog_lakehouse_uri?: string;
+    /** SQL extensions. */
+    spark_sql_extensions?: string;
+    /** Enable or disable Iceberg vectorization. */
+    spark_sql_iceberg_vectorization_enabled?: string;
+  }
+
+  /** Application Endpoints. */
+  export interface SparkEndpoints {
+    /** Application API. */
+    applications_api?: string;
+    /** History server endpoint. */
+    history_server_endpoint?: string;
+    /** Spark kernel endpoint. */
+    spark_access_endpoint?: string;
+    /** Spark jobs V4 endpoint. */
+    spark_jobs_v4_endpoint?: string;
+    /** Spark kernel endpoint. */
+    spark_kernel_endpoint?: string;
+    /** View history server. */
+    view_history_server?: string;
+    /** Wxd application endpoint. */
+    wxd_application_endpoint?: string;
   }
 
   /** EngineDetail. */
@@ -5977,16 +7623,6 @@ namespace WatsonxDataV2 {
     type?: string;
   }
 
-  /** EngineSubmitApplicationBody. */
-  export interface SparkEngineApplication {
-    /** Application ID. */
-    application_id?: string;
-    /** Application ID. */
-    id?: string;
-    /** state. */
-    state?: string;
-  }
-
   /** Engine Application Status. */
   export interface SparkEngineApplicationStatus {
     /** Application Details. */
@@ -6007,8 +7643,14 @@ namespace WatsonxDataV2 {
     finish_time?: string;
     /** Application ID. */
     id?: string;
+    /** Job endpoint. */
+    job_endpoint?: string;
     /** Return code. */
     return_code?: string;
+    /** application run time. */
+    runtime?: SparkEngineApplicationStatusRuntime;
+    /** Service Instance ID for POST. */
+    service_instance_id?: string;
     /** Spark application ID. */
     spark_application_id?: string;
     /** Spark application name. */
@@ -6023,19 +7665,30 @@ namespace WatsonxDataV2 {
     submission_time?: string;
     /** Template ID. */
     template_id?: string;
+    /** Engine Type. */
+    type?: SparkEngineApplicationStatus.Constants.Type | string;
+  }
+  export namespace SparkEngineApplicationStatus {
+    export namespace Constants {
+      /** Engine Type. */
+      export enum Type {
+        IAE = 'iae',
+        EMR = 'emr',
+      }
+    }
   }
 
   /** Application Details. */
   export interface SparkEngineApplicationStatusApplicationDetails {
-    /** Engine display name. */
+    /** Application. */
     application?: string;
     /** List of arguments. */
     arguments?: string[];
     /** Application. */
     conf?: SparkEngineApplicationStatusApplicationDetailsConf;
-    /** Environment variables. */
+    /** Application. */
     env?: JsonObject;
-    /** Application name. */
+    /** Display name of the spark application. */
     name?: string;
   }
 
@@ -6071,6 +7724,18 @@ namespace WatsonxDataV2 {
     spark_sql_iceberg_vectorization_enabled?: string;
   }
 
+  /** Engine Application Detail. */
+  export interface SparkEngineApplicationStatusCollection {
+    /** Application body. */
+    applications?: SparkEngineApplicationStatus[];
+  }
+
+  /** application run time. */
+  export interface SparkEngineApplicationStatusRuntime {
+    /** Spark Version. */
+    spark_version?: string;
+  }
+
   /** State details. */
   export interface SparkEngineApplicationStatusStateDetailsItems {
     /** State details code. */
@@ -6081,30 +7746,18 @@ namespace WatsonxDataV2 {
     type?: string;
   }
 
+  /** List spark engines. */
+  export interface SparkEngineCollection {
+    /** List spark engines. */
+    spark_engines?: SparkEngine[];
+  }
+
   /** External engine details. */
   export interface SparkEngineDetails {
     /** External engine connection string. */
     connection_string?: string;
     /** Application Endpoints. */
-    endpoints?: SparkEngineDetailsEndpoints;
-  }
-
-  /** Application Endpoints. */
-  export interface SparkEngineDetailsEndpoints {
-    /** Application API. */
-    applications_api?: string;
-    /** History server endpoint. */
-    history_server_endpoint?: string;
-    /** Spark kernel endpoint. */
-    spark_access_endpoint?: string;
-    /** Spark jobs V4 endpoint. */
-    spark_jobs_v4_endpoint?: string;
-    /** Spark kernel endpoint. */
-    spark_kernel_endpoint?: string;
-    /** View history server. */
-    view_history_server?: string;
-    /** Wxd application endpoint. */
-    wxd_application_endpoint?: string;
+    endpoints?: SparkEndpoints;
   }
 
   /** Node details. */
@@ -6127,6 +7780,20 @@ namespace WatsonxDataV2 {
     message_code?: string;
   }
 
+  /** GetColumns OK. */
+  export interface Table {
+    /** Columns. */
+    columns?: Column[];
+    /** Table name. */
+    table_name?: string;
+  }
+
+  /** tables list. */
+  export interface TableCollection {
+    /** List of the tables present in the schema. */
+    tables?: string[];
+  }
+
   /** TableSnapshot. */
   export interface TableSnapshot {
     /** Committed at. */
@@ -6139,6 +7806,12 @@ namespace WatsonxDataV2 {
     summary?: JsonObject;
   }
 
+  /** TableSnapshot OK. */
+  export interface TableSnapshotCollection {
+    /** Snapshots. */
+    snapshots?: TableSnapshot[];
+  }
+
   /** ValidateBucketRegistrationCredentials OK. */
   export interface TestBucketConnectionOKBody {
     /** object defining the response of checking if the credentials of a bucket are valid. */
@@ -6147,62 +7820,14 @@ namespace WatsonxDataV2 {
     response: SuccessResponse;
   }
 
-  /** UpdateBucketRegistration OK. */
-  export interface UpdateBucketRegistrationOKBody {
-    /** Bucket. */
-    bucket_registration: BucketRegistration;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** get databases success response body. */
-  export interface UpdateDatabaseOKBody {
-    /** database registration object. */
-    database: DatabaseRegistration;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** update engine response. */
-  export interface UpdateDb2EngineOKBody {
-    /** Db2 engine details. */
-    db2_engine: Db2Engine;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** update engine response. */
-  export interface UpdateEngineOKBody {
-    /** EngineDetail. */
-    engine: PrestoEngine;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** update engine response. */
-  export interface UpdateNetezzaEngineOKBody {
-    /** Netezza engine details. */
-    netezza_engine: NetezzaEngine;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** update engine response. */
-  export interface UpdateSparkEngineOKBody {
-    /** EngineDetail. */
-    engine: SparkEngine;
-    /** Response of success. */
-    response: SuccessResponse;
+  /** Success response. */
+  export interface TestDatabaseConnectionResponse {
+    /** check connection response details are valid or not. */
+    connection_response?: ConnectionResponse;
   }
 
   /** success response. */
   export interface UpdateSyncCatalogOKBody {
-    /** Response of success. */
-    response?: SuccessResponse;
-  }
-
-  /** success response. */
-  export interface UpdateTableOKBody {
     /** Response of success. */
     response?: SuccessResponse;
   }
@@ -6225,22 +7850,8 @@ namespace WatsonxDataV2 {
     tables?: string;
     /** Username. */
     username?: string;
-  }
-
-  /** success response. */
-  export interface ValidateDatabaseConnectionOKBody {
-    /** validate db response. */
-    connection_response: ValidateDatabaseConnectionOKBodyConnectionResponse;
-    /** Response of success. */
-    response: SuccessResponse;
-  }
-
-  /** validate db response. */
-  export interface ValidateDatabaseConnectionOKBodyConnectionResponse {
-    /** whether the connection details are valid or not. */
-    state?: boolean;
-    /** Connection message received by connector libraries for failed connection. */
-    state_message?: string;
+    /** Verify certificate. */
+    validate_server_certificate?: boolean;
   }
 }
 
