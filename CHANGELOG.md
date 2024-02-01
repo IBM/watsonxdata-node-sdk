@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/IBM/watsonxdata-node-sdk/compare/v0.1.0...v0.2.0) (2024-02-01)
+
+
+### Features
+
+* **v2 SDK:** Update v2 SDK with new v2 API definition ([#3](https://github.com/IBM/watsonxdata-node-sdk/issues/3)) ([1f1b82b](https://github.com/IBM/watsonxdata-node-sdk/commit/1f1b82bf7a202eef91f535256d16db8758bcecee))
+
 # [0.1.0](https://github.com/IBM/watsonxdata-node-sdk/compare/v0.0.3...v0.1.0) (2023-12-07)
 
 
