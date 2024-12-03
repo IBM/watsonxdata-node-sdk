@@ -275,7 +275,8 @@ describe('WatsonxDataV2_integration', () => {
       coordinator_host: 'samplehost',
       coordinator_port: 4553,
       cpd_hostname: 'samplecpdhostname',
-      credentials_key: 'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
+      credentials_key:
+        'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
       database_name: 'new_database',
       database_properties: [databaseRegistrationPatchDatabaseDetailsDatabasePropertiesItemsModel],
       hostname: 'db2@<hostname>.com',
@@ -360,7 +361,8 @@ describe('WatsonxDataV2_integration', () => {
       controller_authentication_password: 'samplepassword',
       controller_authentication_type: 'PASSWORD',
       controller_authentication_user: 'sampleuser',
-      credentials_key: 'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
+      credentials_key:
+        'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
       database_properties: [databaseRegistrationPatchDatabaseDetailsDatabasePropertiesItemsModel],
       password: 'samplepassword',
       username: 'sampleuser',
@@ -636,11 +638,15 @@ describe('WatsonxDataV2_integration', () => {
 
     // PrestissimoEndpoints
     const prestissimoEndpointsModel = {
-      applications_api: '$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications/<application_id>',
-      history_server_endpoint: '$HOST/v2/spark/v3/instances/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_history_server',
+      applications_api:
+        '$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications/<application_id>',
+      history_server_endpoint:
+        '$HOST/v2/spark/v3/instances/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_history_server',
       spark_access_endpoint: '$HOST/analytics-engine/details/spark-<instance_id>',
-      spark_jobs_v4_endpoint: '$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications',
-      spark_kernel_endpoint: '$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/jkg/api/kernels',
+      spark_jobs_v4_endpoint:
+        '$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications',
+      spark_kernel_endpoint:
+        '$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/jkg/api/kernels',
       view_history_server: 'testString',
       wxd_application_endpoint: '$HOST/v1/1698311655308796/engines/spark817/applications',
     };
@@ -1189,7 +1195,8 @@ describe('WatsonxDataV2_integration', () => {
     const params = {
       apikey: '12efd3raq',
       engineId: 'presto-01',
-      storageResourceCrn: 'crn:v1:staging:public:cloud-object-storage:global:a/a7026b374f39f570d20984c1ac6ecf63:5778e94f-c8c7-46a8-9878-d5eeadb51161',
+      storageResourceCrn:
+        'crn:v1:staging:public:cloud-object-storage:global:a/a7026b374f39f570d20984c1ac6ecf63:5778e94f-c8c7-46a8-9878-d5eeadb51161',
       storageType: 'bmcos_object_storage',
       trialPlan: true,
       authInstanceId: 'testString',
@@ -1340,10 +1347,11 @@ describe('WatsonxDataV2_integration', () => {
     // Request models needed by this operation.
 
     // SalIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfiguration
-    const salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel = {
-      assignment_threshold: 0.14,
-      suggestion_threshold: 0.9,
-    };
+    const salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel =
+      {
+        assignment_threshold: 0.14,
+        suggestion_threshold: 0.9,
+      };
 
     // SalIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfiguration
     const salIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfigurationModel = {
@@ -1354,9 +1362,11 @@ describe('WatsonxDataV2_integration', () => {
     // SalIntegrationEnrichmentSettingsSemanticExpansion
     const salIntegrationEnrichmentSettingsSemanticExpansionModel = {
       description_generation: true,
-      description_generation_configuration: salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel,
+      description_generation_configuration:
+        salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel,
       name_expansion: true,
-      name_expansion_configuration: salIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfigurationModel,
+      name_expansion_configuration:
+        salIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfigurationModel,
     };
 
     // SalIntegrationEnrichmentSettingsTermAssignment
@@ -1399,10 +1409,11 @@ describe('WatsonxDataV2_integration', () => {
     // Request models needed by this operation.
 
     // SalIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfiguration
-    const salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel = {
-      assignment_threshold: 0.14,
-      suggestion_threshold: 0.9,
-    };
+    const salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel =
+      {
+        assignment_threshold: 0.14,
+        suggestion_threshold: 0.9,
+      };
 
     // SalIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfiguration
     const salIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfigurationModel = {
@@ -1413,9 +1424,11 @@ describe('WatsonxDataV2_integration', () => {
     // SalIntegrationEnrichmentSettingsSemanticExpansion
     const salIntegrationEnrichmentSettingsSemanticExpansionModel = {
       description_generation: true,
-      description_generation_configuration: salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel,
+      description_generation_configuration:
+        salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel,
       name_expansion: true,
-      name_expansion_configuration: salIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfigurationModel,
+      name_expansion_configuration:
+        salIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfigurationModel,
     };
 
     // SalIntegrationEnrichmentSettingsTermAssignment
@@ -2173,7 +2186,8 @@ describe('WatsonxDataV2_integration', () => {
       engineId: 'spark123',
       executeConfig: ingestionJobPrototypeExecuteConfigModel,
       partitionBy: 'col1, col2',
-      schema: '{"type":"struct","schema-id":0,"fields":[{"id":1,"name":"ID","required":true,"type":"int"},{"id":2,"name":"Name","required":true,"type":"string"}]}',
+      schema:
+        '{"type":"struct","schema-id":0,"fields":[{"id":1,"name":"ID","required":true,"type":"int"},{"id":2,"name":"Name","required":true,"type":"string"}]}',
       sourceFileType: 'csv',
       validateCsvHeader: false,
     };
