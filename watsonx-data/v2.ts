@@ -121,7 +121,11 @@ class WatsonxDataV2 extends BaseService {
       return Promise.reject(_validationErrors);
     }
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listBucketRegistrations');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listBucketRegistrations'
+    );
 
     const parameters = {
       options: {
@@ -168,7 +172,19 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.BucketRegistration>> {
     const _params = { ...params };
     const _requiredParams = ['bucketType', 'description', 'managedBy'];
-    const _validParams = ['bucketType', 'description', 'managedBy', 'associatedCatalog', 'bucketDetails', 'bucketDisplayName', 'region', 'storageDetails', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'bucketType',
+      'description',
+      'managedBy',
+      'associatedCatalog',
+      'bucketDetails',
+      'bucketDisplayName',
+      'region',
+      'storageDetails',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -186,7 +202,11 @@ class WatsonxDataV2 extends BaseService {
       'tags': _params.tags,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createBucketRegistration');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createBucketRegistration'
+    );
 
     const parameters = {
       options: {
@@ -237,7 +257,11 @@ class WatsonxDataV2 extends BaseService {
       'bucket_id': _params.bucketId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getBucketRegistration');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getBucketRegistration'
+    );
 
     const parameters = {
       options: {
@@ -287,7 +311,11 @@ class WatsonxDataV2 extends BaseService {
       'bucket_id': _params.bucketId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deleteBucketRegistration');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deleteBucketRegistration'
+    );
 
     const parameters = {
       options: {
@@ -330,7 +358,15 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.BucketRegistration>> {
     const _params = { ...params };
     const _requiredParams = ['bucketId'];
-    const _validParams = ['bucketId', 'bucketDetails', 'bucketDisplayName', 'description', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'bucketId',
+      'bucketDetails',
+      'bucketDisplayName',
+      'description',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -347,7 +383,11 @@ class WatsonxDataV2 extends BaseService {
       'bucket_id': _params.bucketId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'updateBucketRegistration');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'updateBucketRegistration'
+    );
 
     const parameters = {
       options: {
@@ -399,7 +439,11 @@ class WatsonxDataV2 extends BaseService {
       'bucket_id': _params.bucketId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createActivateBucket');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createActivateBucket'
+    );
 
     const parameters = {
       options: {
@@ -449,7 +493,11 @@ class WatsonxDataV2 extends BaseService {
       'bucket_id': _params.bucketId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deleteDeactivateBucket');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deleteDeactivateBucket'
+    );
 
     const parameters = {
       options: {
@@ -559,7 +607,11 @@ class WatsonxDataV2 extends BaseService {
       'bucket_id': _params.bucketId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getBucketObjectProperties');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getBucketObjectProperties'
+    );
 
     const parameters = {
       options: {
@@ -618,8 +670,40 @@ class WatsonxDataV2 extends BaseService {
     params: WatsonxDataV2.CreateHdfsStorageParams
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.HdfsStorageRegistration>> {
     const _params = { ...params };
-    const _requiredParams = ['bucketDisplayName', 'bucketType', 'hmsThriftUri', 'hmsThriftPort', 'coreSite', 'hdfsSite', 'kerberos', 'catalogName', 'catalogType'];
-    const _validParams = ['bucketDisplayName', 'bucketType', 'hmsThriftUri', 'hmsThriftPort', 'coreSite', 'hdfsSite', 'kerberos', 'catalogName', 'catalogType', 'krb5Config', 'hiveKeytab', 'hiveKeytabContentType', 'hdfsKeytab', 'hdfsKeytabContentType', 'hiveServerPrincipal', 'hiveClientPrincipal', 'hdfsPrincipal', 'description', 'createdOn', 'authInstanceId', 'headers'];
+    const _requiredParams = [
+      'bucketDisplayName',
+      'bucketType',
+      'hmsThriftUri',
+      'hmsThriftPort',
+      'coreSite',
+      'hdfsSite',
+      'kerberos',
+      'catalogName',
+      'catalogType',
+    ];
+    const _validParams = [
+      'bucketDisplayName',
+      'bucketType',
+      'hmsThriftUri',
+      'hmsThriftPort',
+      'coreSite',
+      'hdfsSite',
+      'kerberos',
+      'catalogName',
+      'catalogType',
+      'krb5Config',
+      'hiveKeytab',
+      'hiveKeytabContentType',
+      'hdfsKeytab',
+      'hdfsKeytabContentType',
+      'hiveServerPrincipal',
+      'hiveClientPrincipal',
+      'hdfsPrincipal',
+      'description',
+      'createdOn',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -657,7 +741,7 @@ class WatsonxDataV2 extends BaseService {
       options: {
         url: '/storage_hdfs_registrations',
         method: 'POST',
-        formData
+        formData,
       },
       defaultOptions: extend(true, {}, this.baseOptions, {
         headers: extend(
@@ -700,7 +784,11 @@ class WatsonxDataV2 extends BaseService {
       return Promise.reject(_validationErrors);
     }
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listDatabaseRegistrations');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listDatabaseRegistrations'
+    );
 
     const parameters = {
       options: {
@@ -747,7 +835,18 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.DatabaseRegistration>> {
     const _params = { ...params };
     const _requiredParams = ['databaseDisplayName', 'databaseType'];
-    const _validParams = ['databaseDisplayName', 'databaseType', 'associatedCatalog', 'createdOn', 'databaseDetails', 'databaseProperties', 'description', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'databaseDisplayName',
+      'databaseType',
+      'associatedCatalog',
+      'createdOn',
+      'databaseDetails',
+      'databaseProperties',
+      'description',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -764,7 +863,11 @@ class WatsonxDataV2 extends BaseService {
       'tags': _params.tags,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createDatabaseRegistration');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createDatabaseRegistration'
+    );
 
     const parameters = {
       options: {
@@ -865,7 +968,11 @@ class WatsonxDataV2 extends BaseService {
       'database_id': _params.databaseId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deleteDatabaseCatalog');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deleteDatabaseCatalog'
+    );
 
     const parameters = {
       options: {
@@ -912,7 +1019,18 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.DatabaseRegistration>> {
     const _params = { ...params };
     const _requiredParams = ['databaseId'];
-    const _validParams = ['databaseId', 'databaseDetails', 'databaseDisplayName', 'description', 'tables', 'tags', 'databaseProperties', 'topics', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'databaseId',
+      'databaseDetails',
+      'databaseDisplayName',
+      'description',
+      'tables',
+      'tags',
+      'databaseProperties',
+      'topics',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -1025,7 +1143,15 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.OtherEngine>> {
     const _params = { ...params };
     const _requiredParams = ['engineDetails', 'engineDisplayName'];
-    const _validParams = ['engineDetails', 'engineDisplayName', 'description', 'origin', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineDetails',
+      'engineDisplayName',
+      'description',
+      'origin',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -1145,7 +1271,11 @@ class WatsonxDataV2 extends BaseService {
       'state': _params.state,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listAllIntegrations');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listAllIntegrations'
+    );
 
     const parameters = {
       options: {
@@ -1193,7 +1323,18 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Integration>> {
     const _params = { ...params };
     const _requiredParams = [];
-    const _validParams = ['apikey', 'enableDataPolicyWithinWxd', 'password', 'resource', 'serviceType', 'storageCatalogs', 'url', 'username', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'apikey',
+      'enableDataPolicyWithinWxd',
+      'password',
+      'resource',
+      'serviceType',
+      'storageCatalogs',
+      'url',
+      'username',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -1359,7 +1500,18 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Integration>> {
     const _params = { ...params };
     const _requiredParams = ['integrationId'];
-    const _validParams = ['integrationId', 'apikey', 'enableDataPolicyWithinWxd', 'password', 'resource', 'storageCatalogs', 'url', 'username', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'integrationId',
+      'apikey',
+      'enableDataPolicyWithinWxd',
+      'password',
+      'resource',
+      'storageCatalogs',
+      'url',
+      'username',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -1472,7 +1624,15 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Db2Engine>> {
     const _params = { ...params };
     const _requiredParams = ['origin'];
-    const _validParams = ['origin', 'description', 'engineDetails', 'engineDisplayName', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'origin',
+      'description',
+      'engineDetails',
+      'engineDisplayName',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -1579,7 +1739,14 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Db2Engine>> {
     const _params = { ...params };
     const _requiredParams = ['engineId'];
-    const _validParams = ['engineId', 'description', 'engineDisplayName', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'description',
+      'engineDisplayName',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -1645,7 +1812,11 @@ class WatsonxDataV2 extends BaseService {
       return Promise.reject(_validationErrors);
     }
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listNetezzaEngines');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listNetezzaEngines'
+    );
 
     const parameters = {
       options: {
@@ -1688,7 +1859,15 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.NetezzaEngine>> {
     const _params = { ...params };
     const _requiredParams = ['origin'];
-    const _validParams = ['origin', 'description', 'engineDetails', 'engineDisplayName', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'origin',
+      'description',
+      'engineDetails',
+      'engineDisplayName',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -1702,7 +1881,11 @@ class WatsonxDataV2 extends BaseService {
       'tags': _params.tags,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createNetezzaEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createNetezzaEngine'
+    );
 
     const parameters = {
       options: {
@@ -1753,7 +1936,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deleteNetezzaEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deleteNetezzaEngine'
+    );
 
     const parameters = {
       options: {
@@ -1795,7 +1982,14 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.NetezzaEngine>> {
     const _params = { ...params };
     const _requiredParams = ['engineId'];
-    const _validParams = ['engineId', 'description', 'engineDisplayName', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'description',
+      'engineDisplayName',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -1811,7 +2005,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'updateNetezzaEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'updateNetezzaEngine'
+    );
 
     const parameters = {
       options: {
@@ -1859,7 +2057,14 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ExecuteQueryCreatedBody>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'sqlString'];
-    const _validParams = ['engineId', 'sqlString', 'catalogName', 'schemaName', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'sqlString',
+      'catalogName',
+      'schemaName',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -1875,7 +2080,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createExecuteQuery');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createExecuteQuery'
+    );
 
     const parameters = {
       options: {
@@ -1925,7 +2134,11 @@ class WatsonxDataV2 extends BaseService {
       return Promise.reject(_validationErrors);
     }
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listPrestissimoEngines');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listPrestissimoEngines'
+    );
 
     const parameters = {
       options: {
@@ -1971,7 +2184,18 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestissimoEngine>> {
     const _params = { ...params };
     const _requiredParams = ['origin'];
-    const _validParams = ['origin', 'associatedCatalogs', 'description', 'engineDetails', 'engineDisplayName', 'region', 'tags', 'version', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'origin',
+      'associatedCatalogs',
+      'description',
+      'engineDetails',
+      'engineDisplayName',
+      'region',
+      'tags',
+      'version',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -1988,7 +2212,11 @@ class WatsonxDataV2 extends BaseService {
       'version': _params.version,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createPrestissimoEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createPrestissimoEngine'
+    );
 
     const parameters = {
       options: {
@@ -2039,7 +2267,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getPrestissimoEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getPrestissimoEngine'
+    );
 
     const parameters = {
       options: {
@@ -2089,7 +2321,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deletePrestissimoEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deletePrestissimoEngine'
+    );
 
     const parameters = {
       options: {
@@ -2134,7 +2370,17 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestissimoEngine>> {
     const _params = { ...params };
     const _requiredParams = ['engineId'];
-    const _validParams = ['engineId', 'description', 'engineDisplayName', 'engineProperties', 'engineRestart', 'removeEngineProperties', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'description',
+      'engineDisplayName',
+      'engineProperties',
+      'engineRestart',
+      'removeEngineProperties',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -2153,7 +2399,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'updatePrestissimoEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'updatePrestissimoEngine'
+    );
 
     const parameters = {
       options: {
@@ -2205,7 +2455,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listPrestissimoEngineCatalogs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listPrestissimoEngineCatalogs'
+    );
 
     const parameters = {
       options: {
@@ -2260,7 +2514,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createPrestissimoEngineCatalogs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createPrestissimoEngineCatalogs'
+    );
 
     const parameters = {
       options: {
@@ -2317,7 +2575,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deletePrestissimoEngineCatalogs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deletePrestissimoEngineCatalogs'
+    );
 
     const parameters = {
       options: {
@@ -2369,7 +2631,11 @@ class WatsonxDataV2 extends BaseService {
       'catalog_id': _params.catalogId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getPrestissimoEngineCatalog');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getPrestissimoEngineCatalog'
+    );
 
     const parameters = {
       options: {
@@ -2419,7 +2685,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'pausePrestissimoEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'pausePrestissimoEngine'
+    );
 
     const parameters = {
       options: {
@@ -2478,7 +2748,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'runPrestissimoExplainStatement');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'runPrestissimoExplainStatement'
+    );
 
     const parameters = {
       options: {
@@ -2537,7 +2811,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'runPrestissimoExplainAnalyzeStatement');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'runPrestissimoExplainAnalyzeStatement'
+    );
 
     const parameters = {
       options: {
@@ -2589,7 +2867,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'restartPrestissimoEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'restartPrestissimoEngine'
+    );
 
     const parameters = {
       options: {
@@ -2639,7 +2921,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'resumePrestissimoEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'resumePrestissimoEngine'
+    );
 
     const parameters = {
       options: {
@@ -2696,7 +2982,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'scalePrestissimoEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'scalePrestissimoEngine'
+    );
 
     const parameters = {
       options: {
@@ -2792,7 +3082,18 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestoEngine>> {
     const _params = { ...params };
     const _requiredParams = ['origin'];
-    const _validParams = ['origin', 'associatedCatalogs', 'description', 'engineDetails', 'engineDisplayName', 'region', 'tags', 'version', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'origin',
+      'associatedCatalogs',
+      'description',
+      'engineDetails',
+      'engineDisplayName',
+      'region',
+      'tags',
+      'version',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -2809,7 +3110,11 @@ class WatsonxDataV2 extends BaseService {
       'version': _params.version,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createPrestoEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createPrestoEngine'
+    );
 
     const parameters = {
       options: {
@@ -2955,7 +3260,17 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PrestoEngine>> {
     const _params = { ...params };
     const _requiredParams = ['engineId'];
-    const _validParams = ['engineId', 'description', 'engineDisplayName', 'engineProperties', 'engineRestart', 'removeEngineProperties', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'description',
+      'engineDisplayName',
+      'engineProperties',
+      'engineRestart',
+      'removeEngineProperties',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -2974,7 +3289,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'updatePrestoEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'updatePrestoEngine'
+    );
 
     const parameters = {
       options: {
@@ -3026,7 +3345,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listPrestoEngineCatalogs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listPrestoEngineCatalogs'
+    );
 
     const parameters = {
       options: {
@@ -3081,7 +3404,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createPrestoEngineCatalogs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createPrestoEngineCatalogs'
+    );
 
     const parameters = {
       options: {
@@ -3138,7 +3465,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deletePrestoEngineCatalogs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deletePrestoEngineCatalogs'
+    );
 
     const parameters = {
       options: {
@@ -3190,7 +3521,11 @@ class WatsonxDataV2 extends BaseService {
       'catalog_id': _params.catalogId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getPrestoEngineCatalog');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getPrestoEngineCatalog'
+    );
 
     const parameters = {
       options: {
@@ -3299,7 +3634,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'runExplainStatement');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'runExplainStatement'
+    );
 
     const parameters = {
       options: {
@@ -3358,7 +3697,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'runExplainAnalyzeStatement');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'runExplainAnalyzeStatement'
+    );
 
     const parameters = {
       options: {
@@ -3410,7 +3753,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'restartPrestoEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'restartPrestoEngine'
+    );
 
     const parameters = {
       options: {
@@ -3460,7 +3807,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'resumePrestoEngine');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'resumePrestoEngine'
+    );
 
     const parameters = {
       options: {
@@ -3610,7 +3961,15 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SalIntegration>> {
     const _params = { ...params };
     const _requiredParams = ['apikey', 'engineId'];
-    const _validParams = ['apikey', 'engineId', 'storageResourceCrn', 'storageType', 'trialPlan', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'apikey',
+      'engineId',
+      'storageResourceCrn',
+      'storageType',
+      'trialPlan',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -3624,7 +3983,11 @@ class WatsonxDataV2 extends BaseService {
       'trial_plan': _params.trialPlan,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createSalIntegration');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createSalIntegration'
+    );
 
     const parameters = {
       options: {
@@ -3669,7 +4032,11 @@ class WatsonxDataV2 extends BaseService {
       return Promise.reject(_validationErrors);
     }
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deleteSalIntegration');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deleteSalIntegration'
+    );
 
     const parameters = {
       options: {
@@ -3677,13 +4044,7 @@ class WatsonxDataV2 extends BaseService {
         method: 'DELETE',
       },
       defaultOptions: extend(true, {}, this.baseOptions, {
-        headers: extend(
-          true,
-          sdkHeaders,
-          {
-          },
-          _params.headers
-        ),
+        headers: extend(true, sdkHeaders, {}, _params.headers),
       }),
     };
 
@@ -3720,7 +4081,11 @@ class WatsonxDataV2 extends BaseService {
       'value': _params.value,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'updateSalIntegration');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'updateSalIntegration'
+    );
 
     const parameters = {
       options: {
@@ -3771,7 +4136,11 @@ class WatsonxDataV2 extends BaseService {
       'changes': _params.changes,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createSalIntegrationEnrichment');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createSalIntegrationEnrichment'
+    );
 
     const parameters = {
       options: {
@@ -3821,7 +4190,11 @@ class WatsonxDataV2 extends BaseService {
       'project_id': _params.projectId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSalIntegrationEnrichmentAssets');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSalIntegrationEnrichmentAssets'
+    );
 
     const parameters = {
       options: {
@@ -3873,7 +4246,11 @@ class WatsonxDataV2 extends BaseService {
       'asset_id': _params.assetId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSalIntegrationEnrichmentDataAsset');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSalIntegrationEnrichmentDataAsset'
+    );
 
     const parameters = {
       options: {
@@ -3927,7 +4304,11 @@ class WatsonxDataV2 extends BaseService {
       'project_id': _params.projectId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSalIntegrationEnrichmentJobRunLogs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSalIntegrationEnrichmentJobRunLogs'
+    );
 
     const parameters = {
       options: {
@@ -3979,7 +4360,11 @@ class WatsonxDataV2 extends BaseService {
       'project_id': _params.projectId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSalIntegrationEnrichmentJobRuns');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSalIntegrationEnrichmentJobRuns'
+    );
 
     const parameters = {
       options: {
@@ -4029,7 +4414,11 @@ class WatsonxDataV2 extends BaseService {
       'wkc_project_id': _params.wkcProjectId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSalIntegrationEnrichmentJobs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSalIntegrationEnrichmentJobs'
+    );
 
     const parameters = {
       options: {
@@ -4074,7 +4463,11 @@ class WatsonxDataV2 extends BaseService {
       return Promise.reject(_validationErrors);
     }
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSalIntegrationGlossaryTerms');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSalIntegrationGlossaryTerms'
+    );
 
     const parameters = {
       options: {
@@ -4125,7 +4518,11 @@ class WatsonxDataV2 extends BaseService {
       'schema_name': _params.schemaName,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSalIntegrationMappings');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSalIntegrationMappings'
+    );
 
     const parameters = {
       options: {
@@ -4170,7 +4567,11 @@ class WatsonxDataV2 extends BaseService {
       return Promise.reject(_validationErrors);
     }
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSalIntegrationEnrichmentGlobalSettings');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSalIntegrationEnrichmentGlobalSettings'
+    );
 
     const parameters = {
       options: {
@@ -4221,7 +4622,11 @@ class WatsonxDataV2 extends BaseService {
       'term_assignment': _params.termAssignment,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createSalIntegrationEnrichmentGlobalSettings');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createSalIntegrationEnrichmentGlobalSettings'
+    );
 
     const parameters = {
       options: {
@@ -4272,7 +4677,11 @@ class WatsonxDataV2 extends BaseService {
       'project_id': _params.projectId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSalIntegrationEnrichmentSettings');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSalIntegrationEnrichmentSettings'
+    );
 
     const parameters = {
       options: {
@@ -4314,7 +4723,13 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.EmptyObject>> {
     const _params = { ...params };
     const _requiredParams = [];
-    const _validParams = ['semanticExpansion', 'termAssignment', 'projectId', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'semanticExpansion',
+      'termAssignment',
+      'projectId',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -4329,7 +4744,11 @@ class WatsonxDataV2 extends BaseService {
       'project_id': _params.projectId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createSalIntegrationEnrichmentSettings');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createSalIntegrationEnrichmentSettings'
+    );
 
     const parameters = {
       options: {
@@ -4372,7 +4791,13 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SalIntegrationUploadGlossary>> {
     const _params = { ...params };
     const _requiredParams = ['replaceOption'];
-    const _validParams = ['replaceOption', 'glossaryCsv', 'glossaryCsvContentType', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'replaceOption',
+      'glossaryCsv',
+      'glossaryCsvContentType',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -4386,13 +4811,17 @@ class WatsonxDataV2 extends BaseService {
       },
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createSalIntegrationUploadGlossary');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createSalIntegrationUploadGlossary'
+    );
 
     const parameters = {
       options: {
         url: '/sal_integrations/upload_glossary',
         method: 'POST',
-        formData
+        formData,
       },
       defaultOptions: extend(true, {}, this.baseOptions, {
         headers: extend(
@@ -4437,7 +4866,11 @@ class WatsonxDataV2 extends BaseService {
       'process_id': _params.processId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSalIntegrationUploadGlossaryStatus');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSalIntegrationUploadGlossaryStatus'
+    );
 
     const parameters = {
       options: {
@@ -4530,7 +4963,17 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngine>> {
     const _params = { ...params };
     const _requiredParams = ['origin'];
-    const _validParams = ['origin', 'associatedCatalogs', 'description', 'engineDetails', 'engineDisplayName', 'status', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'origin',
+      'associatedCatalogs',
+      'description',
+      'engineDetails',
+      'engineDisplayName',
+      'status',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -4690,7 +5133,15 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngine>> {
     const _params = { ...params };
     const _requiredParams = ['engineId'];
-    const _validParams = ['engineId', 'description', 'engineDetails', 'engineDisplayName', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'description',
+      'engineDetails',
+      'engineDisplayName',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -4764,7 +5215,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listSparkEngineApplications');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listSparkEngineApplications'
+    );
 
     const parameters = {
       options: {
@@ -4811,7 +5266,17 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.SparkEngineApplicationStatus>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'applicationDetails'];
-    const _validParams = ['engineId', 'applicationDetails', 'jobEndpoint', 'serviceInstanceId', 'type', 'volumes', 'authInstanceId', 'state', 'headers'];
+    const _validParams = [
+      'engineId',
+      'applicationDetails',
+      'jobEndpoint',
+      'serviceInstanceId',
+      'type',
+      'volumes',
+      'authInstanceId',
+      'state',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -4833,7 +5298,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createSparkEngineApplication');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createSparkEngineApplication'
+    );
 
     const parameters = {
       options: {
@@ -4893,7 +5362,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deleteSparkEngineApplications');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deleteSparkEngineApplications'
+    );
 
     const parameters = {
       options: {
@@ -4945,7 +5418,11 @@ class WatsonxDataV2 extends BaseService {
       'application_id': _params.applicationId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSparkEngineApplicationStatus');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSparkEngineApplicationStatus'
+    );
 
     const parameters = {
       options: {
@@ -4995,7 +5472,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listSparkEngineCatalogs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listSparkEngineCatalogs'
+    );
 
     const parameters = {
       options: {
@@ -5050,7 +5531,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createSparkEngineCatalogs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createSparkEngineCatalogs'
+    );
 
     const parameters = {
       options: {
@@ -5107,7 +5592,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deleteSparkEngineCatalogs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deleteSparkEngineCatalogs'
+    );
 
     const parameters = {
       options: {
@@ -5159,7 +5648,11 @@ class WatsonxDataV2 extends BaseService {
       'catalog_id': _params.catalogId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSparkEngineCatalog');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSparkEngineCatalog'
+    );
 
     const parameters = {
       options: {
@@ -5209,7 +5702,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'getSparkEngineHistoryServer');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'getSparkEngineHistoryServer'
+    );
 
     const parameters = {
       options: {
@@ -5266,7 +5763,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'startSparkEngineHistoryServer');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'startSparkEngineHistoryServer'
+    );
 
     const parameters = {
       options: {
@@ -5318,7 +5819,11 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deleteSparkEngineHistoryServer');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deleteSparkEngineHistoryServer'
+    );
 
     const parameters = {
       options: {
@@ -5724,7 +6229,17 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.CreateSchemaCreatedBody>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'catalogId', 'customPath', 'schemaName'];
-    const _validParams = ['engineId', 'catalogId', 'customPath', 'schemaName', 'bucketName', 'hostname', 'port', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'catalogId',
+      'customPath',
+      'schemaName',
+      'bucketName',
+      'hostname',
+      'port',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -5908,7 +6423,15 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Table>> {
     const _params = { ...params };
     const _requiredParams = ['catalogId', 'schemaId', 'tableId', 'engineId'];
-    const _validParams = ['catalogId', 'schemaId', 'tableId', 'engineId', 'type', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'engineId',
+      'type',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -5970,7 +6493,15 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.EmptyObject>> {
     const _params = { ...params };
     const _requiredParams = ['catalogId', 'schemaId', 'tableId', 'engineId'];
-    const _validParams = ['catalogId', 'schemaId', 'tableId', 'engineId', 'type', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'engineId',
+      'type',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -6032,7 +6563,16 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Table>> {
     const _params = { ...params };
     const _requiredParams = ['catalogId', 'schemaId', 'tableId', 'engineId'];
-    const _validParams = ['catalogId', 'schemaId', 'tableId', 'engineId', 'tableName', 'type', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'engineId',
+      'tableName',
+      'type',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -6099,7 +6639,14 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ColumnCollection>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'catalogId', 'schemaId', 'tableId'];
-    const _validParams = ['engineId', 'catalogId', 'schemaId', 'tableId', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -6160,7 +6707,15 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ColumnCollection>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'catalogId', 'schemaId', 'tableId'];
-    const _validParams = ['engineId', 'catalogId', 'schemaId', 'tableId', 'columns', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'columns',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -6227,7 +6782,15 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.EmptyObject>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'catalogId', 'schemaId', 'tableId', 'columnId'];
-    const _validParams = ['engineId', 'catalogId', 'schemaId', 'tableId', 'columnId', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'columnId',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -6289,7 +6852,16 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.Column>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'catalogId', 'schemaId', 'tableId', 'columnId'];
-    const _validParams = ['engineId', 'catalogId', 'schemaId', 'tableId', 'columnId', 'columnName', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'columnId',
+      'columnName',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -6356,7 +6928,14 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.TableSnapshotCollection>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'catalogId', 'schemaId', 'tableId'];
-    const _validParams = ['engineId', 'catalogId', 'schemaId', 'tableId', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -6372,7 +6951,11 @@ class WatsonxDataV2 extends BaseService {
       'table_id': _params.tableId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listTableSnapshots');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listTableSnapshots'
+    );
 
     const parameters = {
       options: {
@@ -6417,7 +7000,15 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.ReplaceSnapshotCreatedBody>> {
     const _params = { ...params };
     const _requiredParams = ['engineId', 'catalogId', 'schemaId', 'tableId'];
-    const _validParams = ['engineId', 'catalogId', 'schemaId', 'tableId', 'snapshotId', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'engineId',
+      'catalogId',
+      'schemaId',
+      'tableId',
+      'snapshotId',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -6482,7 +7073,13 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.UpdateSyncCatalogOKBody>> {
     const _params = { ...params };
     const _requiredParams = ['catalogId'];
-    const _validParams = ['catalogId', 'autoAddNewTables', 'syncIcebergMd', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'catalogId',
+      'autoAddNewTables',
+      'syncIcebergMd',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -6547,7 +7144,11 @@ class WatsonxDataV2 extends BaseService {
       return Promise.reject(_validationErrors);
     }
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listMilvusServices');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listMilvusServices'
+    );
 
     const parameters = {
       options: {
@@ -6593,7 +7194,18 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.MilvusService>> {
     const _params = { ...params };
     const _requiredParams = ['bucketName', 'origin', 'rootPath', 'serviceDisplayName'];
-    const _validParams = ['bucketName', 'origin', 'rootPath', 'serviceDisplayName', 'bucketType', 'description', 'tags', 'tshirtSize', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'bucketName',
+      'origin',
+      'rootPath',
+      'serviceDisplayName',
+      'bucketType',
+      'description',
+      'tags',
+      'tshirtSize',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -6610,7 +7222,11 @@ class WatsonxDataV2 extends BaseService {
       'tshirt_size': _params.tshirtSize,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createMilvusService');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createMilvusService'
+    );
 
     const parameters = {
       options: {
@@ -6711,7 +7327,11 @@ class WatsonxDataV2 extends BaseService {
       'service_id': _params.serviceId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deleteMilvusService');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deleteMilvusService'
+    );
 
     const parameters = {
       options: {
@@ -6753,7 +7373,14 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.MilvusService>> {
     const _params = { ...params };
     const _requiredParams = ['serviceId'];
-    const _validParams = ['serviceId', 'description', 'serviceDisplayName', 'tags', 'authInstanceId', 'headers'];
+    const _validParams = [
+      'serviceId',
+      'description',
+      'serviceDisplayName',
+      'tags',
+      'authInstanceId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -6769,7 +7396,11 @@ class WatsonxDataV2 extends BaseService {
       'service_id': _params.serviceId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'updateMilvusService');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'updateMilvusService'
+    );
 
     const parameters = {
       options: {
@@ -6821,7 +7452,11 @@ class WatsonxDataV2 extends BaseService {
       'service_id': _params.serviceId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listMilvusServiceDatabases');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listMilvusServiceDatabases'
+    );
 
     const parameters = {
       options: {
@@ -6873,7 +7508,11 @@ class WatsonxDataV2 extends BaseService {
       'database_id': _params.databaseId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'listMilvusDatabaseCollections');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'listMilvusDatabaseCollections'
+    );
 
     const parameters = {
       options: {
@@ -6923,7 +7562,11 @@ class WatsonxDataV2 extends BaseService {
       'service_id': _params.serviceId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createMilvusServicePause');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createMilvusServicePause'
+    );
 
     const parameters = {
       options: {
@@ -6973,7 +7616,11 @@ class WatsonxDataV2 extends BaseService {
       'service_id': _params.serviceId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createMilvusServiceResume');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createMilvusServiceResume'
+    );
 
     const parameters = {
       options: {
@@ -7028,7 +7675,11 @@ class WatsonxDataV2 extends BaseService {
       'service_id': _params.serviceId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createMilvusServiceScale');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createMilvusServiceScale'
+    );
 
     const parameters = {
       options: {
@@ -7136,8 +7787,29 @@ class WatsonxDataV2 extends BaseService {
     params: WatsonxDataV2.CreateIngestionJobsParams
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.IngestionJob>> {
     const _params = { ...params };
-    const _requiredParams = ['authInstanceId', 'jobId', 'sourceDataFiles', 'targetTable', 'username'];
-    const _validParams = ['authInstanceId', 'jobId', 'sourceDataFiles', 'targetTable', 'username', 'createIfNotExist', 'csvProperty', 'engineId', 'executeConfig', 'partitionBy', 'schema', 'sourceFileType', 'validateCsvHeader', 'headers'];
+    const _requiredParams = [
+      'authInstanceId',
+      'jobId',
+      'sourceDataFiles',
+      'targetTable',
+      'username',
+    ];
+    const _validParams = [
+      'authInstanceId',
+      'jobId',
+      'sourceDataFiles',
+      'targetTable',
+      'username',
+      'createIfNotExist',
+      'csvProperty',
+      'engineId',
+      'executeConfig',
+      'partitionBy',
+      'schema',
+      'sourceFileType',
+      'validateCsvHeader',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -7158,7 +7830,11 @@ class WatsonxDataV2 extends BaseService {
       'validate_csv_header': _params.validateCsvHeader,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createIngestionJobs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createIngestionJobs'
+    );
 
     const parameters = {
       options: {
@@ -7209,8 +7885,28 @@ class WatsonxDataV2 extends BaseService {
     params: WatsonxDataV2.CreateIngestionJobsLocalFilesParams
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.IngestionJob>> {
     const _params = { ...params };
-    const _requiredParams = ['authInstanceId', 'sourceDataFile', 'targetTable', 'jobId', 'username'];
-    const _validParams = ['authInstanceId', 'sourceDataFile', 'targetTable', 'jobId', 'username', 'sourceDataFileContentType', 'sourceFileType', 'csvProperty', 'createIfNotExist', 'validateCsvHeader', 'executeConfig', 'engineId', 'headers'];
+    const _requiredParams = [
+      'authInstanceId',
+      'sourceDataFile',
+      'targetTable',
+      'jobId',
+      'username',
+    ];
+    const _validParams = [
+      'authInstanceId',
+      'sourceDataFile',
+      'targetTable',
+      'jobId',
+      'username',
+      'sourceDataFileContentType',
+      'sourceFileType',
+      'csvProperty',
+      'createIfNotExist',
+      'validateCsvHeader',
+      'executeConfig',
+      'engineId',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -7232,13 +7928,17 @@ class WatsonxDataV2 extends BaseService {
       'engine_id': _params.engineId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createIngestionJobsLocalFiles');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createIngestionJobsLocalFiles'
+    );
 
     const parameters = {
       options: {
         url: '/ingestion_jobs_local_files',
         method: 'POST',
-        formData
+        formData,
       },
       defaultOptions: extend(true, {}, this.baseOptions, {
         headers: extend(
@@ -7333,7 +8033,11 @@ class WatsonxDataV2 extends BaseService {
       'job_id': _params.jobId,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'deleteIngestionJobs');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'deleteIngestionJobs'
+    );
 
     const parameters = {
       options: {
@@ -7374,7 +8078,13 @@ class WatsonxDataV2 extends BaseService {
   ): Promise<WatsonxDataV2.Response<WatsonxDataV2.PreviewIngestionFile>> {
     const _params = { ...params };
     const _requiredParams = ['authInstanceId', 'sourceDataFiles'];
-    const _validParams = ['authInstanceId', 'sourceDataFiles', 'csvProperty', 'sourceFileType', 'headers'];
+    const _validParams = [
+      'authInstanceId',
+      'sourceDataFiles',
+      'csvProperty',
+      'sourceFileType',
+      'headers',
+    ];
     const _validationErrors = validateParams(_params, _requiredParams, _validParams);
     if (_validationErrors) {
       return Promise.reject(_validationErrors);
@@ -7386,7 +8096,11 @@ class WatsonxDataV2 extends BaseService {
       'source_file_type': _params.sourceFileType,
     };
 
-    const sdkHeaders = getSdkHeaders(WatsonxDataV2.DEFAULT_SERVICE_NAME, 'v2', 'createPreviewIngestionFile');
+    const sdkHeaders = getSdkHeaders(
+      WatsonxDataV2.DEFAULT_SERVICE_NAME,
+      'v2',
+      'createPreviewIngestionFile'
+    );
 
     const parameters = {
       options: {
