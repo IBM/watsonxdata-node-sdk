@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2024.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,13 +69,13 @@ describe('WatsonxDataV2_integration', () => {
 
     // BucketDetails
     const bucketDetailsModel = {
-      access_key: 'b9cbf248ea5c4c96947e64407108559j',
+      access_key: '<access_key>',
       bucket_name: 'sample-bucket',
-      endpoint: 'https://s3.<region>.cloud-object-storage.appdomain.cloud/',
+      endpoint: 'https://s3.us-south.cloud-object-storage.appdomain.cloud/',
       key_file: 'key_file',
-      provider: 'ibm_cos',
+      provider: 'ibm-cos',
       region: 'us-south',
-      secret_key: '13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87',
+      secret_key: 'secret_key',
     };
 
     // StorageDetails
@@ -92,12 +92,12 @@ describe('WatsonxDataV2_integration', () => {
     };
 
     const params = {
+      bucketDisplayName: 'sample-bucket-displayname',
       bucketType: 'ibm_cos',
       description: 'COS bucket for customer data',
       managedBy: 'ibm',
       associatedCatalog: bucketCatalogModel,
       bucketDetails: bucketDetailsModel,
-      bucketDisplayName: 'sample-bucket-displayname',
       region: 'us-south',
       storageDetails: storageDetailsModel,
       tags: ['bucket-tag1', 'bucket-tag2'],
@@ -127,13 +127,13 @@ describe('WatsonxDataV2_integration', () => {
 
     // BucketDetails
     const bucketDetailsModel = {
-      access_key: 'b9cbf248ea5c4c96947e64407108559j',
+      access_key: '<access_key>',
       bucket_name: 'sample-bucket',
-      endpoint: 'https://s3.<region>.cloud-object-storage.appdomain.cloud/',
+      endpoint: 'https://s3.us-south.cloud-object-storage.appdomain.cloud/',
       key_file: 'key_file',
-      provider: 'ibm_cos',
+      provider: 'ibm-cos',
       region: 'us-south',
-      secret_key: '13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87',
+      secret_key: 'secret_key',
     };
 
     const params = {
@@ -141,6 +141,7 @@ describe('WatsonxDataV2_integration', () => {
       bucketDetails: bucketDetailsModel,
       bucketDisplayName: 'sample-bucket-displayname',
       description: 'COS bucket for customer data',
+      systemBucketUpdateCredentials: true,
       tags: ['testbucket', 'userbucket'],
       authInstanceId: 'testString',
     };
@@ -179,20 +180,51 @@ describe('WatsonxDataV2_integration', () => {
   test('getBucketObjectProperties()', async () => {
     // Request models needed by this operation.
 
-    // Path
-    const pathModel = {
-      path: 'string',
+    // BucketObjectSizePathsItems
+    const bucketObjectSizePathsItemsModel = {
+      path: 'testString',
     };
 
     const params = {
       bucketId: 'testString',
-      paths: [pathModel],
+      paths: [bucketObjectSizePathsItemsModel],
       authInstanceId: 'testString',
     };
 
     const res = await watsonxDataService.getBucketObjectProperties(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(201);
+    expect(res.result).toBeDefined();
+  });
+
+  test('generateBenchmarkReport()', async () => {
+    const params = {
+      bucketName: 'testString',
+      engineId: 'testString',
+      podName: 'testString',
+      fileCount: 'testString',
+      fileSize: 'testString',
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.generateBenchmarkReport(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
+  test('generateBenchmarkReportStatus()', async () => {
+    const params = {
+      reqId: 'testString',
+      engineId: 'testString',
+      bucketName: 'testString',
+      podName: 'testString',
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.generateBenchmarkReportStatus(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
@@ -240,18 +272,10 @@ describe('WatsonxDataV2_integration', () => {
   test('createDatabaseRegistration()', async () => {
     // Request models needed by this operation.
 
-    // DatabaseCatalog
-    const databaseCatalogModel = {
+    // DatabaseCatalogPrototype
+    const databaseCatalogPrototypeModel = {
       catalog_name: 'sampleCatalog',
-      catalog_tags: ['catalog_tag_1', 'catalog_tag_2'],
       catalog_type: 'iceberg',
-    };
-
-    // DatabaseRegistrationPatchDatabaseDetailsDatabasePropertiesItems
-    const databaseRegistrationPatchDatabaseDetailsDatabasePropertiesItemsModel = {
-      encrypt: true,
-      key: 'abc',
-      value: 'xyz',
     };
 
     // DatabaseDetails
@@ -263,8 +287,8 @@ describe('WatsonxDataV2_integration', () => {
       broker_authentication_user: 'sampleuser',
       broker_host: 'samplehost',
       broker_port: 4553,
-      certificate: 'contents of a pem/crt file',
-      certificate_extension: 'pem/crt',
+      certificate: 'exampleCertificate',
+      certificate_extension: 'pem',
       connection_method: 'basic, apikey',
       connection_mode: 'service_name',
       connection_mode_value: 'orclpdb',
@@ -278,8 +302,7 @@ describe('WatsonxDataV2_integration', () => {
       credentials_key:
         'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
       database_name: 'new_database',
-      database_properties: [databaseRegistrationPatchDatabaseDetailsDatabasePropertiesItemsModel],
-      hostname: 'db2@<hostname>.com',
+      hostname: 'http://db2@localhost:9900.com',
       hostname_in_certificate: 'samplehostname',
       hosts: 'abc.com:1234,xyz.com:4321',
       informix_server: 'ol_informix1410',
@@ -315,7 +338,7 @@ describe('WatsonxDataV2_integration', () => {
     const params = {
       databaseDisplayName: 'new_database',
       databaseType: 'db2',
-      associatedCatalog: databaseCatalogModel,
+      associatedCatalog: databaseCatalogPrototypeModel,
       createdOn: '1686792721',
       databaseDetails: databaseDetailsModel,
       databaseProperties: [databaseRegistrationPrototypeDatabasePropertiesItemsModel],
@@ -372,7 +395,7 @@ describe('WatsonxDataV2_integration', () => {
     const databaseRegistrationPatchTablesItemsModel = {
       created_on: '1686792721',
       file_contents: 'sample file content',
-      file_name: 'sample file name',
+      file_name: 'test.json',
       schema_name: 'customer',
       table_name: 'customer',
     };
@@ -381,7 +404,7 @@ describe('WatsonxDataV2_integration', () => {
     const databaseRegistrationPatchTopicsItemsModel = {
       created_on: '1686792721',
       file_contents: 'sample file contents',
-      file_name: 'sample file name',
+      file_name: 'test.json',
       topic_name: 'customer',
     };
 
@@ -392,12 +415,26 @@ describe('WatsonxDataV2_integration', () => {
       description: 'External database description',
       tables: [databaseRegistrationPatchTablesItemsModel],
       tags: ['testdatabase', 'userdatabase'],
-      databaseProperties: [databaseRegistrationPatchDatabaseDetailsDatabasePropertiesItemsModel],
       topics: [databaseRegistrationPatchTopicsItemsModel],
       authInstanceId: 'testString',
     };
 
     const res = await watsonxDataService.updateDatabase(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
+  test('generateEngineDump()', async () => {
+    const params = {
+      dumpFileName: 'prestodump',
+      dumpType: 'heat',
+      engineId: 'presto-123',
+      podName: 'presto',
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.generateEngineDump(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -454,8 +491,11 @@ describe('WatsonxDataV2_integration', () => {
 
   test('createIntegration()', async () => {
     const params = {
+      accessToken: 'testString',
       apikey: 'testString',
+      crossAccountIntegration: true,
       enableDataPolicyWithinWxd: false,
+      ikcUserAccountId: 'testString',
       password: 'password',
       resource: 'resource_name',
       serviceType: 'ranger',
@@ -487,10 +527,14 @@ describe('WatsonxDataV2_integration', () => {
   test('updateIntegration()', async () => {
     const params = {
       integrationId: 'testString',
+      accessToken: 'testString',
       apikey: 'testString',
+      crossAccountIntegration: true,
       enableDataPolicyWithinWxd: true,
+      ikcUserAccountId: 'testString',
       password: 'testString',
       resource: 'resource_name',
+      state: 'testString',
       storageCatalogs: ['testString'],
       url: 'http://abcd.efgh.com:9876/',
       username: 'username',
@@ -616,6 +660,60 @@ describe('WatsonxDataV2_integration', () => {
     expect(res.result).toBeDefined();
   });
 
+  test('listInstanceDetails()', async () => {
+    const params = {
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.listInstanceDetails(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
+  test('listInstanceServiceDetails()', async () => {
+    const params = {
+      target: 'testString',
+      internalHost: false,
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.listInstanceServiceDetails(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
+  test('getServicesDetails()', async () => {
+    const params = {
+      target: 'testString',
+      engineOrServiceType: 'testString',
+      internalHost: false,
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.getServicesDetails(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
+  test('getServiceDetail()', async () => {
+    const params = {
+      target: 'testString',
+      engineOrServiceType: 'testString',
+      id: 'testString',
+      database: 'testString',
+      internalHost: false,
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.getServiceDetail(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
   test('listPrestissimoEngines()', async () => {
     const params = {
       authInstanceId: 'testString',
@@ -719,11 +817,6 @@ describe('WatsonxDataV2_integration', () => {
       velox_property: ['testString'],
     };
 
-    // PrestissimoEnginePropertiesGlobal
-    const prestissimoEnginePropertiesGlobalModel = {
-      global_property: 'enable-mixed-case-support:true',
-    };
-
     // NodeDescriptionBody
     const nodeDescriptionBodyModel = {
       node_type: 'worker',
@@ -740,7 +833,6 @@ describe('WatsonxDataV2_integration', () => {
       catalog: prestissimoEnginePropertiesCatalogModel,
       configuration: enginePropertiesOaiGenConfigurationModel,
       velox: prestissimoEnginePropertiesVeloxModel,
-      global: prestissimoEnginePropertiesGlobalModel,
       jvm: prestissimoEnginePropertiesOaiGen1JvmModel,
     };
 
@@ -938,7 +1030,7 @@ describe('WatsonxDataV2_integration', () => {
 
     const params = {
       origin: 'native',
-      associatedCatalogs: ['iceberg_data', 'hive_data'],
+      associatedCatalogs: ['iceberg-data', 'hive-data'],
       description: 'presto engine for running sql queries',
       engineDetails: engineDetailsBodyModel,
       engineDisplayName: 'sampleEngine',
@@ -1002,6 +1094,12 @@ describe('WatsonxDataV2_integration', () => {
       worker: nodeDescriptionBodyModel,
     };
 
+    // PrestoEnginePropertiesJMX
+    const prestoEnginePropertiesJmxModel = {
+      global_property:
+        'watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes',
+    };
+
     // EnginePropertiesLogConfiguration
     const enginePropertiesLogConfigurationModel = {
       coordinator: nodeDescriptionBodyModel,
@@ -1015,6 +1113,7 @@ describe('WatsonxDataV2_integration', () => {
       event_listener: prestoEnginePropertiesEventListenerModel,
       global: prestoEnginePropertiesGlobalModel,
       jvm: enginePropertiesOaiGen1JvmModel,
+      jmx_exporter_config: prestoEnginePropertiesJmxModel,
       log_config: enginePropertiesLogConfigurationModel,
     };
 
@@ -1030,12 +1129,21 @@ describe('WatsonxDataV2_integration', () => {
       worker: ['testString'],
     };
 
+    // RemoveEnginePropertiesLogConfig
+    const removeEnginePropertiesLogConfigModel = {
+      coordinator: ['testString'],
+      worker: ['testString'],
+    };
+
     // PrestoEnginePatchRemoveEngineProperties
     const prestoEnginePatchRemoveEnginePropertiesModel = {
       catalog: prestoEnginePropertiesCatalogModel,
       configuration: removeEnginePropertiesOaiGenConfigurationModel,
       jvm: removeEnginePropertiesOaiGenJvmModel,
-      event_listener: [],
+      event_listener: ['testString'],
+      global: ['testString'],
+      jmx_exporter_config: ['testString'],
+      log_config: removeEnginePropertiesLogConfigModel,
     };
 
     const params = {
@@ -1234,7 +1342,7 @@ describe('WatsonxDataV2_integration', () => {
     };
 
     const params = {
-      changes: enrichmentObjModel,
+      enrichmentPrototype: enrichmentObjModel,
       authInstanceId: 'testString',
     };
 
@@ -1525,15 +1633,15 @@ describe('WatsonxDataV2_integration', () => {
       engine_home_volume_name: 'my-volume',
       engine_home_volume_storage_class: 'nfs-client',
       engine_home_volume_storage_size: '5Gi',
-      instance_id: 'spark-id',
       engine_sub_type: 'java/cpp',
+      instance_id: 'spark-id',
       managed_by: 'fully/self',
       scale_config: sparkScaleConfigModel,
     };
 
     const params = {
       origin: 'native',
-      associatedCatalogs: ['iceberg_data'],
+      associatedCatalogs: ['iceberg-data'],
       description: 'testString',
       engineDetails: sparkEngineDetailsPrototypeModel,
       engineDisplayName: 'test-native',
@@ -1619,11 +1727,6 @@ describe('WatsonxDataV2_integration', () => {
       sample_env_key: 'testString',
     };
 
-    // SparkApplicationDetailsRuntime
-    const sparkApplicationDetailsRuntimeModel = {
-      spark_version: '3.4',
-    };
-
     // SparkApplicationDetails
     const sparkApplicationDetailsModel = {
       application: '/opt/ibm/spark/examples/src/main/python/wordcount.py',
@@ -1637,7 +1740,6 @@ describe('WatsonxDataV2_integration', () => {
       packages: 'org.apache.spark:example_1.2.3',
       repositories: 'https://repo1.maven.org/maven2/',
       spark_version: '3.3',
-      runtime: sparkApplicationDetailsRuntimeModel,
     };
 
     // SparkVolumeDetails
@@ -1916,8 +2018,8 @@ describe('WatsonxDataV2_integration', () => {
       comment: 'expenses column',
       extra: 'varchar',
       length: '30',
-      scale: '2',
       precision: '10',
+      scale: '2',
       type: 'varchar',
     };
 
@@ -2017,8 +2119,17 @@ describe('WatsonxDataV2_integration', () => {
       serviceDisplayName: 'sampleService',
       bucketType: 'Sample bucket type',
       description: 'milvus service for running sql queries',
+      indexType: 'FLAT',
+      iwCpu: 1,
+      iwMemory: 1,
+      iwReplicas: 1,
+      managedBy: 'customer',
+      qwCpu: 1,
+      qwMemory: 1,
+      qwReplicas: 1,
       tags: ['tag1', 'tag2'],
       tshirtSize: 'small',
+      vectorDimension: 384,
       authInstanceId: 'testString',
     };
 
@@ -2050,6 +2161,22 @@ describe('WatsonxDataV2_integration', () => {
     };
 
     const res = await watsonxDataService.updateMilvusService(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
+  test('updateMilvusServiceBucket()', async () => {
+    const params = {
+      serviceId: 'testString',
+      bucketName: 'Sample bucket name',
+      managedBy: 'customer',
+      rootPath: 'Sample path',
+      tshirtSize: 'small',
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.updateMilvusServiceBucket(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -2107,7 +2234,16 @@ describe('WatsonxDataV2_integration', () => {
   test('createMilvusServiceScale()', async () => {
     const params = {
       serviceId: 'testString',
-      tshirtSize: 'small',
+      tshirtSize: 'testString',
+      indexType: 'FLAT',
+      iwCpu: 1,
+      iwMemory: 1,
+      iwReplicas: 1,
+      milvusName: 'milvus123',
+      qwCpu: 1,
+      qwMemory: 1,
+      qwReplicas: 1,
+      vectorDimension: 384,
       authInstanceId: 'testString',
     };
 
@@ -2263,6 +2399,35 @@ describe('WatsonxDataV2_integration', () => {
     };
 
     const res = await watsonxDataService.getEndpoints(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
+  test('registerTable()', async () => {
+    const params = {
+      catalogId: 'testString',
+      schemaId: 'testString',
+      metadataLocation: 's3a://bucketname/path/to/table/metadata_location/_delta_log',
+      tableName: 'table1',
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.registerTable(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(201);
+    expect(res.result).toBeDefined();
+  });
+
+  test('loadTable()', async () => {
+    const params = {
+      catalogId: 'testString',
+      schemaId: 'testString',
+      tableId: 'testString',
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.loadTable(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
