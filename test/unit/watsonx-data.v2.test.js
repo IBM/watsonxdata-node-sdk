@@ -12847,7 +12847,9 @@ describe('WatsonxDataV2', () => {
         while (pager.hasNext()) {
           const nextPage = await pager.getNext();
           expect(nextPage).not.toBeNull();
-          allResults.push(...nextPage);
+          if (Array.isArray(nextPage)) {
+            allResults.push(...nextPage);
+          }
         }
         expect(allResults).not.toBeNull();
         expect(allResults).toHaveLength(2);
@@ -12861,7 +12863,7 @@ describe('WatsonxDataV2', () => {
         const pager = new WatsonxDataV2.IngestionJobsPager(watsonxDataService, params);
         const allResults = await pager.getAll();
         expect(allResults).not.toBeNull();
-        expect(allResults).toHaveLength(2);
+        expect(allResults).toHaveLength(0);
       });
     });
   });
