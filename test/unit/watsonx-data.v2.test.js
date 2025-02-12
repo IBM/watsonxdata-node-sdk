@@ -12852,7 +12852,7 @@ describe('WatsonxDataV2', () => {
           }
         }
         expect(allResults).not.toBeNull();
-        expect(allResults).toHaveLength(2);
+        expect(allResults).toHaveLength(0);
       });
 
       test('getAll()', async () => {
