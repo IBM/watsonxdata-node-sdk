@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/IBM/watsonxdata-node-sdk/compare/v0.3.0...v0.4.0) (2025-02-12)
+
+
+### Features
+
+* **sdk:** update SDK to include 2.0.3 SaaS changes ([516af6c](https://github.com/IBM/watsonxdata-node-sdk/commit/516af6cae2e7eaccdf142266e564db354cf10df5))
+
 # [0.3.0](https://github.com/IBM/watsonxdata-node-sdk/compare/v0.2.0...v0.3.0) (2024-12-04)
 
 
