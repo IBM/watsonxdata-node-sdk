@@ -130,7 +130,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listBucketRegistrationsResult = watsonxDataService.listBucketRegistrations(listBucketRegistrationsParams);
+        const listBucketRegistrationsResult = watsonxDataService.listBucketRegistrations(
+          listBucketRegistrationsParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(listBucketRegistrationsResult);
@@ -245,7 +247,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createBucketRegistrationResult = watsonxDataService.createBucketRegistration(createBucketRegistrationParams);
+        const createBucketRegistrationResult = watsonxDataService.createBucketRegistration(
+          createBucketRegistrationParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(createBucketRegistrationResult);
@@ -346,7 +350,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getBucketRegistrationResult = watsonxDataService.getBucketRegistration(getBucketRegistrationParams);
+        const getBucketRegistrationResult = watsonxDataService.getBucketRegistration(
+          getBucketRegistrationParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(getBucketRegistrationResult);
@@ -433,7 +439,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deleteBucketRegistrationResult = watsonxDataService.deleteBucketRegistration(deleteBucketRegistrationParams);
+        const deleteBucketRegistrationResult = watsonxDataService.deleteBucketRegistration(
+          deleteBucketRegistrationParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(deleteBucketRegistrationResult);
@@ -543,7 +551,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const updateBucketRegistrationResult = watsonxDataService.updateBucketRegistration(updateBucketRegistrationParams);
+        const updateBucketRegistrationResult = watsonxDataService.updateBucketRegistration(
+          updateBucketRegistrationParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(updateBucketRegistrationResult);
@@ -561,7 +571,9 @@ describe('WatsonxDataV2', () => {
         expect(mockRequestOptions.body.bucket_details).toEqual(bucketDetails);
         expect(mockRequestOptions.body.bucket_display_name).toEqual(bucketDisplayName);
         expect(mockRequestOptions.body.description).toEqual(description);
-        expect(mockRequestOptions.body.system_bucket_update_credentials).toEqual(systemBucketUpdateCredentials);
+        expect(mockRequestOptions.body.system_bucket_update_credentials).toEqual(
+          systemBucketUpdateCredentials
+        );
         expect(mockRequestOptions.body.tags).toEqual(tags);
         expect(mockRequestOptions.path.bucket_id).toEqual(bucketId);
       }
@@ -635,7 +647,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createActivateBucketResult = watsonxDataService.createActivateBucket(createActivateBucketParams);
+        const createActivateBucketResult = watsonxDataService.createActivateBucket(
+          createActivateBucketParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(createActivateBucketResult);
@@ -722,7 +736,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deleteDeactivateBucketResult = watsonxDataService.deleteDeactivateBucket(deleteDeactivateBucketParams);
+        const deleteDeactivateBucketResult = watsonxDataService.deleteDeactivateBucket(
+          deleteDeactivateBucketParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(deleteDeactivateBucketResult);
@@ -732,7 +748,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/bucket_registrations/{bucket_id}/deactivate', 'DELETE');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/bucket_registrations/{bucket_id}/deactivate',
+          'DELETE'
+        );
         const expectedAccept = undefined;
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -811,7 +831,8 @@ describe('WatsonxDataV2', () => {
           path,
         };
 
-        const listBucketObjectsResult = watsonxDataService.listBucketObjects(listBucketObjectsParams);
+        const listBucketObjectsResult =
+          watsonxDataService.listBucketObjects(listBucketObjectsParams);
 
         // all methods should return a Promise
         expectToBePromise(listBucketObjectsResult);
@@ -908,7 +929,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getBucketObjectPropertiesResult = watsonxDataService.getBucketObjectProperties(getBucketObjectPropertiesParams);
+        const getBucketObjectPropertiesResult = watsonxDataService.getBucketObjectProperties(
+          getBucketObjectPropertiesParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(getBucketObjectPropertiesResult);
@@ -918,7 +941,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/bucket_registrations/{bucket_id}/object_properties', 'POST');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/bucket_registrations/{bucket_id}/object_properties',
+          'POST'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -1004,7 +1031,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const generateBenchmarkReportResult = watsonxDataService.generateBenchmarkReport(generateBenchmarkReportParams);
+        const generateBenchmarkReportResult = watsonxDataService.generateBenchmarkReport(
+          generateBenchmarkReportParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(generateBenchmarkReportResult);
@@ -1105,7 +1134,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const generateBenchmarkReportStatusResult = watsonxDataService.generateBenchmarkReportStatus(generateBenchmarkReportStatusParams);
+        const generateBenchmarkReportStatusResult =
+          watsonxDataService.generateBenchmarkReportStatus(generateBenchmarkReportStatusParams);
 
         // all methods should return a Promise
         expectToBePromise(generateBenchmarkReportStatusResult);
@@ -1237,7 +1267,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createHdfsStorageResult = watsonxDataService.createHdfsStorage(createHdfsStorageParams);
+        const createHdfsStorageResult =
+          watsonxDataService.createHdfsStorage(createHdfsStorageParams);
 
         // all methods should return a Promise
         expectToBePromise(createHdfsStorageResult);
@@ -1356,7 +1387,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listDatabaseRegistrationsResult = watsonxDataService.listDatabaseRegistrations(listDatabaseRegistrationsParams);
+        const listDatabaseRegistrationsResult = watsonxDataService.listDatabaseRegistrations(
+          listDatabaseRegistrationsParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(listDatabaseRegistrationsResult);
@@ -1442,7 +1475,8 @@ describe('WatsonxDataV2', () => {
         coordinator_host: 'samplehost',
         coordinator_port: 4553,
         cpd_hostname: 'samplecpdhostname',
-        credentials_key: 'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
+        credentials_key:
+          'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
         database_name: 'new_database',
         hostname: 'http://db2@localhost:9900.com',
         hostname_in_certificate: 'samplehostname',
@@ -1500,7 +1534,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createDatabaseRegistrationResult = watsonxDataService.createDatabaseRegistration(createDatabaseRegistrationParams);
+        const createDatabaseRegistrationResult = watsonxDataService.createDatabaseRegistration(
+          createDatabaseRegistrationParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(createDatabaseRegistrationResult);
@@ -1683,7 +1719,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deleteDatabaseCatalogResult = watsonxDataService.deleteDatabaseCatalog(deleteDatabaseCatalogParams);
+        const deleteDatabaseCatalogResult = watsonxDataService.deleteDatabaseCatalog(
+          deleteDatabaseCatalogParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(deleteDatabaseCatalogResult);
@@ -1779,7 +1817,8 @@ describe('WatsonxDataV2', () => {
         controller_authentication_password: 'samplepassword',
         controller_authentication_type: 'PASSWORD',
         controller_authentication_user: 'sampleuser',
-        credentials_key: 'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
+        credentials_key:
+          'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
         database_properties: [databaseRegistrationPatchDatabaseDetailsDatabasePropertiesItemsModel],
         password: 'samplepassword',
         username: 'sampleuser',
@@ -1922,7 +1961,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const generateEngineDumpResult = watsonxDataService.generateEngineDump(generateEngineDumpParams);
+        const generateEngineDumpResult =
+          watsonxDataService.generateEngineDump(generateEngineDumpParams);
 
         // all methods should return a Promise
         expectToBePromise(generateEngineDumpResult);
@@ -2098,7 +2138,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createOtherEngineResult = watsonxDataService.createOtherEngine(createOtherEngineParams);
+        const createOtherEngineResult =
+          watsonxDataService.createOtherEngine(createOtherEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(createOtherEngineResult);
@@ -2191,7 +2232,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deleteOtherEngineResult = watsonxDataService.deleteOtherEngine(deleteOtherEngineParams);
+        const deleteOtherEngineResult =
+          watsonxDataService.deleteOtherEngine(deleteOtherEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(deleteOtherEngineResult);
@@ -2282,7 +2324,8 @@ describe('WatsonxDataV2', () => {
           state,
         };
 
-        const listAllIntegrationsResult = watsonxDataService.listAllIntegrations(listAllIntegrationsParams);
+        const listAllIntegrationsResult =
+          watsonxDataService.listAllIntegrations(listAllIntegrationsParams);
 
         // all methods should return a Promise
         expectToBePromise(listAllIntegrationsResult);
@@ -2371,7 +2414,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createIntegrationResult = watsonxDataService.createIntegration(createIntegrationParams);
+        const createIntegrationResult =
+          watsonxDataService.createIntegration(createIntegrationParams);
 
         // all methods should return a Promise
         expectToBePromise(createIntegrationResult);
@@ -2389,7 +2433,9 @@ describe('WatsonxDataV2', () => {
         expect(mockRequestOptions.body.access_token).toEqual(accessToken);
         expect(mockRequestOptions.body.apikey).toEqual(apikey);
         expect(mockRequestOptions.body.cross_account_integration).toEqual(crossAccountIntegration);
-        expect(mockRequestOptions.body.enable_data_policy_within_wxd).toEqual(enableDataPolicyWithinWxd);
+        expect(mockRequestOptions.body.enable_data_policy_within_wxd).toEqual(
+          enableDataPolicyWithinWxd
+        );
         expect(mockRequestOptions.body.ikc_user_account_id).toEqual(ikcUserAccountId);
         expect(mockRequestOptions.body.password).toEqual(password);
         expect(mockRequestOptions.body.resource).toEqual(resource);
@@ -2538,7 +2584,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deleteIntegrationResult = watsonxDataService.deleteIntegration(deleteIntegrationParams);
+        const deleteIntegrationResult =
+          watsonxDataService.deleteIntegration(deleteIntegrationParams);
 
         // all methods should return a Promise
         expectToBePromise(deleteIntegrationResult);
@@ -2647,7 +2694,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const updateIntegrationResult = watsonxDataService.updateIntegration(updateIntegrationParams);
+        const updateIntegrationResult =
+          watsonxDataService.updateIntegration(updateIntegrationParams);
 
         // all methods should return a Promise
         expectToBePromise(updateIntegrationResult);
@@ -2665,7 +2713,9 @@ describe('WatsonxDataV2', () => {
         expect(mockRequestOptions.body.access_token).toEqual(accessToken);
         expect(mockRequestOptions.body.apikey).toEqual(apikey);
         expect(mockRequestOptions.body.cross_account_integration).toEqual(crossAccountIntegration);
-        expect(mockRequestOptions.body.enable_data_policy_within_wxd).toEqual(enableDataPolicyWithinWxd);
+        expect(mockRequestOptions.body.enable_data_policy_within_wxd).toEqual(
+          enableDataPolicyWithinWxd
+        );
         expect(mockRequestOptions.body.ikc_user_account_id).toEqual(ikcUserAccountId);
         expect(mockRequestOptions.body.password).toEqual(password);
         expect(mockRequestOptions.body.resource).toEqual(resource);
@@ -3096,7 +3146,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listNetezzaEnginesResult = watsonxDataService.listNetezzaEngines(listNetezzaEnginesParams);
+        const listNetezzaEnginesResult =
+          watsonxDataService.listNetezzaEngines(listNetezzaEnginesParams);
 
         // all methods should return a Promise
         expectToBePromise(listNetezzaEnginesResult);
@@ -3177,7 +3228,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createNetezzaEngineResult = watsonxDataService.createNetezzaEngine(createNetezzaEngineParams);
+        const createNetezzaEngineResult =
+          watsonxDataService.createNetezzaEngine(createNetezzaEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(createNetezzaEngineResult);
@@ -3268,7 +3320,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deleteNetezzaEngineResult = watsonxDataService.deleteNetezzaEngine(deleteNetezzaEngineParams);
+        const deleteNetezzaEngineResult =
+          watsonxDataService.deleteNetezzaEngine(deleteNetezzaEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(deleteNetezzaEngineResult);
@@ -3361,7 +3414,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const updateNetezzaEngineResult = watsonxDataService.updateNetezzaEngine(updateNetezzaEngineParams);
+        const updateNetezzaEngineResult =
+          watsonxDataService.updateNetezzaEngine(updateNetezzaEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(updateNetezzaEngineResult);
@@ -3457,7 +3511,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createExecuteQueryResult = watsonxDataService.createExecuteQuery(createExecuteQueryParams);
+        const createExecuteQueryResult =
+          watsonxDataService.createExecuteQuery(createExecuteQueryParams);
 
         // all methods should return a Promise
         expectToBePromise(createExecuteQueryResult);
@@ -3547,7 +3602,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listInstanceDetailsResult = watsonxDataService.listInstanceDetails(listInstanceDetailsParams);
+        const listInstanceDetailsResult =
+          watsonxDataService.listInstanceDetails(listInstanceDetailsParams);
 
         // all methods should return a Promise
         expectToBePromise(listInstanceDetailsResult);
@@ -3615,7 +3671,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listInstanceServiceDetailsResult = watsonxDataService.listInstanceServiceDetails(listInstanceServiceDetailsParams);
+        const listInstanceServiceDetailsResult = watsonxDataService.listInstanceServiceDetails(
+          listInstanceServiceDetailsParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(listInstanceServiceDetailsResult);
@@ -3707,7 +3765,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getServicesDetailsResult = watsonxDataService.getServicesDetails(getServicesDetailsParams);
+        const getServicesDetailsResult =
+          watsonxDataService.getServicesDetails(getServicesDetailsParams);
 
         // all methods should return a Promise
         expectToBePromise(getServicesDetailsResult);
@@ -3717,7 +3776,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/instance_details/engines_services/{engine_or_service_type}', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/instance_details/engines_services/{engine_or_service_type}',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -3816,7 +3879,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/instance_details/engines_services/{engine_or_service_type}/id/{id}', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/instance_details/engines_services/{engine_or_service_type}/id/{id}',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -3899,7 +3966,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listPrestissimoEnginesResult = watsonxDataService.listPrestissimoEngines(listPrestissimoEnginesParams);
+        const listPrestissimoEnginesResult = watsonxDataService.listPrestissimoEngines(
+          listPrestissimoEnginesParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(listPrestissimoEnginesResult);
@@ -3966,11 +4035,15 @@ describe('WatsonxDataV2', () => {
 
       // PrestissimoEndpoints
       const prestissimoEndpointsModel = {
-        applications_api: '$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications/<application_id>',
-        history_server_endpoint: '$HOST/v2/spark/v3/instances/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_history_server',
+        applications_api:
+          '$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications/<application_id>',
+        history_server_endpoint:
+          '$HOST/v2/spark/v3/instances/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_history_server',
         spark_access_endpoint: '$HOST/analytics-engine/details/spark-<instance_id>',
-        spark_jobs_v4_endpoint: '$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications',
-        spark_kernel_endpoint: '$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/jkg/api/kernels',
+        spark_jobs_v4_endpoint:
+          '$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications',
+        spark_kernel_endpoint:
+          '$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/jkg/api/kernels',
         view_history_server: 'testString',
         wxd_application_endpoint: '$HOST/v1/1698311655308796/engines/spark817/applications',
       };
@@ -4011,7 +4084,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createPrestissimoEngineResult = watsonxDataService.createPrestissimoEngine(createPrestissimoEngineParams);
+        const createPrestissimoEngineResult = watsonxDataService.createPrestissimoEngine(
+          createPrestissimoEngineParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(createPrestissimoEngineResult);
@@ -4105,7 +4180,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getPrestissimoEngineResult = watsonxDataService.getPrestissimoEngine(getPrestissimoEngineParams);
+        const getPrestissimoEngineResult = watsonxDataService.getPrestissimoEngine(
+          getPrestissimoEngineParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(getPrestissimoEngineResult);
@@ -4192,7 +4269,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deletePrestissimoEngineResult = watsonxDataService.deletePrestissimoEngine(deletePrestissimoEngineParams);
+        const deletePrestissimoEngineResult = watsonxDataService.deletePrestissimoEngine(
+          deletePrestissimoEngineParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(deletePrestissimoEngineResult);
@@ -4353,7 +4432,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const updatePrestissimoEngineResult = watsonxDataService.updatePrestissimoEngine(updatePrestissimoEngineParams);
+        const updatePrestissimoEngineResult = watsonxDataService.updatePrestissimoEngine(
+          updatePrestissimoEngineParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(updatePrestissimoEngineResult);
@@ -4446,7 +4527,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listPrestissimoEngineCatalogsResult = watsonxDataService.listPrestissimoEngineCatalogs(listPrestissimoEngineCatalogsParams);
+        const listPrestissimoEngineCatalogsResult =
+          watsonxDataService.listPrestissimoEngineCatalogs(listPrestissimoEngineCatalogsParams);
 
         // all methods should return a Promise
         expectToBePromise(listPrestissimoEngineCatalogsResult);
@@ -4535,7 +4617,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createPrestissimoEngineCatalogsResult = watsonxDataService.createPrestissimoEngineCatalogs(createPrestissimoEngineCatalogsParams);
+        const createPrestissimoEngineCatalogsResult =
+          watsonxDataService.createPrestissimoEngineCatalogs(createPrestissimoEngineCatalogsParams);
 
         // all methods should return a Promise
         expectToBePromise(createPrestissimoEngineCatalogsResult);
@@ -4625,7 +4708,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deletePrestissimoEngineCatalogsResult = watsonxDataService.deletePrestissimoEngineCatalogs(deletePrestissimoEngineCatalogsParams);
+        const deletePrestissimoEngineCatalogsResult =
+          watsonxDataService.deletePrestissimoEngineCatalogs(deletePrestissimoEngineCatalogsParams);
 
         // all methods should return a Promise
         expectToBePromise(deletePrestissimoEngineCatalogsResult);
@@ -4635,7 +4719,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/prestissimo_engines/{engine_id}/catalogs', 'DELETE');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/prestissimo_engines/{engine_id}/catalogs',
+          'DELETE'
+        );
         const expectedAccept = undefined;
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -4717,7 +4805,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getPrestissimoEngineCatalogResult = watsonxDataService.getPrestissimoEngineCatalog(getPrestissimoEngineCatalogParams);
+        const getPrestissimoEngineCatalogResult = watsonxDataService.getPrestissimoEngineCatalog(
+          getPrestissimoEngineCatalogParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(getPrestissimoEngineCatalogResult);
@@ -4727,7 +4817,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/prestissimo_engines/{engine_id}/catalogs/{catalog_id}', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/prestissimo_engines/{engine_id}/catalogs/{catalog_id}',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -4807,7 +4901,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const pausePrestissimoEngineResult = watsonxDataService.pausePrestissimoEngine(pausePrestissimoEngineParams);
+        const pausePrestissimoEngineResult = watsonxDataService.pausePrestissimoEngine(
+          pausePrestissimoEngineParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(pausePrestissimoEngineResult);
@@ -4900,7 +4996,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const runPrestissimoExplainStatementResult = watsonxDataService.runPrestissimoExplainStatement(runPrestissimoExplainStatementParams);
+        const runPrestissimoExplainStatementResult =
+          watsonxDataService.runPrestissimoExplainStatement(runPrestissimoExplainStatementParams);
 
         // all methods should return a Promise
         expectToBePromise(runPrestissimoExplainStatementResult);
@@ -4910,7 +5007,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/prestissimo_engines/{engine_id}/query_explain', 'POST');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/prestissimo_engines/{engine_id}/query_explain',
+          'POST'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -4996,7 +5097,10 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const runPrestissimoExplainAnalyzeStatementResult = watsonxDataService.runPrestissimoExplainAnalyzeStatement(runPrestissimoExplainAnalyzeStatementParams);
+        const runPrestissimoExplainAnalyzeStatementResult =
+          watsonxDataService.runPrestissimoExplainAnalyzeStatement(
+            runPrestissimoExplainAnalyzeStatementParams
+          );
 
         // all methods should return a Promise
         expectToBePromise(runPrestissimoExplainAnalyzeStatementResult);
@@ -5006,7 +5110,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/prestissimo_engines/{engine_id}/query_explain_analyze', 'POST');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/prestissimo_engines/{engine_id}/query_explain_analyze',
+          'POST'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -5046,7 +5154,9 @@ describe('WatsonxDataV2', () => {
           },
         };
 
-        watsonxDataService.runPrestissimoExplainAnalyzeStatement(runPrestissimoExplainAnalyzeStatementParams);
+        watsonxDataService.runPrestissimoExplainAnalyzeStatement(
+          runPrestissimoExplainAnalyzeStatementParams
+        );
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -5087,7 +5197,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const restartPrestissimoEngineResult = watsonxDataService.restartPrestissimoEngine(restartPrestissimoEngineParams);
+        const restartPrestissimoEngineResult = watsonxDataService.restartPrestissimoEngine(
+          restartPrestissimoEngineParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(restartPrestissimoEngineResult);
@@ -5174,7 +5286,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const resumePrestissimoEngineResult = watsonxDataService.resumePrestissimoEngine(resumePrestissimoEngineParams);
+        const resumePrestissimoEngineResult = watsonxDataService.resumePrestissimoEngine(
+          resumePrestissimoEngineParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(resumePrestissimoEngineResult);
@@ -5273,7 +5387,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const scalePrestissimoEngineResult = watsonxDataService.scalePrestissimoEngine(scalePrestissimoEngineParams);
+        const scalePrestissimoEngineResult = watsonxDataService.scalePrestissimoEngine(
+          scalePrestissimoEngineParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(scalePrestissimoEngineResult);
@@ -5360,7 +5476,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listPrestoEnginesResult = watsonxDataService.listPrestoEngines(listPrestoEnginesParams);
+        const listPrestoEnginesResult =
+          watsonxDataService.listPrestoEngines(listPrestoEnginesParams);
 
         // all methods should return a Promise
         expectToBePromise(listPrestoEnginesResult);
@@ -5459,7 +5576,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createPrestoEngineResult = watsonxDataService.createPrestoEngine(createPrestoEngineParams);
+        const createPrestoEngineResult =
+          watsonxDataService.createPrestoEngine(createPrestoEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(createPrestoEngineResult);
@@ -5755,7 +5873,8 @@ describe('WatsonxDataV2', () => {
 
       // PrestoEnginePropertiesJMX
       const prestoEnginePropertiesJmxModel = {
-        global_property: 'watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes',
+        global_property:
+          'watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes',
       };
 
       // EnginePropertiesLogConfiguration
@@ -5825,7 +5944,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const updatePrestoEngineResult = watsonxDataService.updatePrestoEngine(updatePrestoEngineParams);
+        const updatePrestoEngineResult =
+          watsonxDataService.updatePrestoEngine(updatePrestoEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(updatePrestoEngineResult);
@@ -5918,7 +6038,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listPrestoEngineCatalogsResult = watsonxDataService.listPrestoEngineCatalogs(listPrestoEngineCatalogsParams);
+        const listPrestoEngineCatalogsResult = watsonxDataService.listPrestoEngineCatalogs(
+          listPrestoEngineCatalogsParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(listPrestoEngineCatalogsResult);
@@ -6007,7 +6129,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createPrestoEngineCatalogsResult = watsonxDataService.createPrestoEngineCatalogs(createPrestoEngineCatalogsParams);
+        const createPrestoEngineCatalogsResult = watsonxDataService.createPrestoEngineCatalogs(
+          createPrestoEngineCatalogsParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(createPrestoEngineCatalogsResult);
@@ -6097,7 +6221,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deletePrestoEngineCatalogsResult = watsonxDataService.deletePrestoEngineCatalogs(deletePrestoEngineCatalogsParams);
+        const deletePrestoEngineCatalogsResult = watsonxDataService.deletePrestoEngineCatalogs(
+          deletePrestoEngineCatalogsParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(deletePrestoEngineCatalogsResult);
@@ -6189,7 +6315,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getPrestoEngineCatalogResult = watsonxDataService.getPrestoEngineCatalog(getPrestoEngineCatalogParams);
+        const getPrestoEngineCatalogResult = watsonxDataService.getPrestoEngineCatalog(
+          getPrestoEngineCatalogParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(getPrestoEngineCatalogResult);
@@ -6199,7 +6327,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/presto_engines/{engine_id}/catalogs/{catalog_id}', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/presto_engines/{engine_id}/catalogs/{catalog_id}',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -6279,7 +6411,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const pausePrestoEngineResult = watsonxDataService.pausePrestoEngine(pausePrestoEngineParams);
+        const pausePrestoEngineResult =
+          watsonxDataService.pausePrestoEngine(pausePrestoEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(pausePrestoEngineResult);
@@ -6372,7 +6505,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const runExplainStatementResult = watsonxDataService.runExplainStatement(runExplainStatementParams);
+        const runExplainStatementResult =
+          watsonxDataService.runExplainStatement(runExplainStatementParams);
 
         // all methods should return a Promise
         expectToBePromise(runExplainStatementResult);
@@ -6468,7 +6602,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const runExplainAnalyzeStatementResult = watsonxDataService.runExplainAnalyzeStatement(runExplainAnalyzeStatementParams);
+        const runExplainAnalyzeStatementResult = watsonxDataService.runExplainAnalyzeStatement(
+          runExplainAnalyzeStatementParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(runExplainAnalyzeStatementResult);
@@ -6478,7 +6614,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/presto_engines/{engine_id}/query_explain_analyze', 'POST');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/presto_engines/{engine_id}/query_explain_analyze',
+          'POST'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -6559,7 +6699,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const restartPrestoEngineResult = watsonxDataService.restartPrestoEngine(restartPrestoEngineParams);
+        const restartPrestoEngineResult =
+          watsonxDataService.restartPrestoEngine(restartPrestoEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(restartPrestoEngineResult);
@@ -6646,7 +6787,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const resumePrestoEngineResult = watsonxDataService.resumePrestoEngine(resumePrestoEngineParams);
+        const resumePrestoEngineResult =
+          watsonxDataService.resumePrestoEngine(resumePrestoEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(resumePrestoEngineResult);
@@ -6745,7 +6887,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const scalePrestoEngineResult = watsonxDataService.scalePrestoEngine(scalePrestoEngineParams);
+        const scalePrestoEngineResult =
+          watsonxDataService.scalePrestoEngine(scalePrestoEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(scalePrestoEngineResult);
@@ -6832,7 +6975,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSalIntegrationResult = watsonxDataService.getSalIntegration(getSalIntegrationParams);
+        const getSalIntegrationResult =
+          watsonxDataService.getSalIntegration(getSalIntegrationParams);
 
         // all methods should return a Promise
         expectToBePromise(getSalIntegrationResult);
@@ -6893,7 +7037,8 @@ describe('WatsonxDataV2', () => {
         // Construct the params object for operation createSalIntegration
         const apikey = '12efd3raq';
         const engineId = 'presto-01';
-        const storageResourceCrn = 'crn:v1:staging:public:cloud-object-storage:global:a/a7026b374f39f570d20984c1ac6ecf63:5778e94f-c8c7-46a8-9878-d5eeadb51161';
+        const storageResourceCrn =
+          'crn:v1:staging:public:cloud-object-storage:global:a/a7026b374f39f570d20984c1ac6ecf63:5778e94f-c8c7-46a8-9878-d5eeadb51161';
         const storageType = 'bmcos_object_storage';
         const trialPlan = true;
         const authInstanceId = 'testString';
@@ -6906,7 +7051,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createSalIntegrationResult = watsonxDataService.createSalIntegration(createSalIntegrationParams);
+        const createSalIntegrationResult = watsonxDataService.createSalIntegration(
+          createSalIntegrationParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(createSalIntegrationResult);
@@ -6994,7 +7141,9 @@ describe('WatsonxDataV2', () => {
         // Construct the params object for operation deleteSalIntegration
         const deleteSalIntegrationParams = {};
 
-        const deleteSalIntegrationResult = watsonxDataService.deleteSalIntegration(deleteSalIntegrationParams);
+        const deleteSalIntegrationResult = watsonxDataService.deleteSalIntegration(
+          deleteSalIntegrationParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(deleteSalIntegrationResult);
@@ -7063,7 +7212,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const updateSalIntegrationResult = watsonxDataService.updateSalIntegration(updateSalIntegrationParams);
+        const updateSalIntegrationResult = watsonxDataService.updateSalIntegration(
+          updateSalIntegrationParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(updateSalIntegrationResult);
@@ -7142,7 +7293,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createSalIntegrationEnrichmentResult = watsonxDataService.createSalIntegrationEnrichment(createSalIntegrationEnrichmentParams);
+        const createSalIntegrationEnrichmentResult =
+          watsonxDataService.createSalIntegrationEnrichment(createSalIntegrationEnrichmentParams);
 
         // all methods should return a Promise
         expectToBePromise(createSalIntegrationEnrichmentResult);
@@ -7209,7 +7361,10 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSalIntegrationEnrichmentAssetsResult = watsonxDataService.getSalIntegrationEnrichmentAssets(getSalIntegrationEnrichmentAssetsParams);
+        const getSalIntegrationEnrichmentAssetsResult =
+          watsonxDataService.getSalIntegrationEnrichmentAssets(
+            getSalIntegrationEnrichmentAssetsParams
+          );
 
         // all methods should return a Promise
         expectToBePromise(getSalIntegrationEnrichmentAssetsResult);
@@ -7253,7 +7408,9 @@ describe('WatsonxDataV2', () => {
           },
         };
 
-        watsonxDataService.getSalIntegrationEnrichmentAssets(getSalIntegrationEnrichmentAssetsParams);
+        watsonxDataService.getSalIntegrationEnrichmentAssets(
+          getSalIntegrationEnrichmentAssetsParams
+        );
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
 
@@ -7278,7 +7435,10 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSalIntegrationEnrichmentDataAssetResult = watsonxDataService.getSalIntegrationEnrichmentDataAsset(getSalIntegrationEnrichmentDataAssetParams);
+        const getSalIntegrationEnrichmentDataAssetResult =
+          watsonxDataService.getSalIntegrationEnrichmentDataAsset(
+            getSalIntegrationEnrichmentDataAssetParams
+          );
 
         // all methods should return a Promise
         expectToBePromise(getSalIntegrationEnrichmentDataAssetResult);
@@ -7323,7 +7483,9 @@ describe('WatsonxDataV2', () => {
           },
         };
 
-        watsonxDataService.getSalIntegrationEnrichmentDataAsset(getSalIntegrationEnrichmentDataAssetParams);
+        watsonxDataService.getSalIntegrationEnrichmentDataAsset(
+          getSalIntegrationEnrichmentDataAssetParams
+        );
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
 
@@ -7350,7 +7512,10 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSalIntegrationEnrichmentJobRunLogsResult = watsonxDataService.getSalIntegrationEnrichmentJobRunLogs(getSalIntegrationEnrichmentJobRunLogsParams);
+        const getSalIntegrationEnrichmentJobRunLogsResult =
+          watsonxDataService.getSalIntegrationEnrichmentJobRunLogs(
+            getSalIntegrationEnrichmentJobRunLogsParams
+          );
 
         // all methods should return a Promise
         expectToBePromise(getSalIntegrationEnrichmentJobRunLogsResult);
@@ -7396,7 +7561,9 @@ describe('WatsonxDataV2', () => {
           },
         };
 
-        watsonxDataService.getSalIntegrationEnrichmentJobRunLogs(getSalIntegrationEnrichmentJobRunLogsParams);
+        watsonxDataService.getSalIntegrationEnrichmentJobRunLogs(
+          getSalIntegrationEnrichmentJobRunLogsParams
+        );
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
 
@@ -7421,7 +7588,10 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSalIntegrationEnrichmentJobRunsResult = watsonxDataService.getSalIntegrationEnrichmentJobRuns(getSalIntegrationEnrichmentJobRunsParams);
+        const getSalIntegrationEnrichmentJobRunsResult =
+          watsonxDataService.getSalIntegrationEnrichmentJobRuns(
+            getSalIntegrationEnrichmentJobRunsParams
+          );
 
         // all methods should return a Promise
         expectToBePromise(getSalIntegrationEnrichmentJobRunsResult);
@@ -7466,7 +7636,9 @@ describe('WatsonxDataV2', () => {
           },
         };
 
-        watsonxDataService.getSalIntegrationEnrichmentJobRuns(getSalIntegrationEnrichmentJobRunsParams);
+        watsonxDataService.getSalIntegrationEnrichmentJobRuns(
+          getSalIntegrationEnrichmentJobRunsParams
+        );
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
 
@@ -7489,7 +7661,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSalIntegrationEnrichmentJobsResult = watsonxDataService.getSalIntegrationEnrichmentJobs(getSalIntegrationEnrichmentJobsParams);
+        const getSalIntegrationEnrichmentJobsResult =
+          watsonxDataService.getSalIntegrationEnrichmentJobs(getSalIntegrationEnrichmentJobsParams);
 
         // all methods should return a Promise
         expectToBePromise(getSalIntegrationEnrichmentJobsResult);
@@ -7554,7 +7727,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSalIntegrationGlossaryTermsResult = watsonxDataService.getSalIntegrationGlossaryTerms(getSalIntegrationGlossaryTermsParams);
+        const getSalIntegrationGlossaryTermsResult =
+          watsonxDataService.getSalIntegrationGlossaryTerms(getSalIntegrationGlossaryTermsParams);
 
         // all methods should return a Promise
         expectToBePromise(getSalIntegrationGlossaryTermsResult);
@@ -7622,7 +7796,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSalIntegrationMappingsResult = watsonxDataService.getSalIntegrationMappings(getSalIntegrationMappingsParams);
+        const getSalIntegrationMappingsResult = watsonxDataService.getSalIntegrationMappings(
+          getSalIntegrationMappingsParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(getSalIntegrationMappingsResult);
@@ -7710,7 +7886,10 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSalIntegrationEnrichmentGlobalSettingsResult = watsonxDataService.getSalIntegrationEnrichmentGlobalSettings(getSalIntegrationEnrichmentGlobalSettingsParams);
+        const getSalIntegrationEnrichmentGlobalSettingsResult =
+          watsonxDataService.getSalIntegrationEnrichmentGlobalSettings(
+            getSalIntegrationEnrichmentGlobalSettingsParams
+          );
 
         // all methods should return a Promise
         expectToBePromise(getSalIntegrationEnrichmentGlobalSettingsResult);
@@ -7720,7 +7899,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/sal_integrations/metadata_enrichment_global_settings', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/sal_integrations/metadata_enrichment_global_settings',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -7753,7 +7936,9 @@ describe('WatsonxDataV2', () => {
           },
         };
 
-        watsonxDataService.getSalIntegrationEnrichmentGlobalSettings(getSalIntegrationEnrichmentGlobalSettingsParams);
+        watsonxDataService.getSalIntegrationEnrichmentGlobalSettings(
+          getSalIntegrationEnrichmentGlobalSettingsParams
+        );
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
 
@@ -7770,10 +7955,11 @@ describe('WatsonxDataV2', () => {
       // Request models needed by this operation.
 
       // SalIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfiguration
-      const salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel = {
-        assignment_threshold: 0.14,
-        suggestion_threshold: 0.9,
-      };
+      const salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel =
+        {
+          assignment_threshold: 0.14,
+          suggestion_threshold: 0.9,
+        };
 
       // SalIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfiguration
       const salIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfigurationModel = {
@@ -7784,9 +7970,11 @@ describe('WatsonxDataV2', () => {
       // SalIntegrationEnrichmentSettingsSemanticExpansion
       const salIntegrationEnrichmentSettingsSemanticExpansionModel = {
         description_generation: true,
-        description_generation_configuration: salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel,
+        description_generation_configuration:
+          salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel,
         name_expansion: true,
-        name_expansion_configuration: salIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfigurationModel,
+        name_expansion_configuration:
+          salIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfigurationModel,
       };
 
       // SalIntegrationEnrichmentSettingsTermAssignment
@@ -7812,7 +8000,10 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createSalIntegrationEnrichmentGlobalSettingsResult = watsonxDataService.createSalIntegrationEnrichmentGlobalSettings(createSalIntegrationEnrichmentGlobalSettingsParams);
+        const createSalIntegrationEnrichmentGlobalSettingsResult =
+          watsonxDataService.createSalIntegrationEnrichmentGlobalSettings(
+            createSalIntegrationEnrichmentGlobalSettingsParams
+          );
 
         // all methods should return a Promise
         expectToBePromise(createSalIntegrationEnrichmentGlobalSettingsResult);
@@ -7822,7 +8013,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/sal_integrations/metadata_enrichment_global_settings', 'POST');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/sal_integrations/metadata_enrichment_global_settings',
+          'POST'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -7857,7 +8052,9 @@ describe('WatsonxDataV2', () => {
           },
         };
 
-        watsonxDataService.createSalIntegrationEnrichmentGlobalSettings(createSalIntegrationEnrichmentGlobalSettingsParams);
+        watsonxDataService.createSalIntegrationEnrichmentGlobalSettings(
+          createSalIntegrationEnrichmentGlobalSettingsParams
+        );
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
 
@@ -7880,7 +8077,10 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSalIntegrationEnrichmentSettingsResult = watsonxDataService.getSalIntegrationEnrichmentSettings(getSalIntegrationEnrichmentSettingsParams);
+        const getSalIntegrationEnrichmentSettingsResult =
+          watsonxDataService.getSalIntegrationEnrichmentSettings(
+            getSalIntegrationEnrichmentSettingsParams
+          );
 
         // all methods should return a Promise
         expectToBePromise(getSalIntegrationEnrichmentSettingsResult);
@@ -7890,7 +8090,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/sal_integrations/metadata_enrichment_settings', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/sal_integrations/metadata_enrichment_settings',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -7924,7 +8128,9 @@ describe('WatsonxDataV2', () => {
           },
         };
 
-        watsonxDataService.getSalIntegrationEnrichmentSettings(getSalIntegrationEnrichmentSettingsParams);
+        watsonxDataService.getSalIntegrationEnrichmentSettings(
+          getSalIntegrationEnrichmentSettingsParams
+        );
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
 
@@ -7941,10 +8147,11 @@ describe('WatsonxDataV2', () => {
       // Request models needed by this operation.
 
       // SalIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfiguration
-      const salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel = {
-        assignment_threshold: 0.14,
-        suggestion_threshold: 0.9,
-      };
+      const salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel =
+        {
+          assignment_threshold: 0.14,
+          suggestion_threshold: 0.9,
+        };
 
       // SalIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfiguration
       const salIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfigurationModel = {
@@ -7955,9 +8162,11 @@ describe('WatsonxDataV2', () => {
       // SalIntegrationEnrichmentSettingsSemanticExpansion
       const salIntegrationEnrichmentSettingsSemanticExpansionModel = {
         description_generation: true,
-        description_generation_configuration: salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel,
+        description_generation_configuration:
+          salIntegrationEnrichmentSettingsSemanticExpansionDescriptionGenerationConfigurationModel,
         name_expansion: true,
-        name_expansion_configuration: salIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfigurationModel,
+        name_expansion_configuration:
+          salIntegrationEnrichmentSettingsSemanticExpansionNameExpansionConfigurationModel,
       };
 
       // SalIntegrationEnrichmentSettingsTermAssignment
@@ -7985,7 +8194,10 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createSalIntegrationEnrichmentSettingsResult = watsonxDataService.createSalIntegrationEnrichmentSettings(createSalIntegrationEnrichmentSettingsParams);
+        const createSalIntegrationEnrichmentSettingsResult =
+          watsonxDataService.createSalIntegrationEnrichmentSettings(
+            createSalIntegrationEnrichmentSettingsParams
+          );
 
         // all methods should return a Promise
         expectToBePromise(createSalIntegrationEnrichmentSettingsResult);
@@ -7995,7 +8207,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/sal_integrations/metadata_enrichment_settings', 'POST');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/sal_integrations/metadata_enrichment_settings',
+          'POST'
+        );
         const expectedAccept = undefined;
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -8031,7 +8247,9 @@ describe('WatsonxDataV2', () => {
           },
         };
 
-        watsonxDataService.createSalIntegrationEnrichmentSettings(createSalIntegrationEnrichmentSettingsParams);
+        watsonxDataService.createSalIntegrationEnrichmentSettings(
+          createSalIntegrationEnrichmentSettingsParams
+        );
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
 
@@ -8058,7 +8276,10 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createSalIntegrationUploadGlossaryResult = watsonxDataService.createSalIntegrationUploadGlossary(createSalIntegrationUploadGlossaryParams);
+        const createSalIntegrationUploadGlossaryResult =
+          watsonxDataService.createSalIntegrationUploadGlossary(
+            createSalIntegrationUploadGlossaryParams
+          );
 
         // all methods should return a Promise
         expectToBePromise(createSalIntegrationUploadGlossaryResult);
@@ -8075,7 +8296,9 @@ describe('WatsonxDataV2', () => {
         checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
         expect(mockRequestOptions.formData.replace_option).toEqual(replaceOption);
         expect(mockRequestOptions.formData.glossary_csv.data).toEqual(glossaryCsv);
-        expect(mockRequestOptions.formData.glossary_csv.contentType).toEqual(glossaryCsvContentType);
+        expect(mockRequestOptions.formData.glossary_csv.contentType).toEqual(
+          glossaryCsvContentType
+        );
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
@@ -8106,7 +8329,9 @@ describe('WatsonxDataV2', () => {
           },
         };
 
-        watsonxDataService.createSalIntegrationUploadGlossary(createSalIntegrationUploadGlossaryParams);
+        watsonxDataService.createSalIntegrationUploadGlossary(
+          createSalIntegrationUploadGlossaryParams
+        );
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -8147,7 +8372,10 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSalIntegrationUploadGlossaryStatusResult = watsonxDataService.getSalIntegrationUploadGlossaryStatus(getSalIntegrationUploadGlossaryStatusParams);
+        const getSalIntegrationUploadGlossaryStatusResult =
+          watsonxDataService.getSalIntegrationUploadGlossaryStatus(
+            getSalIntegrationUploadGlossaryStatusParams
+          );
 
         // all methods should return a Promise
         expectToBePromise(getSalIntegrationUploadGlossaryStatusResult);
@@ -8191,7 +8419,9 @@ describe('WatsonxDataV2', () => {
           },
         };
 
-        watsonxDataService.getSalIntegrationUploadGlossaryStatus(getSalIntegrationUploadGlossaryStatusParams);
+        watsonxDataService.getSalIntegrationUploadGlossaryStatus(
+          getSalIntegrationUploadGlossaryStatusParams
+        );
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
 
@@ -8327,7 +8557,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createSparkEngineResult = watsonxDataService.createSparkEngine(createSparkEngineParams);
+        const createSparkEngineResult =
+          watsonxDataService.createSparkEngine(createSparkEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(createSparkEngineResult);
@@ -8507,7 +8738,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deleteSparkEngineResult = watsonxDataService.deleteSparkEngine(deleteSparkEngineParams);
+        const deleteSparkEngineResult =
+          watsonxDataService.deleteSparkEngine(deleteSparkEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(deleteSparkEngineResult);
@@ -8619,7 +8851,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const updateSparkEngineResult = watsonxDataService.updateSparkEngine(updateSparkEngineParams);
+        const updateSparkEngineResult =
+          watsonxDataService.updateSparkEngine(updateSparkEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(updateSparkEngineResult);
@@ -8712,7 +8945,9 @@ describe('WatsonxDataV2', () => {
           state,
         };
 
-        const listSparkEngineApplicationsResult = watsonxDataService.listSparkEngineApplications(listSparkEngineApplicationsParams);
+        const listSparkEngineApplicationsResult = watsonxDataService.listSparkEngineApplications(
+          listSparkEngineApplicationsParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(listSparkEngineApplicationsResult);
@@ -8847,7 +9082,9 @@ describe('WatsonxDataV2', () => {
           state,
         };
 
-        const createSparkEngineApplicationResult = watsonxDataService.createSparkEngineApplication(createSparkEngineApplicationParams);
+        const createSparkEngineApplicationResult = watsonxDataService.createSparkEngineApplication(
+          createSparkEngineApplicationParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(createSparkEngineApplicationResult);
@@ -8946,7 +9183,8 @@ describe('WatsonxDataV2', () => {
           state,
         };
 
-        const deleteSparkEngineApplicationsResult = watsonxDataService.deleteSparkEngineApplications(deleteSparkEngineApplicationsParams);
+        const deleteSparkEngineApplicationsResult =
+          watsonxDataService.deleteSparkEngineApplications(deleteSparkEngineApplicationsParams);
 
         // all methods should return a Promise
         expectToBePromise(deleteSparkEngineApplicationsResult);
@@ -9039,7 +9277,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSparkEngineApplicationStatusResult = watsonxDataService.getSparkEngineApplicationStatus(getSparkEngineApplicationStatusParams);
+        const getSparkEngineApplicationStatusResult =
+          watsonxDataService.getSparkEngineApplicationStatus(getSparkEngineApplicationStatusParams);
 
         // all methods should return a Promise
         expectToBePromise(getSparkEngineApplicationStatusResult);
@@ -9049,7 +9288,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/spark_engines/{engine_id}/applications/{application_id}', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/spark_engines/{engine_id}/applications/{application_id}',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -9129,7 +9372,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listSparkEngineCatalogsResult = watsonxDataService.listSparkEngineCatalogs(listSparkEngineCatalogsParams);
+        const listSparkEngineCatalogsResult = watsonxDataService.listSparkEngineCatalogs(
+          listSparkEngineCatalogsParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(listSparkEngineCatalogsResult);
@@ -9218,7 +9463,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createSparkEngineCatalogsResult = watsonxDataService.createSparkEngineCatalogs(createSparkEngineCatalogsParams);
+        const createSparkEngineCatalogsResult = watsonxDataService.createSparkEngineCatalogs(
+          createSparkEngineCatalogsParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(createSparkEngineCatalogsResult);
@@ -9308,7 +9555,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deleteSparkEngineCatalogsResult = watsonxDataService.deleteSparkEngineCatalogs(deleteSparkEngineCatalogsParams);
+        const deleteSparkEngineCatalogsResult = watsonxDataService.deleteSparkEngineCatalogs(
+          deleteSparkEngineCatalogsParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(deleteSparkEngineCatalogsResult);
@@ -9400,7 +9649,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSparkEngineCatalogResult = watsonxDataService.getSparkEngineCatalog(getSparkEngineCatalogParams);
+        const getSparkEngineCatalogResult = watsonxDataService.getSparkEngineCatalog(
+          getSparkEngineCatalogParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(getSparkEngineCatalogResult);
@@ -9410,7 +9661,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/spark_engines/{engine_id}/catalogs/{catalog_id}', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/spark_engines/{engine_id}/catalogs/{catalog_id}',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -9490,7 +9745,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const getSparkEngineHistoryServerResult = watsonxDataService.getSparkEngineHistoryServer(getSparkEngineHistoryServerParams);
+        const getSparkEngineHistoryServerResult = watsonxDataService.getSparkEngineHistoryServer(
+          getSparkEngineHistoryServerParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(getSparkEngineHistoryServerResult);
@@ -9581,7 +9838,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const startSparkEngineHistoryServerResult = watsonxDataService.startSparkEngineHistoryServer(startSparkEngineHistoryServerParams);
+        const startSparkEngineHistoryServerResult =
+          watsonxDataService.startSparkEngineHistoryServer(startSparkEngineHistoryServerParams);
 
         // all methods should return a Promise
         expectToBePromise(startSparkEngineHistoryServerResult);
@@ -9670,7 +9928,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deleteSparkEngineHistoryServerResult = watsonxDataService.deleteSparkEngineHistoryServer(deleteSparkEngineHistoryServerParams);
+        const deleteSparkEngineHistoryServerResult =
+          watsonxDataService.deleteSparkEngineHistoryServer(deleteSparkEngineHistoryServerParams);
 
         // all methods should return a Promise
         expectToBePromise(deleteSparkEngineHistoryServerResult);
@@ -9680,7 +9939,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/spark_engines/{engine_id}/history_server', 'DELETE');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/spark_engines/{engine_id}/history_server',
+          'DELETE'
+        );
         const expectedAccept = undefined;
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -9847,7 +10110,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const resumeSparkEngineResult = watsonxDataService.resumeSparkEngine(resumeSparkEngineParams);
+        const resumeSparkEngineResult =
+          watsonxDataService.resumeSparkEngine(resumeSparkEngineParams);
 
         // all methods should return a Promise
         expectToBePromise(resumeSparkEngineResult);
@@ -10022,7 +10286,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listSparkVersionsResult = watsonxDataService.listSparkVersions(listSparkVersionsParams);
+        const listSparkVersionsResult =
+          watsonxDataService.listSparkVersions(listSparkVersionsParams);
 
         // all methods should return a Promise
         expectToBePromise(listSparkVersionsResult);
@@ -10456,7 +10721,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}', 'DELETE');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}',
+          'DELETE'
+        );
         const expectedAccept = undefined;
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -10553,7 +10822,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}/tables', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/tables',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -10654,7 +10927,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -10759,7 +11036,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}', 'DELETE');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}',
+          'DELETE'
+        );
         const expectedAccept = undefined;
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -10866,7 +11147,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}', 'PATCH');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}',
+          'PATCH'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/merge-patch+json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -10970,7 +11255,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/columns', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/columns',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -11087,7 +11376,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/columns', 'POST');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/columns',
+          'POST'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -11192,7 +11485,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/columns/{column_id}', 'DELETE');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/columns/{column_id}',
+          'DELETE'
+        );
         const expectedAccept = undefined;
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -11301,7 +11598,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/columns/{column_id}', 'PATCH');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/columns/{column_id}',
+          'PATCH'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/merge-patch+json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -11397,7 +11698,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listTableSnapshotsResult = watsonxDataService.listTableSnapshots(listTableSnapshotsParams);
+        const listTableSnapshotsResult =
+          watsonxDataService.listTableSnapshots(listTableSnapshotsParams);
 
         // all methods should return a Promise
         expectToBePromise(listTableSnapshotsResult);
@@ -11407,7 +11709,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/snapshots', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/snapshots',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -11511,7 +11817,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/rollback', 'POST');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/rollback',
+          'POST'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -11602,7 +11912,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const updateSyncCatalogResult = watsonxDataService.updateSyncCatalog(updateSyncCatalogParams);
+        const updateSyncCatalogResult =
+          watsonxDataService.updateSyncCatalog(updateSyncCatalogParams);
 
         // all methods should return a Promise
         expectToBePromise(updateSyncCatalogResult);
@@ -11689,7 +12000,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listMilvusServicesResult = watsonxDataService.listMilvusServices(listMilvusServicesParams);
+        const listMilvusServicesResult =
+          watsonxDataService.listMilvusServices(listMilvusServicesParams);
 
         // all methods should return a Promise
         expectToBePromise(listMilvusServicesResult);
@@ -11787,7 +12099,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createMilvusServiceResult = watsonxDataService.createMilvusService(createMilvusServiceParams);
+        const createMilvusServiceResult =
+          watsonxDataService.createMilvusService(createMilvusServiceParams);
 
         // all methods should return a Promise
         expectToBePromise(createMilvusServiceResult);
@@ -11983,7 +12296,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deleteMilvusServiceResult = watsonxDataService.deleteMilvusService(deleteMilvusServiceParams);
+        const deleteMilvusServiceResult =
+          watsonxDataService.deleteMilvusService(deleteMilvusServiceParams);
 
         // all methods should return a Promise
         expectToBePromise(deleteMilvusServiceResult);
@@ -12076,7 +12390,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const updateMilvusServiceResult = watsonxDataService.updateMilvusService(updateMilvusServiceParams);
+        const updateMilvusServiceResult =
+          watsonxDataService.updateMilvusService(updateMilvusServiceParams);
 
         // all methods should return a Promise
         expectToBePromise(updateMilvusServiceResult);
@@ -12174,7 +12489,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const updateMilvusServiceBucketResult = watsonxDataService.updateMilvusServiceBucket(updateMilvusServiceBucketParams);
+        const updateMilvusServiceBucketResult = watsonxDataService.updateMilvusServiceBucket(
+          updateMilvusServiceBucketParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(updateMilvusServiceBucketResult);
@@ -12265,7 +12582,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listMilvusServiceDatabasesResult = watsonxDataService.listMilvusServiceDatabases(listMilvusServiceDatabasesParams);
+        const listMilvusServiceDatabasesResult = watsonxDataService.listMilvusServiceDatabases(
+          listMilvusServiceDatabasesParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(listMilvusServiceDatabasesResult);
@@ -12354,7 +12673,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const listMilvusDatabaseCollectionsResult = watsonxDataService.listMilvusDatabaseCollections(listMilvusDatabaseCollectionsParams);
+        const listMilvusDatabaseCollectionsResult =
+          watsonxDataService.listMilvusDatabaseCollections(listMilvusDatabaseCollectionsParams);
 
         // all methods should return a Promise
         expectToBePromise(listMilvusDatabaseCollectionsResult);
@@ -12364,7 +12684,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/milvus_services/{service_id}/databases/{database_id}/collections', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/milvus_services/{service_id}/databases/{database_id}/collections',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -12444,7 +12768,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createMilvusServicePauseResult = watsonxDataService.createMilvusServicePause(createMilvusServicePauseParams);
+        const createMilvusServicePauseResult = watsonxDataService.createMilvusServicePause(
+          createMilvusServicePauseParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(createMilvusServicePauseResult);
@@ -12531,7 +12857,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createMilvusServiceResumeResult = watsonxDataService.createMilvusServiceResume(createMilvusServiceResumeParams);
+        const createMilvusServiceResumeResult = watsonxDataService.createMilvusServiceResume(
+          createMilvusServiceResumeParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(createMilvusServiceResumeResult);
@@ -12638,7 +12966,9 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const createMilvusServiceScaleResult = watsonxDataService.createMilvusServiceScale(createMilvusServiceScaleParams);
+        const createMilvusServiceScaleResult = watsonxDataService.createMilvusServiceScale(
+          createMilvusServiceScaleParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(createMilvusServiceScaleResult);
@@ -12739,7 +13069,8 @@ describe('WatsonxDataV2', () => {
           jobsPerPage,
         };
 
-        const listIngestionJobsResult = watsonxDataService.listIngestionJobs(listIngestionJobsParams);
+        const listIngestionJobsResult =
+          watsonxDataService.listIngestionJobs(listIngestionJobsParams);
 
         // all methods should return a Promise
         expectToBePromise(listIngestionJobsResult);
@@ -12902,7 +13233,8 @@ describe('WatsonxDataV2', () => {
         const engineId = 'spark123';
         const executeConfig = ingestionJobPrototypeExecuteConfigModel;
         const partitionBy = 'col1, col2';
-        const schema = '{"type":"struct","schema-id":0,"fields":[{"id":1,"name":"ID","required":true,"type":"int"},{"id":2,"name":"Name","required":true,"type":"string"}]}';
+        const schema =
+          '{"type":"struct","schema-id":0,"fields":[{"id":1,"name":"ID","required":true,"type":"int"},{"id":2,"name":"Name","required":true,"type":"string"}]}';
         const sourceFileType = 'csv';
         const validateCsvHeader = false;
         const createIngestionJobsParams = {
@@ -12921,7 +13253,8 @@ describe('WatsonxDataV2', () => {
           validateCsvHeader,
         };
 
-        const createIngestionJobsResult = watsonxDataService.createIngestionJobs(createIngestionJobsParams);
+        const createIngestionJobsResult =
+          watsonxDataService.createIngestionJobs(createIngestionJobsParams);
 
         // all methods should return a Promise
         expectToBePromise(createIngestionJobsResult);
@@ -13047,7 +13380,8 @@ describe('WatsonxDataV2', () => {
           engineId,
         };
 
-        const createIngestionJobsLocalFilesResult = watsonxDataService.createIngestionJobsLocalFiles(createIngestionJobsLocalFilesParams);
+        const createIngestionJobsLocalFilesResult =
+          watsonxDataService.createIngestionJobsLocalFiles(createIngestionJobsLocalFilesParams);
 
         // all methods should return a Promise
         expectToBePromise(createIngestionJobsLocalFilesResult);
@@ -13063,7 +13397,9 @@ describe('WatsonxDataV2', () => {
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
         expect(mockRequestOptions.formData.source_data_file.data).toEqual(sourceDataFile);
-        expect(mockRequestOptions.formData.source_data_file.contentType).toEqual(sourceDataFileContentType);
+        expect(mockRequestOptions.formData.source_data_file.contentType).toEqual(
+          sourceDataFileContentType
+        );
         expect(mockRequestOptions.formData.target_table).toEqual(targetTable);
         expect(mockRequestOptions.formData.job_id).toEqual(jobId);
         expect(mockRequestOptions.formData.username).toEqual(username);
@@ -13241,7 +13577,8 @@ describe('WatsonxDataV2', () => {
           authInstanceId,
         };
 
-        const deleteIngestionJobsResult = watsonxDataService.deleteIngestionJobs(deleteIngestionJobsParams);
+        const deleteIngestionJobsResult =
+          watsonxDataService.deleteIngestionJobs(deleteIngestionJobsParams);
 
         // all methods should return a Promise
         expectToBePromise(deleteIngestionJobsResult);
@@ -13345,7 +13682,9 @@ describe('WatsonxDataV2', () => {
           sourceFileType,
         };
 
-        const createPreviewIngestionFileResult = watsonxDataService.createPreviewIngestionFile(createPreviewIngestionFileParams);
+        const createPreviewIngestionFileResult = watsonxDataService.createPreviewIngestionFile(
+          createPreviewIngestionFileParams
+        );
 
         // all methods should return a Promise
         expectToBePromise(createPreviewIngestionFileResult);
@@ -13516,7 +13855,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}/register', 'POST');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/register',
+          'POST'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
@@ -13616,7 +13959,11 @@ describe('WatsonxDataV2', () => {
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/metadata', 'GET');
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/metadata',
+          'GET'
+        );
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);

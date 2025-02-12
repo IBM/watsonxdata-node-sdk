@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-const common = require('../../dist/lib/common'); 
+const common = require('../../dist/lib/common');
 
 const { getSdkHeaders } = common;
 
