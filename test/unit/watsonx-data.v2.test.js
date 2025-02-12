@@ -22,7 +22,6 @@ const nock = require('nock');
 const sdkCorePackage = require('ibm-cloud-sdk-core');
 
 const { NoAuthAuthenticator } = sdkCorePackage;
-const WatsonxDataV2 = require('../../dist/watsonx-data/v2');
 
 const {
   getOptions,
@@ -32,6 +31,8 @@ const {
   checkUserHeader,
   checkForSuccessfulExecution,
 } = require('@ibm-cloud/sdk-test-utilities');
+
+const WatsonxDataV2 = require('../../dist/watsonx-data/v2');
 
 const watsonxDataServiceOptions = {
   authenticator: new NoAuthAuthenticator(),
