@@ -69,13 +69,13 @@ describe('WatsonxDataV2_integration', () => {
 
     // BucketDetails
     const bucketDetailsModel = {
-      access_key: '<access_key>',
+      access_key: 'b9cbf248ea5c4c96947e64407108559j',
       bucket_name: 'sample-bucket',
-      endpoint: 'https://s3.us-south.cloud-object-storage.appdomain.cloud/',
+      endpoint: 'https://s3.<region>.cloud-object-storage.appdomain.cloud/',
       key_file: 'key_file',
-      provider: 'ibm-cos',
+      provider: 'ibm_cos',
       region: 'us-south',
-      secret_key: 'secret_key',
+      secret_key: '13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87',
     };
 
     // StorageDetails
@@ -92,12 +92,12 @@ describe('WatsonxDataV2_integration', () => {
     };
 
     const params = {
-      bucketDisplayName: 'sample-bucket-displayname',
       bucketType: 'ibm_cos',
       description: 'COS bucket for customer data',
       managedBy: 'ibm',
       associatedCatalog: bucketCatalogModel,
       bucketDetails: bucketDetailsModel,
+      bucketDisplayName: 'sample-bucket-displayname',
       region: 'us-south',
       storageDetails: storageDetailsModel,
       tags: ['bucket-tag1', 'bucket-tag2'],
@@ -127,13 +127,13 @@ describe('WatsonxDataV2_integration', () => {
 
     // BucketDetails
     const bucketDetailsModel = {
-      access_key: '<access_key>',
+      access_key: 'b9cbf248ea5c4c96947e64407108559j',
       bucket_name: 'sample-bucket',
-      endpoint: 'https://s3.us-south.cloud-object-storage.appdomain.cloud/',
+      endpoint: 'https://s3.<region>.cloud-object-storage.appdomain.cloud/',
       key_file: 'key_file',
-      provider: 'ibm-cos',
+      provider: 'ibm_cos',
       region: 'us-south',
-      secret_key: 'secret_key',
+      secret_key: '13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87',
     };
 
     const params = {
@@ -141,7 +141,6 @@ describe('WatsonxDataV2_integration', () => {
       bucketDetails: bucketDetailsModel,
       bucketDisplayName: 'sample-bucket-displayname',
       description: 'COS bucket for customer data',
-      systemBucketUpdateCredentials: true,
       tags: ['testbucket', 'userbucket'],
       authInstanceId: 'testString',
     };
@@ -180,51 +179,20 @@ describe('WatsonxDataV2_integration', () => {
   test('getBucketObjectProperties()', async () => {
     // Request models needed by this operation.
 
-    // BucketObjectSizePathsItems
-    const bucketObjectSizePathsItemsModel = {
-      path: 'testString',
+    // Path
+    const pathModel = {
+      path: 'string',
     };
 
     const params = {
       bucketId: 'testString',
-      paths: [bucketObjectSizePathsItemsModel],
+      paths: [pathModel],
       authInstanceId: 'testString',
     };
 
     const res = await watsonxDataService.getBucketObjectProperties(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(201);
-    expect(res.result).toBeDefined();
-  });
-
-  test('generateBenchmarkReport()', async () => {
-    const params = {
-      bucketName: 'testString',
-      engineId: 'testString',
-      podName: 'testString',
-      fileCount: 'testString',
-      fileSize: 'testString',
-      authInstanceId: 'testString',
-    };
-
-    const res = await watsonxDataService.generateBenchmarkReport(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
-  test('generateBenchmarkReportStatus()', async () => {
-    const params = {
-      reqId: 'testString',
-      engineId: 'testString',
-      bucketName: 'testString',
-      podName: 'testString',
-      authInstanceId: 'testString',
-    };
-
-    const res = await watsonxDataService.generateBenchmarkReportStatus(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
   });
 
@@ -272,23 +240,21 @@ describe('WatsonxDataV2_integration', () => {
   test('createDatabaseRegistration()', async () => {
     // Request models needed by this operation.
 
-    // DatabaseCatalogPrototype
-    const databaseCatalogPrototypeModel = {
+    // DatabaseCatalog
+    const databaseCatalogModel = {
       catalog_name: 'sampleCatalog',
+      catalog_tags: ['catalog_tag_1', 'catalog_tag_2'],
       catalog_type: 'iceberg',
     };
 
     // DatabaseDetails
     const databaseDetailsModel = {
       authentication_type: 'LDAP',
-      authentication_value: 'LDAP',
       broker_authentication_password: 'samplepassword',
       broker_authentication_type: 'PASSWORD',
       broker_authentication_user: 'sampleuser',
-      broker_host: 'samplehost',
-      broker_port: 4553,
-      certificate: 'exampleCertificate',
-      certificate_extension: 'pem',
+      certificate: 'contents of a pem/crt file',
+      certificate_extension: 'pem/crt',
       connection_method: 'basic, apikey',
       connection_mode: 'service_name',
       connection_mode_value: 'orclpdb',
@@ -296,13 +262,11 @@ describe('WatsonxDataV2_integration', () => {
       controller_authentication_password: 'samplepassword',
       controller_authentication_type: 'PASSWORD',
       controller_authentication_user: 'sampleuser',
-      coordinator_host: 'samplehost',
-      coordinator_port: 4553,
       cpd_hostname: 'samplecpdhostname',
       credentials_key:
         'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
       database_name: 'new_database',
-      hostname: 'http://db2@localhost:9900.com',
+      hostname: 'db2@<hostname>.com',
       hostname_in_certificate: 'samplehostname',
       hosts: 'abc.com:1234,xyz.com:4321',
       informix_server: 'ol_informix1410',
@@ -310,9 +274,6 @@ describe('WatsonxDataV2_integration', () => {
       port: 4553,
       project_id: 'conops-bigquery',
       sasl: true,
-      sasl_mechanism: 'plain',
-      schema_name: 'sampleSchema',
-      schemas: 'redis__name',
       service_api_key: 'sampleapikey',
       service_hostname: 'api.dataplatform.dev.cloud.ibm.com',
       service_password: 'samplepassword',
@@ -321,11 +282,10 @@ describe('WatsonxDataV2_integration', () => {
       service_token_url: 'sampletoakenurl',
       service_username: 'sampleusername',
       ssl: true,
-      tables: 'kafka_table_name, redis_table_name',
+      tables: 'kafka_table_name',
       username: 'sampleuser',
       validate_server_certificate: true,
       verify_host_name: true,
-      warehouse_name: 'samplewrehouse',
     };
 
     // DatabaseRegistrationPrototypeDatabasePropertiesItems
@@ -338,7 +298,7 @@ describe('WatsonxDataV2_integration', () => {
     const params = {
       databaseDisplayName: 'new_database',
       databaseType: 'db2',
-      associatedCatalog: databaseCatalogPrototypeModel,
+      associatedCatalog: databaseCatalogModel,
       createdOn: '1686792721',
       databaseDetails: databaseDetailsModel,
       databaseProperties: [databaseRegistrationPrototypeDatabasePropertiesItemsModel],
@@ -368,43 +328,17 @@ describe('WatsonxDataV2_integration', () => {
   test('updateDatabase()', async () => {
     // Request models needed by this operation.
 
-    // DatabaseRegistrationPatchDatabaseDetailsDatabasePropertiesItems
-    const databaseRegistrationPatchDatabaseDetailsDatabasePropertiesItemsModel = {
-      encrypt: true,
-      key: 'abc',
-      value: 'xyz',
-    };
-
     // DatabaseRegistrationPatchDatabaseDetails
     const databaseRegistrationPatchDatabaseDetailsModel = {
-      authentication_value: 'LDAP',
-      broker_authentication_password: 'samplepassword',
-      broker_authentication_type: 'PASSWORD',
-      broker_authentication_user: 'sampleuser',
-      controller_authentication_password: 'samplepassword',
-      controller_authentication_type: 'PASSWORD',
-      controller_authentication_user: 'sampleuser',
-      credentials_key:
-        'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
-      database_properties: [databaseRegistrationPatchDatabaseDetailsDatabasePropertiesItemsModel],
       password: 'samplepassword',
       username: 'sampleuser',
-    };
-
-    // DatabaseRegistrationPatchTablesItems
-    const databaseRegistrationPatchTablesItemsModel = {
-      created_on: '1686792721',
-      file_contents: 'sample file content',
-      file_name: 'test.json',
-      schema_name: 'customer',
-      table_name: 'customer',
     };
 
     // DatabaseRegistrationPatchTopicsItems
     const databaseRegistrationPatchTopicsItemsModel = {
       created_on: '1686792721',
       file_contents: 'sample file contents',
-      file_name: 'test.json',
+      file_name: 'sample file name',
       topic_name: 'customer',
     };
 
@@ -413,7 +347,6 @@ describe('WatsonxDataV2_integration', () => {
       databaseDetails: databaseRegistrationPatchDatabaseDetailsModel,
       databaseDisplayName: 'new_database',
       description: 'External database description',
-      tables: [databaseRegistrationPatchTablesItemsModel],
       tags: ['testdatabase', 'userdatabase'],
       topics: [databaseRegistrationPatchTopicsItemsModel],
       authInstanceId: 'testString',
@@ -425,16 +358,41 @@ describe('WatsonxDataV2_integration', () => {
     expect(res.result).toBeDefined();
   });
 
-  test('generateEngineDump()', async () => {
+  test('listDriverRegistration()', async () => {
     const params = {
-      dumpFileName: 'prestodump',
-      dumpType: 'heat',
-      engineId: 'presto-123',
-      podName: 'presto',
       authInstanceId: 'testString',
     };
 
-    const res = await watsonxDataService.generateEngineDump(params);
+    const res = await watsonxDataService.listDriverRegistration(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
+  test('createDriverRegistration()', async () => {
+    const params = {
+      driver: Buffer.from('This is a mock file.'),
+      driverName: 'testString',
+      connectionType: 'testString',
+      driverContentType: 'testString',
+      version: 'testString',
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.createDriverRegistration(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(201);
+    expect(res.result).toBeDefined();
+  });
+
+  test('updateDriverEngines()', async () => {
+    const params = {
+      driverId: 'testString',
+      engines: ['testString'],
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.updateDriverEngines(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
@@ -887,7 +845,7 @@ describe('WatsonxDataV2_integration', () => {
   test('createPrestissimoEngineCatalogs()', async () => {
     const params = {
       engineId: 'testString',
-      catalogNames: 'testString',
+      catalogName: 'testString',
       authInstanceId: 'testString',
     };
 
@@ -1178,7 +1136,7 @@ describe('WatsonxDataV2_integration', () => {
   test('createPrestoEngineCatalogs()', async () => {
     const params = {
       engineId: 'testString',
-      catalogNames: 'testString',
+      catalogName: 'testString',
       authInstanceId: 'testString',
     };
 
@@ -1271,7 +1229,7 @@ describe('WatsonxDataV2_integration', () => {
 
     // NodeDescription
     const nodeDescriptionModel = {
-      node_type: 'worker',
+      node_type: 'starter',
       quantity: 38,
     };
 
@@ -1795,7 +1753,7 @@ describe('WatsonxDataV2_integration', () => {
   test('createSparkEngineCatalogs()', async () => {
     const params = {
       engineId: 'testString',
-      catalogNames: 'testString',
+      catalogName: 'testString',
       authInstanceId: 'testString',
     };
 
@@ -2018,8 +1976,8 @@ describe('WatsonxDataV2_integration', () => {
       comment: 'expenses column',
       extra: 'varchar',
       length: '30',
-      precision: '10',
       scale: '2',
+      precision: '10',
       type: 'varchar',
     };
 
@@ -2119,17 +2077,8 @@ describe('WatsonxDataV2_integration', () => {
       serviceDisplayName: 'sampleService',
       bucketType: 'Sample bucket type',
       description: 'milvus service for running sql queries',
-      indexType: 'FLAT',
-      iwCpu: 1,
-      iwMemory: 1,
-      iwReplicas: 1,
-      managedBy: 'customer',
-      qwCpu: 1,
-      qwMemory: 1,
-      qwReplicas: 1,
       tags: ['tag1', 'tag2'],
       tshirtSize: 'small',
-      vectorDimension: 384,
       authInstanceId: 'testString',
     };
 
@@ -2234,16 +2183,7 @@ describe('WatsonxDataV2_integration', () => {
   test('createMilvusServiceScale()', async () => {
     const params = {
       serviceId: 'testString',
-      tshirtSize: 'testString',
-      indexType: 'FLAT',
-      iwCpu: 1,
-      iwMemory: 1,
-      iwReplicas: 1,
-      milvusName: 'milvus123',
-      qwCpu: 1,
-      qwMemory: 1,
-      qwReplicas: 1,
-      vectorDimension: 384,
+      tshirtSize: 'small',
       authInstanceId: 'testString',
     };
 
@@ -2404,35 +2344,6 @@ describe('WatsonxDataV2_integration', () => {
     expect(res.result).toBeDefined();
   });
 
-  test('registerTable()', async () => {
-    const params = {
-      catalogId: 'testString',
-      schemaId: 'testString',
-      metadataLocation: 's3a://bucketname/path/to/table/metadata_location/_delta_log',
-      tableName: 'table1',
-      authInstanceId: 'testString',
-    };
-
-    const res = await watsonxDataService.registerTable(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(201);
-    expect(res.result).toBeDefined();
-  });
-
-  test('loadTable()', async () => {
-    const params = {
-      catalogId: 'testString',
-      schemaId: 'testString',
-      tableId: 'testString',
-      authInstanceId: 'testString',
-    };
-
-    const res = await watsonxDataService.loadTable(params);
-    expect(res).toBeDefined();
-    expect(res.status).toBe(200);
-    expect(res.result).toBeDefined();
-  });
-
   test('getAllColumns()', async () => {
     const params = {
       tableName: 'testString',
@@ -2530,6 +2441,31 @@ describe('WatsonxDataV2_integration', () => {
     };
 
     const res = await watsonxDataService.deleteDatabaseCatalog(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(204);
+    expect(res.result).toBeDefined();
+  });
+
+  test('deleteDriverRegistration()', async () => {
+    const params = {
+      driverId: 'testString',
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.deleteDriverRegistration(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(204);
+    expect(res.result).toBeDefined();
+  });
+
+  test('deleteDriverEngines()', async () => {
+    const params = {
+      driverId: 'testString',
+      engineIds: 'testString',
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.deleteDriverEngines(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(204);
     expect(res.result).toBeDefined();
