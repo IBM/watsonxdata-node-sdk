@@ -21,9 +21,6 @@ const nock = require('nock');
 // need to import the whole package to mock getAuthenticatorFromEnvironment
 const sdkCorePackage = require('ibm-cloud-sdk-core');
 
-const { NoAuthAuthenticator } = sdkCorePackage;
-const WatsonxDataV2 = require('../../dist/watsonx-data/v2');
-
 const {
   getOptions,
   checkUrlAndMethod,
@@ -32,6 +29,11 @@ const {
   checkUserHeader,
   checkForSuccessfulExecution,
 } = require('@ibm-cloud/sdk-test-utilities');
+
+const { NoAuthAuthenticator } = sdkCorePackage;
+const WatsonxDataV2 = require('../../dist/watsonx-data/v2');
+
+
 
 const watsonxDataServiceOptions = {
   authenticator: new NoAuthAuthenticator(),
