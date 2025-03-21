@@ -33,8 +33,6 @@ const {
 const { NoAuthAuthenticator } = sdkCorePackage;
 const WatsonxDataV2 = require('../../dist/watsonx-data/v2');
 
-
-
 const watsonxDataServiceOptions = {
   authenticator: new NoAuthAuthenticator(),
   url: 'https://region.lakehouse.cloud.ibm.com/lakehouse/api/v2',
