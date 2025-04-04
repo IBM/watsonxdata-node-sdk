@@ -21,8 +21,6 @@ const nock = require('nock');
 // need to import the whole package to mock getAuthenticatorFromEnvironment
 const sdkCorePackage = require('ibm-cloud-sdk-core');
 
-const { NoAuthAuthenticator } = sdkCorePackage;
-
 const {
   getOptions,
   checkUrlAndMethod,
@@ -32,6 +30,7 @@ const {
   checkForSuccessfulExecution,
 } = require('@ibm-cloud/sdk-test-utilities');
 
+const { NoAuthAuthenticator } = sdkCorePackage;
 const WatsonxDataV2 = require('../../dist/watsonx-data/v2');
 
 const watsonxDataServiceOptions = {
@@ -201,13 +200,13 @@ describe('WatsonxDataV2', () => {
 
       // BucketDetails
       const bucketDetailsModel = {
-        access_key: '<access_key>',
+        access_key: 'b9cbf248ea5c4c96947e64407108559j',
         bucket_name: 'sample-bucket',
-        endpoint: 'https://s3.us-south.cloud-object-storage.appdomain.cloud/',
+        endpoint: 'https://s3.<region>.cloud-object-storage.appdomain.cloud/',
         key_file: 'key_file',
-        provider: 'ibm-cos',
+        provider: 'ibm_cos',
         region: 'us-south',
-        secret_key: 'secret_key',
+        secret_key: '13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87',
       };
 
       // StorageDetails
@@ -225,23 +224,23 @@ describe('WatsonxDataV2', () => {
 
       function __createBucketRegistrationTest() {
         // Construct the params object for operation createBucketRegistration
-        const bucketDisplayName = 'sample-bucket-displayname';
         const bucketType = 'ibm_cos';
         const description = 'COS bucket for customer data';
         const managedBy = 'ibm';
         const associatedCatalog = bucketCatalogModel;
         const bucketDetails = bucketDetailsModel;
+        const bucketDisplayName = 'sample-bucket-displayname';
         const region = 'us-south';
         const storageDetails = storageDetailsModel;
         const tags = ['bucket-tag1', 'bucket-tag2'];
         const authInstanceId = 'testString';
         const createBucketRegistrationParams = {
-          bucketDisplayName,
           bucketType,
           description,
           managedBy,
           associatedCatalog,
           bucketDetails,
+          bucketDisplayName,
           region,
           storageDetails,
           tags,
@@ -265,12 +264,12 @@ describe('WatsonxDataV2', () => {
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
-        expect(mockRequestOptions.body.bucket_display_name).toEqual(bucketDisplayName);
         expect(mockRequestOptions.body.bucket_type).toEqual(bucketType);
         expect(mockRequestOptions.body.description).toEqual(description);
         expect(mockRequestOptions.body.managed_by).toEqual(managedBy);
         expect(mockRequestOptions.body.associated_catalog).toEqual(associatedCatalog);
         expect(mockRequestOptions.body.bucket_details).toEqual(bucketDetails);
+        expect(mockRequestOptions.body.bucket_display_name).toEqual(bucketDisplayName);
         expect(mockRequestOptions.body.region).toEqual(region);
         expect(mockRequestOptions.body.storage_details).toEqual(storageDetails);
         expect(mockRequestOptions.body.tags).toEqual(tags);
@@ -293,14 +292,12 @@ describe('WatsonxDataV2', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const bucketDisplayName = 'sample-bucket-displayname';
         const bucketType = 'ibm_cos';
         const description = 'COS bucket for customer data';
         const managedBy = 'ibm';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const createBucketRegistrationParams = {
-          bucketDisplayName,
           bucketType,
           description,
           managedBy,
@@ -524,13 +521,13 @@ describe('WatsonxDataV2', () => {
 
       // BucketDetails
       const bucketDetailsModel = {
-        access_key: '<access_key>',
+        access_key: 'b9cbf248ea5c4c96947e64407108559j',
         bucket_name: 'sample-bucket',
-        endpoint: 'https://s3.us-south.cloud-object-storage.appdomain.cloud/',
+        endpoint: 'https://s3.<region>.cloud-object-storage.appdomain.cloud/',
         key_file: 'key_file',
-        provider: 'ibm-cos',
+        provider: 'ibm_cos',
         region: 'us-south',
-        secret_key: 'secret_key',
+        secret_key: '13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87',
       };
 
       function __updateBucketRegistrationTest() {
@@ -539,7 +536,6 @@ describe('WatsonxDataV2', () => {
         const bucketDetails = bucketDetailsModel;
         const bucketDisplayName = 'sample-bucket-displayname';
         const description = 'COS bucket for customer data';
-        const systemBucketUpdateCredentials = true;
         const tags = ['testbucket', 'userbucket'];
         const authInstanceId = 'testString';
         const updateBucketRegistrationParams = {
@@ -547,7 +543,6 @@ describe('WatsonxDataV2', () => {
           bucketDetails,
           bucketDisplayName,
           description,
-          systemBucketUpdateCredentials,
           tags,
           authInstanceId,
         };
@@ -572,9 +567,6 @@ describe('WatsonxDataV2', () => {
         expect(mockRequestOptions.body.bucket_details).toEqual(bucketDetails);
         expect(mockRequestOptions.body.bucket_display_name).toEqual(bucketDisplayName);
         expect(mockRequestOptions.body.description).toEqual(description);
-        expect(mockRequestOptions.body.system_bucket_update_credentials).toEqual(
-          systemBucketUpdateCredentials
-        );
         expect(mockRequestOptions.body.tags).toEqual(tags);
         expect(mockRequestOptions.path.bucket_id).toEqual(bucketId);
       }
@@ -914,15 +906,15 @@ describe('WatsonxDataV2', () => {
     describe('positive tests', () => {
       // Request models needed by this operation.
 
-      // BucketObjectSizePathsItems
-      const bucketObjectSizePathsItemsModel = {
-        path: 'testString',
+      // Path
+      const pathModel = {
+        path: 'string',
       };
 
       function __getBucketObjectPropertiesTest() {
         // Construct the params object for operation getBucketObjectProperties
         const bucketId = 'testString';
-        const paths = [bucketObjectSizePathsItemsModel];
+        const paths = [pathModel];
         const authInstanceId = 'testString';
         const getBucketObjectPropertiesParams = {
           bucketId,
@@ -1004,214 +996,6 @@ describe('WatsonxDataV2', () => {
         let err;
         try {
           await watsonxDataService.getBucketObjectProperties();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('generateBenchmarkReport', () => {
-    describe('positive tests', () => {
-      function __generateBenchmarkReportTest() {
-        // Construct the params object for operation generateBenchmarkReport
-        const bucketName = 'testString';
-        const engineId = 'testString';
-        const podName = 'testString';
-        const fileCount = 'testString';
-        const fileSize = 'testString';
-        const authInstanceId = 'testString';
-        const generateBenchmarkReportParams = {
-          bucketName,
-          engineId,
-          podName,
-          fileCount,
-          fileSize,
-          authInstanceId,
-        };
-
-        const generateBenchmarkReportResult = watsonxDataService.generateBenchmarkReport(
-          generateBenchmarkReportParams
-        );
-
-        // all methods should return a Promise
-        expectToBePromise(generateBenchmarkReportResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(mockRequestOptions, '/generate_benchmark_report', 'GET');
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
-        expect(mockRequestOptions.qs.bucket_name).toEqual(bucketName);
-        expect(mockRequestOptions.qs.engine_id).toEqual(engineId);
-        expect(mockRequestOptions.qs.pod_name).toEqual(podName);
-        expect(mockRequestOptions.qs.file_count).toEqual(fileCount);
-        expect(mockRequestOptions.qs.file_size).toEqual(fileSize);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __generateBenchmarkReportTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        watsonxDataService.enableRetries();
-        __generateBenchmarkReportTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        watsonxDataService.disableRetries();
-        __generateBenchmarkReportTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const bucketName = 'testString';
-        const engineId = 'testString';
-        const podName = 'testString';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const generateBenchmarkReportParams = {
-          bucketName,
-          engineId,
-          podName,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        watsonxDataService.generateBenchmarkReport(generateBenchmarkReportParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await watsonxDataService.generateBenchmarkReport({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await watsonxDataService.generateBenchmarkReport();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('generateBenchmarkReportStatus', () => {
-    describe('positive tests', () => {
-      function __generateBenchmarkReportStatusTest() {
-        // Construct the params object for operation generateBenchmarkReportStatus
-        const reqId = 'testString';
-        const engineId = 'testString';
-        const bucketName = 'testString';
-        const podName = 'testString';
-        const authInstanceId = 'testString';
-        const generateBenchmarkReportStatusParams = {
-          reqId,
-          engineId,
-          bucketName,
-          podName,
-          authInstanceId,
-        };
-
-        const generateBenchmarkReportStatusResult =
-          watsonxDataService.generateBenchmarkReportStatus(generateBenchmarkReportStatusParams);
-
-        // all methods should return a Promise
-        expectToBePromise(generateBenchmarkReportStatusResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(mockRequestOptions, '/generate_benchmark_report/status/{req_id}', 'GET');
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
-        expect(mockRequestOptions.qs.engine_id).toEqual(engineId);
-        expect(mockRequestOptions.qs.bucket_name).toEqual(bucketName);
-        expect(mockRequestOptions.qs.pod_name).toEqual(podName);
-        expect(mockRequestOptions.path.req_id).toEqual(reqId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __generateBenchmarkReportStatusTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        watsonxDataService.enableRetries();
-        __generateBenchmarkReportStatusTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        watsonxDataService.disableRetries();
-        __generateBenchmarkReportStatusTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const reqId = 'testString';
-        const engineId = 'testString';
-        const bucketName = 'testString';
-        const podName = 'testString';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const generateBenchmarkReportStatusParams = {
-          reqId,
-          engineId,
-          bucketName,
-          podName,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        watsonxDataService.generateBenchmarkReportStatus(generateBenchmarkReportStatusParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await watsonxDataService.generateBenchmarkReportStatus({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await watsonxDataService.generateBenchmarkReportStatus();
         } catch (e) {
           err = e;
         }
@@ -1449,23 +1233,21 @@ describe('WatsonxDataV2', () => {
     describe('positive tests', () => {
       // Request models needed by this operation.
 
-      // DatabaseCatalogPrototype
-      const databaseCatalogPrototypeModel = {
+      // DatabaseCatalog
+      const databaseCatalogModel = {
         catalog_name: 'sampleCatalog',
+        catalog_tags: ['catalog_tag_1', 'catalog_tag_2'],
         catalog_type: 'iceberg',
       };
 
       // DatabaseDetails
       const databaseDetailsModel = {
         authentication_type: 'LDAP',
-        authentication_value: 'LDAP',
         broker_authentication_password: 'samplepassword',
         broker_authentication_type: 'PASSWORD',
         broker_authentication_user: 'sampleuser',
-        broker_host: 'samplehost',
-        broker_port: 4553,
-        certificate: 'exampleCertificate',
-        certificate_extension: 'pem',
+        certificate: 'contents of a pem/crt file',
+        certificate_extension: 'pem/crt',
         connection_method: 'basic, apikey',
         connection_mode: 'service_name',
         connection_mode_value: 'orclpdb',
@@ -1473,13 +1255,11 @@ describe('WatsonxDataV2', () => {
         controller_authentication_password: 'samplepassword',
         controller_authentication_type: 'PASSWORD',
         controller_authentication_user: 'sampleuser',
-        coordinator_host: 'samplehost',
-        coordinator_port: 4553,
         cpd_hostname: 'samplecpdhostname',
         credentials_key:
           'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
         database_name: 'new_database',
-        hostname: 'http://db2@localhost:9900.com',
+        hostname: 'db2@<hostname>.com',
         hostname_in_certificate: 'samplehostname',
         hosts: 'abc.com:1234,xyz.com:4321',
         informix_server: 'ol_informix1410',
@@ -1487,9 +1267,6 @@ describe('WatsonxDataV2', () => {
         port: 4553,
         project_id: 'conops-bigquery',
         sasl: true,
-        sasl_mechanism: 'plain',
-        schema_name: 'sampleSchema',
-        schemas: 'redis__name',
         service_api_key: 'sampleapikey',
         service_hostname: 'api.dataplatform.dev.cloud.ibm.com',
         service_password: 'samplepassword',
@@ -1498,11 +1275,10 @@ describe('WatsonxDataV2', () => {
         service_token_url: 'sampletoakenurl',
         service_username: 'sampleusername',
         ssl: true,
-        tables: 'kafka_table_name, redis_table_name',
+        tables: 'kafka_table_name',
         username: 'sampleuser',
         validate_server_certificate: true,
         verify_host_name: true,
-        warehouse_name: 'samplewrehouse',
       };
 
       // DatabaseRegistrationPrototypeDatabasePropertiesItems
@@ -1516,7 +1292,7 @@ describe('WatsonxDataV2', () => {
         // Construct the params object for operation createDatabaseRegistration
         const databaseDisplayName = 'new_database';
         const databaseType = 'db2';
-        const associatedCatalog = databaseCatalogPrototypeModel;
+        const associatedCatalog = databaseCatalogModel;
         const createdOn = '1686792721';
         const databaseDetails = databaseDetailsModel;
         const databaseProperties = [databaseRegistrationPrototypeDatabasePropertiesItemsModel];
@@ -1802,43 +1578,17 @@ describe('WatsonxDataV2', () => {
     describe('positive tests', () => {
       // Request models needed by this operation.
 
-      // DatabaseRegistrationPatchDatabaseDetailsDatabasePropertiesItems
-      const databaseRegistrationPatchDatabaseDetailsDatabasePropertiesItemsModel = {
-        encrypt: true,
-        key: 'abc',
-        value: 'xyz',
-      };
-
       // DatabaseRegistrationPatchDatabaseDetails
       const databaseRegistrationPatchDatabaseDetailsModel = {
-        authentication_value: 'LDAP',
-        broker_authentication_password: 'samplepassword',
-        broker_authentication_type: 'PASSWORD',
-        broker_authentication_user: 'sampleuser',
-        controller_authentication_password: 'samplepassword',
-        controller_authentication_type: 'PASSWORD',
-        controller_authentication_user: 'sampleuser',
-        credentials_key:
-          'eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwicHJvamVjdF9pZCI6ImNvbm9wcy1iaWdxdWVyeSIsInByaXZhdGVfa2V5X2lkIjoiMGY3......',
-        database_properties: [databaseRegistrationPatchDatabaseDetailsDatabasePropertiesItemsModel],
         password: 'samplepassword',
         username: 'sampleuser',
-      };
-
-      // DatabaseRegistrationPatchTablesItems
-      const databaseRegistrationPatchTablesItemsModel = {
-        created_on: '1686792721',
-        file_contents: 'sample file content',
-        file_name: 'test.json',
-        schema_name: 'customer',
-        table_name: 'customer',
       };
 
       // DatabaseRegistrationPatchTopicsItems
       const databaseRegistrationPatchTopicsItemsModel = {
         created_on: '1686792721',
         file_contents: 'sample file contents',
-        file_name: 'test.json',
+        file_name: 'sample file name',
         topic_name: 'customer',
       };
 
@@ -1848,7 +1598,6 @@ describe('WatsonxDataV2', () => {
         const databaseDetails = databaseRegistrationPatchDatabaseDetailsModel;
         const databaseDisplayName = 'new_database';
         const description = 'External database description';
-        const tables = [databaseRegistrationPatchTablesItemsModel];
         const tags = ['testdatabase', 'userdatabase'];
         const topics = [databaseRegistrationPatchTopicsItemsModel];
         const authInstanceId = 'testString';
@@ -1857,7 +1606,6 @@ describe('WatsonxDataV2', () => {
           databaseDetails,
           databaseDisplayName,
           description,
-          tables,
           tags,
           topics,
           authInstanceId,
@@ -1881,7 +1629,6 @@ describe('WatsonxDataV2', () => {
         expect(mockRequestOptions.body.database_details).toEqual(databaseDetails);
         expect(mockRequestOptions.body.database_display_name).toEqual(databaseDisplayName);
         expect(mockRequestOptions.body.description).toEqual(description);
-        expect(mockRequestOptions.body.tables).toEqual(tables);
         expect(mockRequestOptions.body.tags).toEqual(tags);
         expect(mockRequestOptions.body.topics).toEqual(topics);
         expect(mockRequestOptions.path.database_id).toEqual(databaseId);
@@ -1945,80 +1692,148 @@ describe('WatsonxDataV2', () => {
     });
   });
 
-  describe('generateEngineDump', () => {
+  describe('listDriverRegistration', () => {
     describe('positive tests', () => {
-      function __generateEngineDumpTest() {
-        // Construct the params object for operation generateEngineDump
-        const dumpFileName = 'prestodump';
-        const dumpType = 'heat';
-        const engineId = 'presto-123';
-        const podName = 'presto';
+      function __listDriverRegistrationTest() {
+        // Construct the params object for operation listDriverRegistration
         const authInstanceId = 'testString';
-        const generateEngineDumpParams = {
-          dumpFileName,
-          dumpType,
-          engineId,
-          podName,
+        const listDriverRegistrationParams = {
           authInstanceId,
         };
 
-        const generateEngineDumpResult =
-          watsonxDataService.generateEngineDump(generateEngineDumpParams);
+        const listDriverRegistrationResult = watsonxDataService.listDriverRegistration(
+          listDriverRegistrationParams
+        );
 
         // all methods should return a Promise
-        expectToBePromise(generateEngineDumpResult);
+        expectToBePromise(listDriverRegistrationResult);
 
         // assert that create request was called
         expect(createRequestMock).toHaveBeenCalledTimes(1);
 
         const mockRequestOptions = getOptions(createRequestMock);
 
-        checkUrlAndMethod(mockRequestOptions, '/generate_engine_dump', 'POST');
+        checkUrlAndMethod(mockRequestOptions, '/driver_registrations', 'GET');
         const expectedAccept = 'application/json';
-        const expectedContentType = 'application/json';
+        const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
-        expect(mockRequestOptions.body.dump_file_name).toEqual(dumpFileName);
-        expect(mockRequestOptions.body.dump_type).toEqual(dumpType);
-        expect(mockRequestOptions.body.engine_id).toEqual(engineId);
-        expect(mockRequestOptions.body.pod_name).toEqual(podName);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
         // baseline test
-        __generateEngineDumpTest();
+        __listDriverRegistrationTest();
 
         // enable retries and test again
         createRequestMock.mockClear();
         watsonxDataService.enableRetries();
-        __generateEngineDumpTest();
+        __listDriverRegistrationTest();
 
         // disable retries and test again
         createRequestMock.mockClear();
         watsonxDataService.disableRetries();
-        __generateEngineDumpTest();
+        __listDriverRegistrationTest();
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const dumpFileName = 'prestodump';
-        const dumpType = 'heat';
-        const engineId = 'presto-123';
-        const podName = 'presto';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
-        const generateEngineDumpParams = {
-          dumpFileName,
-          dumpType,
-          engineId,
-          podName,
+        const listDriverRegistrationParams = {
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
           },
         };
 
-        watsonxDataService.generateEngineDump(generateEngineDumpParams);
+        watsonxDataService.listDriverRegistration(listDriverRegistrationParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+
+      test('should not have any problems when no parameters are passed in', () => {
+        // invoke the method with no parameters
+        watsonxDataService.listDriverRegistration({});
+        checkForSuccessfulExecution(createRequestMock);
+      });
+    });
+  });
+
+  describe('createDriverRegistration', () => {
+    describe('positive tests', () => {
+      function __createDriverRegistrationTest() {
+        // Construct the params object for operation createDriverRegistration
+        const driver = Buffer.from('This is a mock file.');
+        const driverName = 'testString';
+        const connectionType = 'testString';
+        const driverContentType = 'testString';
+        const version = 'testString';
+        const authInstanceId = 'testString';
+        const createDriverRegistrationParams = {
+          driver,
+          driverName,
+          connectionType,
+          driverContentType,
+          version,
+          authInstanceId,
+        };
+
+        const createDriverRegistrationResult = watsonxDataService.createDriverRegistration(
+          createDriverRegistrationParams
+        );
+
+        // all methods should return a Promise
+        expectToBePromise(createDriverRegistrationResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(mockRequestOptions, '/driver_registrations', 'POST');
+        const expectedAccept = 'application/json';
+        const expectedContentType = 'multipart/form-data';
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
+        expect(mockRequestOptions.formData.driver.data).toEqual(driver);
+        expect(mockRequestOptions.formData.driver.contentType).toEqual(driverContentType);
+        expect(mockRequestOptions.formData.driver_name).toEqual(driverName);
+        expect(mockRequestOptions.formData.connection_type).toEqual(connectionType);
+        expect(mockRequestOptions.formData.version).toEqual(version);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __createDriverRegistrationTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.enableRetries();
+        __createDriverRegistrationTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.disableRetries();
+        __createDriverRegistrationTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const driver = Buffer.from('This is a mock file.');
+        const driverName = 'testString';
+        const connectionType = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const createDriverRegistrationParams = {
+          driver,
+          driverName,
+          connectionType,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        watsonxDataService.createDriverRegistration(createDriverRegistrationParams);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
@@ -2027,7 +1842,7 @@ describe('WatsonxDataV2', () => {
       test('should enforce required parameters', async () => {
         let err;
         try {
-          await watsonxDataService.generateEngineDump({});
+          await watsonxDataService.createDriverRegistration({});
         } catch (e) {
           err = e;
         }
@@ -2038,7 +1853,284 @@ describe('WatsonxDataV2', () => {
       test('should reject promise when required params are not given', async () => {
         let err;
         try {
-          await watsonxDataService.generateEngineDump();
+          await watsonxDataService.createDriverRegistration();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+    });
+  });
+
+  describe('deleteDriverRegistration', () => {
+    describe('positive tests', () => {
+      function __deleteDriverRegistrationTest() {
+        // Construct the params object for operation deleteDriverRegistration
+        const driverId = 'testString';
+        const authInstanceId = 'testString';
+        const deleteDriverRegistrationParams = {
+          driverId,
+          authInstanceId,
+        };
+
+        const deleteDriverRegistrationResult = watsonxDataService.deleteDriverRegistration(
+          deleteDriverRegistrationParams
+        );
+
+        // all methods should return a Promise
+        expectToBePromise(deleteDriverRegistrationResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(mockRequestOptions, '/driver_registrations/{driver_id}', 'DELETE');
+        const expectedAccept = undefined;
+        const expectedContentType = undefined;
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
+        expect(mockRequestOptions.path.driver_id).toEqual(driverId);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __deleteDriverRegistrationTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.enableRetries();
+        __deleteDriverRegistrationTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.disableRetries();
+        __deleteDriverRegistrationTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const driverId = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const deleteDriverRegistrationParams = {
+          driverId,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        watsonxDataService.deleteDriverRegistration(deleteDriverRegistrationParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await watsonxDataService.deleteDriverRegistration({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await watsonxDataService.deleteDriverRegistration();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+    });
+  });
+
+  describe('deleteDriverEngines', () => {
+    describe('positive tests', () => {
+      function __deleteDriverEnginesTest() {
+        // Construct the params object for operation deleteDriverEngines
+        const driverId = 'testString';
+        const engineIds = 'testString';
+        const authInstanceId = 'testString';
+        const deleteDriverEnginesParams = {
+          driverId,
+          engineIds,
+          authInstanceId,
+        };
+
+        const deleteDriverEnginesResult =
+          watsonxDataService.deleteDriverEngines(deleteDriverEnginesParams);
+
+        // all methods should return a Promise
+        expectToBePromise(deleteDriverEnginesResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/driver_registrations/{driver_id}/engines',
+          'DELETE'
+        );
+        const expectedAccept = undefined;
+        const expectedContentType = undefined;
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
+        expect(mockRequestOptions.qs.engine_ids).toEqual(engineIds);
+        expect(mockRequestOptions.path.driver_id).toEqual(driverId);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __deleteDriverEnginesTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.enableRetries();
+        __deleteDriverEnginesTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.disableRetries();
+        __deleteDriverEnginesTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const driverId = 'testString';
+        const engineIds = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const deleteDriverEnginesParams = {
+          driverId,
+          engineIds,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        watsonxDataService.deleteDriverEngines(deleteDriverEnginesParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await watsonxDataService.deleteDriverEngines({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await watsonxDataService.deleteDriverEngines();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+    });
+  });
+
+  describe('updateDriverEngines', () => {
+    describe('positive tests', () => {
+      function __updateDriverEnginesTest() {
+        // Construct the params object for operation updateDriverEngines
+        const driverId = 'testString';
+        const engines = ['testString'];
+        const authInstanceId = 'testString';
+        const updateDriverEnginesParams = {
+          driverId,
+          engines,
+          authInstanceId,
+        };
+
+        const updateDriverEnginesResult =
+          watsonxDataService.updateDriverEngines(updateDriverEnginesParams);
+
+        // all methods should return a Promise
+        expectToBePromise(updateDriverEnginesResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(mockRequestOptions, '/driver_registrations/{driver_id}/engines', 'PATCH');
+        const expectedAccept = 'application/json';
+        const expectedContentType = 'application/merge-patch+json';
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
+        expect(mockRequestOptions.body.engines).toEqual(engines);
+        expect(mockRequestOptions.path.driver_id).toEqual(driverId);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __updateDriverEnginesTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.enableRetries();
+        __updateDriverEnginesTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.disableRetries();
+        __updateDriverEnginesTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const driverId = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const updateDriverEnginesParams = {
+          driverId,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        watsonxDataService.updateDriverEngines(updateDriverEnginesParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await watsonxDataService.updateDriverEngines({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await watsonxDataService.updateDriverEngines();
         } catch (e) {
           err = e;
         }
@@ -4610,11 +4702,11 @@ describe('WatsonxDataV2', () => {
       function __createPrestissimoEngineCatalogsTest() {
         // Construct the params object for operation createPrestissimoEngineCatalogs
         const engineId = 'testString';
-        const catalogNames = 'testString';
+        const catalogName = 'testString';
         const authInstanceId = 'testString';
         const createPrestissimoEngineCatalogsParams = {
           engineId,
-          catalogNames,
+          catalogName,
           authInstanceId,
         };
 
@@ -4634,7 +4726,7 @@ describe('WatsonxDataV2', () => {
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
-        expect(mockRequestOptions.body.catalog_names).toEqual(catalogNames);
+        expect(mockRequestOptions.body.catalog_name).toEqual(catalogName);
         expect(mockRequestOptions.path.engine_id).toEqual(engineId);
       }
 
@@ -6122,11 +6214,11 @@ describe('WatsonxDataV2', () => {
       function __createPrestoEngineCatalogsTest() {
         // Construct the params object for operation createPrestoEngineCatalogs
         const engineId = 'testString';
-        const catalogNames = 'testString';
+        const catalogName = 'testString';
         const authInstanceId = 'testString';
         const createPrestoEngineCatalogsParams = {
           engineId,
-          catalogNames,
+          catalogName,
           authInstanceId,
         };
 
@@ -6147,7 +6239,7 @@ describe('WatsonxDataV2', () => {
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
-        expect(mockRequestOptions.body.catalog_names).toEqual(catalogNames);
+        expect(mockRequestOptions.body.catalog_name).toEqual(catalogName);
         expect(mockRequestOptions.path.engine_id).toEqual(engineId);
       }
 
@@ -6871,7 +6963,7 @@ describe('WatsonxDataV2', () => {
 
       // NodeDescription
       const nodeDescriptionModel = {
-        node_type: 'worker',
+        node_type: 'starter',
         quantity: 38,
       };
 
@@ -9456,11 +9548,11 @@ describe('WatsonxDataV2', () => {
       function __createSparkEngineCatalogsTest() {
         // Construct the params object for operation createSparkEngineCatalogs
         const engineId = 'testString';
-        const catalogNames = 'testString';
+        const catalogName = 'testString';
         const authInstanceId = 'testString';
         const createSparkEngineCatalogsParams = {
           engineId,
-          catalogNames,
+          catalogName,
           authInstanceId,
         };
 
@@ -9481,7 +9573,7 @@ describe('WatsonxDataV2', () => {
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
-        expect(mockRequestOptions.body.catalog_names).toEqual(catalogNames);
+        expect(mockRequestOptions.body.catalog_name).toEqual(catalogName);
         expect(mockRequestOptions.path.engine_id).toEqual(engineId);
       }
 
@@ -11345,8 +11437,8 @@ describe('WatsonxDataV2', () => {
         comment: 'expenses column',
         extra: 'varchar',
         length: '30',
-        precision: '10',
         scale: '2',
+        precision: '10',
         type: 'varchar',
       };
 
@@ -12067,17 +12159,8 @@ describe('WatsonxDataV2', () => {
         const serviceDisplayName = 'sampleService';
         const bucketType = 'Sample bucket type';
         const description = 'milvus service for running sql queries';
-        const indexType = 'FLAT';
-        const iwCpu = 1;
-        const iwMemory = 1;
-        const iwReplicas = 1;
-        const managedBy = 'customer';
-        const qwCpu = 1;
-        const qwMemory = 1;
-        const qwReplicas = 1;
         const tags = ['tag1', 'tag2'];
         const tshirtSize = 'small';
-        const vectorDimension = 384;
         const authInstanceId = 'testString';
         const createMilvusServiceParams = {
           bucketName,
@@ -12086,17 +12169,8 @@ describe('WatsonxDataV2', () => {
           serviceDisplayName,
           bucketType,
           description,
-          indexType,
-          iwCpu,
-          iwMemory,
-          iwReplicas,
-          managedBy,
-          qwCpu,
-          qwMemory,
-          qwReplicas,
           tags,
           tshirtSize,
-          vectorDimension,
           authInstanceId,
         };
 
@@ -12122,17 +12196,8 @@ describe('WatsonxDataV2', () => {
         expect(mockRequestOptions.body.service_display_name).toEqual(serviceDisplayName);
         expect(mockRequestOptions.body.bucket_type).toEqual(bucketType);
         expect(mockRequestOptions.body.description).toEqual(description);
-        expect(mockRequestOptions.body.index_type).toEqual(indexType);
-        expect(mockRequestOptions.body.iw_cpu).toEqual(iwCpu);
-        expect(mockRequestOptions.body.iw_memory).toEqual(iwMemory);
-        expect(mockRequestOptions.body.iw_replicas).toEqual(iwReplicas);
-        expect(mockRequestOptions.body.managed_by).toEqual(managedBy);
-        expect(mockRequestOptions.body.qw_cpu).toEqual(qwCpu);
-        expect(mockRequestOptions.body.qw_memory).toEqual(qwMemory);
-        expect(mockRequestOptions.body.qw_replicas).toEqual(qwReplicas);
         expect(mockRequestOptions.body.tags).toEqual(tags);
         expect(mockRequestOptions.body.tshirt_size).toEqual(tshirtSize);
-        expect(mockRequestOptions.body.vector_dimension).toEqual(vectorDimension);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
@@ -12941,29 +13006,11 @@ describe('WatsonxDataV2', () => {
       function __createMilvusServiceScaleTest() {
         // Construct the params object for operation createMilvusServiceScale
         const serviceId = 'testString';
-        const tshirtSize = 'testString';
-        const indexType = 'FLAT';
-        const iwCpu = 1;
-        const iwMemory = 1;
-        const iwReplicas = 1;
-        const milvusName = 'milvus123';
-        const qwCpu = 1;
-        const qwMemory = 1;
-        const qwReplicas = 1;
-        const vectorDimension = 384;
+        const tshirtSize = 'small';
         const authInstanceId = 'testString';
         const createMilvusServiceScaleParams = {
           serviceId,
           tshirtSize,
-          indexType,
-          iwCpu,
-          iwMemory,
-          iwReplicas,
-          milvusName,
-          qwCpu,
-          qwMemory,
-          qwReplicas,
-          vectorDimension,
           authInstanceId,
         };
 
@@ -12985,15 +13032,6 @@ describe('WatsonxDataV2', () => {
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
         expect(mockRequestOptions.body.tshirt_size).toEqual(tshirtSize);
-        expect(mockRequestOptions.body.index_type).toEqual(indexType);
-        expect(mockRequestOptions.body.iw_cpu).toEqual(iwCpu);
-        expect(mockRequestOptions.body.iw_memory).toEqual(iwMemory);
-        expect(mockRequestOptions.body.iw_replicas).toEqual(iwReplicas);
-        expect(mockRequestOptions.body.milvus_name).toEqual(milvusName);
-        expect(mockRequestOptions.body.qw_cpu).toEqual(qwCpu);
-        expect(mockRequestOptions.body.qw_memory).toEqual(qwMemory);
-        expect(mockRequestOptions.body.qw_replicas).toEqual(qwReplicas);
-        expect(mockRequestOptions.body.vector_dimension).toEqual(vectorDimension);
         expect(mockRequestOptions.path.service_id).toEqual(serviceId);
       }
 
@@ -13015,12 +13053,10 @@ describe('WatsonxDataV2', () => {
       test('should prioritize user-given headers', () => {
         // parameters
         const serviceId = 'testString';
-        const tshirtSize = 'testString';
         const userAccept = 'fake/accept';
         const userContentType = 'fake/contentType';
         const createMilvusServiceScaleParams = {
           serviceId,
-          tshirtSize,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
@@ -13825,213 +13861,6 @@ describe('WatsonxDataV2', () => {
         // invoke the method with no parameters
         watsonxDataService.getEndpoints({});
         checkForSuccessfulExecution(createRequestMock);
-      });
-    });
-  });
-
-  describe('registerTable', () => {
-    describe('positive tests', () => {
-      function __registerTableTest() {
-        // Construct the params object for operation registerTable
-        const catalogId = 'testString';
-        const schemaId = 'testString';
-        const metadataLocation = 's3a://bucketname/path/to/table/metadata_location/_delta_log';
-        const tableName = 'table1';
-        const authInstanceId = 'testString';
-        const registerTableParams = {
-          catalogId,
-          schemaId,
-          metadataLocation,
-          tableName,
-          authInstanceId,
-        };
-
-        const registerTableResult = watsonxDataService.registerTable(registerTableParams);
-
-        // all methods should return a Promise
-        expectToBePromise(registerTableResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(
-          mockRequestOptions,
-          '/catalogs/{catalog_id}/schemas/{schema_id}/register',
-          'POST'
-        );
-        const expectedAccept = 'application/json';
-        const expectedContentType = 'application/json';
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
-        expect(mockRequestOptions.body.metadata_location).toEqual(metadataLocation);
-        expect(mockRequestOptions.body.table_name).toEqual(tableName);
-        expect(mockRequestOptions.path.catalog_id).toEqual(catalogId);
-        expect(mockRequestOptions.path.schema_id).toEqual(schemaId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __registerTableTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        watsonxDataService.enableRetries();
-        __registerTableTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        watsonxDataService.disableRetries();
-        __registerTableTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const catalogId = 'testString';
-        const schemaId = 'testString';
-        const metadataLocation = 's3a://bucketname/path/to/table/metadata_location/_delta_log';
-        const tableName = 'table1';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const registerTableParams = {
-          catalogId,
-          schemaId,
-          metadataLocation,
-          tableName,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        watsonxDataService.registerTable(registerTableParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await watsonxDataService.registerTable({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await watsonxDataService.registerTable();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-    });
-  });
-
-  describe('loadTable', () => {
-    describe('positive tests', () => {
-      function __loadTableTest() {
-        // Construct the params object for operation loadTable
-        const catalogId = 'testString';
-        const schemaId = 'testString';
-        const tableId = 'testString';
-        const authInstanceId = 'testString';
-        const loadTableParams = {
-          catalogId,
-          schemaId,
-          tableId,
-          authInstanceId,
-        };
-
-        const loadTableResult = watsonxDataService.loadTable(loadTableParams);
-
-        // all methods should return a Promise
-        expectToBePromise(loadTableResult);
-
-        // assert that create request was called
-        expect(createRequestMock).toHaveBeenCalledTimes(1);
-
-        const mockRequestOptions = getOptions(createRequestMock);
-
-        checkUrlAndMethod(
-          mockRequestOptions,
-          '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/metadata',
-          'GET'
-        );
-        const expectedAccept = 'application/json';
-        const expectedContentType = undefined;
-        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
-        expect(mockRequestOptions.path.catalog_id).toEqual(catalogId);
-        expect(mockRequestOptions.path.schema_id).toEqual(schemaId);
-        expect(mockRequestOptions.path.table_id).toEqual(tableId);
-      }
-
-      test('should pass the right params to createRequest with enable and disable retries', () => {
-        // baseline test
-        __loadTableTest();
-
-        // enable retries and test again
-        createRequestMock.mockClear();
-        watsonxDataService.enableRetries();
-        __loadTableTest();
-
-        // disable retries and test again
-        createRequestMock.mockClear();
-        watsonxDataService.disableRetries();
-        __loadTableTest();
-      });
-
-      test('should prioritize user-given headers', () => {
-        // parameters
-        const catalogId = 'testString';
-        const schemaId = 'testString';
-        const tableId = 'testString';
-        const userAccept = 'fake/accept';
-        const userContentType = 'fake/contentType';
-        const loadTableParams = {
-          catalogId,
-          schemaId,
-          tableId,
-          headers: {
-            Accept: userAccept,
-            'Content-Type': userContentType,
-          },
-        };
-
-        watsonxDataService.loadTable(loadTableParams);
-        checkMediaHeaders(createRequestMock, userAccept, userContentType);
-      });
-    });
-
-    describe('negative tests', () => {
-      test('should enforce required parameters', async () => {
-        let err;
-        try {
-          await watsonxDataService.loadTable({});
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
-      });
-
-      test('should reject promise when required params are not given', async () => {
-        let err;
-        try {
-          await watsonxDataService.loadTable();
-        } catch (e) {
-          err = e;
-        }
-
-        expect(err.message).toMatch(/Missing required parameters/);
       });
     });
   });
