@@ -15,9 +15,12 @@
  */
 
 import os = require('os');
+import path = require('path')
+import fs = require('fs')
 
 // tslint:disable-next-line:no-var-requires
-const pkg = require('../package.json');
+const pkgPath = path.resolve(__dirname, '../../package.json');
+const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
 
 export type SdkHeaders = {
   'User-Agent': string;
