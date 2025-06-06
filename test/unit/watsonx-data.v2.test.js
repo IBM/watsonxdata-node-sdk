@@ -13323,7 +13323,9 @@ describe('WatsonxDataV2', () => {
         while (pager.hasNext()) {
           const nextPage = await pager.getNext();
           expect(nextPage).not.toBeNull();
-          allResults.push(...nextPage);
+          if (Array.isArray(nextPage)) {
+            allResults.push(...nextPage);
+          }
         }
         expect(allResults).not.toBeNull();
         expect(allResults).toHaveLength(0);
