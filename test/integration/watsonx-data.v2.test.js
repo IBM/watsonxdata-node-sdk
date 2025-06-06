@@ -62,6 +62,7 @@ describe('WatsonxDataV2_integration', () => {
 
     // BucketCatalog
     const bucketCatalogModel = {
+      base_path: '/abc/def',
       catalog_name: 'sampleCatalog',
       catalog_tags: ['catalog_tag_1', 'catalog_tag_2'],
       catalog_type: 'iceberg',
@@ -158,6 +159,22 @@ describe('WatsonxDataV2_integration', () => {
     };
 
     const res = await watsonxDataService.createActivateBucket(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(201);
+    expect(res.result).toBeDefined();
+  });
+
+  test('addBucketCatalog()', async () => {
+    const params = {
+      bucketId: 'testString',
+      basePath: '/abc/def',
+      catalogName: 'sampleCatalog',
+      catalogTags: ['catalog_tag_1', 'catalog_tag_2'],
+      catalogType: 'iceberg',
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.addBucketCatalog(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(201);
     expect(res.result).toBeDefined();
@@ -753,9 +770,15 @@ describe('WatsonxDataV2_integration', () => {
   test('updatePrestissimoEngine()', async () => {
     // Request models needed by this operation.
 
-    // PrestissimoEnginePropertiesCatalog
-    const prestissimoEnginePropertiesCatalogModel = {
-      catalog_name: ['testString'],
+    // EnginePropertiesCatalog
+    const enginePropertiesCatalogModel = {
+      coordinator: { 'key1': 'testString' },
+      worker: { 'key1': 'testString' },
+    };
+
+    // PrestissimoPropertiesCatalog
+    const prestissimoPropertiesCatalogModel = {
+      catalog_name: enginePropertiesCatalogModel,
     };
 
     // PrestissimoNodeDescriptionBody
@@ -775,23 +798,22 @@ describe('WatsonxDataV2_integration', () => {
       velox_property: ['testString'],
     };
 
-    // NodeDescriptionBody
-    const nodeDescriptionBodyModel = {
-      node_type: 'worker',
-      quantity: 38,
-    };
-
     // PrestissimoEnginePropertiesOaiGen1Jvm
     const prestissimoEnginePropertiesOaiGen1JvmModel = {
-      coordinator: nodeDescriptionBodyModel,
+      coordinator: { 'key1': 'testString' },
     };
 
     // PrestissimoEngineEngineProperties
     const prestissimoEngineEnginePropertiesModel = {
-      catalog: prestissimoEnginePropertiesCatalogModel,
+      catalog: prestissimoPropertiesCatalogModel,
       configuration: enginePropertiesOaiGenConfigurationModel,
       velox: prestissimoEnginePropertiesVeloxModel,
       jvm: prestissimoEnginePropertiesOaiGen1JvmModel,
+    };
+
+    // PrestissimoEnginePropertiesCatalog
+    const prestissimoEnginePropertiesCatalogModel = {
+      catalog_name: ['testString'],
     };
 
     // RemoveEnginePropertiesConfiguration
@@ -1019,21 +1041,21 @@ describe('WatsonxDataV2_integration', () => {
   test('updatePrestoEngine()', async () => {
     // Request models needed by this operation.
 
-    // PrestoEnginePropertiesCatalog
-    const prestoEnginePropertiesCatalogModel = {
-      catalog_name: 'testString',
+    // EnginePropertiesCatalog
+    const enginePropertiesCatalogModel = {
+      coordinator: { 'key1': 'testString' },
+      worker: { 'key1': 'testString' },
     };
 
-    // NodeDescriptionBody
-    const nodeDescriptionBodyModel = {
-      node_type: 'worker',
-      quantity: 38,
+    // PrestoEnginePropertiesCatalog
+    const prestoEnginePropertiesCatalogModel = {
+      catalog_name: enginePropertiesCatalogModel,
     };
 
     // EnginePropertiesOaiGen1Configuration
     const enginePropertiesOaiGen1ConfigurationModel = {
-      coordinator: nodeDescriptionBodyModel,
-      worker: nodeDescriptionBodyModel,
+      coordinator: { 'key1': 'testString' },
+      worker: { 'key1': 'testString' },
     };
 
     // PrestoEnginePropertiesEventListener
@@ -1048,8 +1070,8 @@ describe('WatsonxDataV2_integration', () => {
 
     // EnginePropertiesOaiGen1Jvm
     const enginePropertiesOaiGen1JvmModel = {
-      coordinator: nodeDescriptionBodyModel,
-      worker: nodeDescriptionBodyModel,
+      coordinator: { 'key1': 'testString' },
+      worker: { 'key1': 'testString' },
     };
 
     // PrestoEnginePropertiesJMX
@@ -1060,8 +1082,8 @@ describe('WatsonxDataV2_integration', () => {
 
     // EnginePropertiesLogConfiguration
     const enginePropertiesLogConfigurationModel = {
-      coordinator: nodeDescriptionBodyModel,
-      worker: nodeDescriptionBodyModel,
+      coordinator: { 'key1': 'testString' },
+      worker: { 'key1': 'testString' },
     };
 
     // PrestoEngineEngineProperties
@@ -1605,6 +1627,7 @@ describe('WatsonxDataV2_integration', () => {
       engineDisplayName: 'test-native',
       status: 'testString',
       tags: ['testString'],
+      type: 'spark',
       authInstanceId: 'testString',
     };
 
@@ -2339,6 +2362,35 @@ describe('WatsonxDataV2_integration', () => {
     };
 
     const res = await watsonxDataService.getEndpoints(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(200);
+    expect(res.result).toBeDefined();
+  });
+
+  test('registerTable()', async () => {
+    const params = {
+      catalogId: 'testString',
+      schemaId: 'testString',
+      metadataLocation: 's3a://bucketname/path/to/table/metadata_location/_delta_log',
+      tableName: 'table1',
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.registerTable(params);
+    expect(res).toBeDefined();
+    expect(res.status).toBe(201);
+    expect(res.result).toBeDefined();
+  });
+
+  test('loadTable()', async () => {
+    const params = {
+      catalogId: 'testString',
+      schemaId: 'testString',
+      tableId: 'testString',
+      authInstanceId: 'testString',
+    };
+
+    const res = await watsonxDataService.loadTable(params);
     expect(res).toBeDefined();
     expect(res.status).toBe(200);
     expect(res.result).toBeDefined();
