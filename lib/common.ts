@@ -15,8 +15,8 @@
  */
 
 import os = require('os');
-import path = require('path')
-import fs = require('fs')
+import path = require('path');
+import fs = require('fs');
 
 // tslint:disable-next-line:no-var-requires
 const pkgPath = path.resolve(__dirname, '../../package.json');
