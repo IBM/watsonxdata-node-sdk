@@ -21,6 +21,9 @@ const nock = require('nock');
 // need to import the whole package to mock getAuthenticatorFromEnvironment
 const sdkCorePackage = require('ibm-cloud-sdk-core');
 
+const { NoAuthAuthenticator } = sdkCorePackage;
+const WatsonxDataV2 = require('../../dist/watsonx-data/v2');
+
 const {
   getOptions,
   checkUrlAndMethod,
@@ -29,9 +32,6 @@ const {
   checkUserHeader,
   checkForSuccessfulExecution,
 } = require('@ibm-cloud/sdk-test-utilities');
-
-const { NoAuthAuthenticator } = sdkCorePackage;
-const WatsonxDataV2 = require('../../dist/watsonx-data/v2');
 
 const watsonxDataServiceOptions = {
   authenticator: new NoAuthAuthenticator(),
@@ -193,6 +193,7 @@ describe('WatsonxDataV2', () => {
 
       // BucketCatalog
       const bucketCatalogModel = {
+        base_path: '/abc/def',
         catalog_name: 'sampleCatalog',
         catalog_tags: ['catalog_tag_1', 'catalog_tag_2'],
         catalog_type: 'iceberg',
@@ -709,6 +710,105 @@ describe('WatsonxDataV2', () => {
         let err;
         try {
           await watsonxDataService.createActivateBucket();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+    });
+  });
+
+  describe('addBucketCatalog', () => {
+    describe('positive tests', () => {
+      function __addBucketCatalogTest() {
+        // Construct the params object for operation addBucketCatalog
+        const bucketId = 'testString';
+        const basePath = '/abc/def';
+        const catalogName = 'sampleCatalog';
+        const catalogTags = ['catalog_tag_1', 'catalog_tag_2'];
+        const catalogType = 'iceberg';
+        const authInstanceId = 'testString';
+        const addBucketCatalogParams = {
+          bucketId,
+          basePath,
+          catalogName,
+          catalogTags,
+          catalogType,
+          authInstanceId,
+        };
+
+        const addBucketCatalogResult = watsonxDataService.addBucketCatalog(addBucketCatalogParams);
+
+        // all methods should return a Promise
+        expectToBePromise(addBucketCatalogResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(mockRequestOptions, '/bucket_registrations/{bucket_id}/catalogs', 'POST');
+        const expectedAccept = 'application/json';
+        const expectedContentType = 'application/json';
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
+        expect(mockRequestOptions.body.base_path).toEqual(basePath);
+        expect(mockRequestOptions.body.catalog_name).toEqual(catalogName);
+        expect(mockRequestOptions.body.catalog_tags).toEqual(catalogTags);
+        expect(mockRequestOptions.body.catalog_type).toEqual(catalogType);
+        expect(mockRequestOptions.path.bucket_id).toEqual(bucketId);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __addBucketCatalogTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.enableRetries();
+        __addBucketCatalogTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.disableRetries();
+        __addBucketCatalogTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const bucketId = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const addBucketCatalogParams = {
+          bucketId,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        watsonxDataService.addBucketCatalog(addBucketCatalogParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await watsonxDataService.addBucketCatalog({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await watsonxDataService.addBucketCatalog();
         } catch (e) {
           err = e;
         }
@@ -4444,9 +4544,15 @@ describe('WatsonxDataV2', () => {
     describe('positive tests', () => {
       // Request models needed by this operation.
 
-      // PrestissimoEnginePropertiesCatalog
-      const prestissimoEnginePropertiesCatalogModel = {
-        catalog_name: ['testString'],
+      // EnginePropertiesCatalog
+      const enginePropertiesCatalogModel = {
+        coordinator: { 'key1': 'testString' },
+        worker: { 'key1': 'testString' },
+      };
+
+      // PrestissimoPropertiesCatalog
+      const prestissimoPropertiesCatalogModel = {
+        catalog_name: enginePropertiesCatalogModel,
       };
 
       // PrestissimoNodeDescriptionBody
@@ -4466,23 +4572,22 @@ describe('WatsonxDataV2', () => {
         velox_property: ['testString'],
       };
 
-      // NodeDescriptionBody
-      const nodeDescriptionBodyModel = {
-        node_type: 'worker',
-        quantity: 38,
-      };
-
       // PrestissimoEnginePropertiesOaiGen1Jvm
       const prestissimoEnginePropertiesOaiGen1JvmModel = {
-        coordinator: nodeDescriptionBodyModel,
+        coordinator: { 'key1': 'testString' },
       };
 
       // PrestissimoEngineEngineProperties
       const prestissimoEngineEnginePropertiesModel = {
-        catalog: prestissimoEnginePropertiesCatalogModel,
+        catalog: prestissimoPropertiesCatalogModel,
         configuration: enginePropertiesOaiGenConfigurationModel,
         velox: prestissimoEnginePropertiesVeloxModel,
         jvm: prestissimoEnginePropertiesOaiGen1JvmModel,
+      };
+
+      // PrestissimoEnginePropertiesCatalog
+      const prestissimoEnginePropertiesCatalogModel = {
+        catalog_name: ['testString'],
       };
 
       // RemoveEnginePropertiesConfiguration
@@ -5931,21 +6036,21 @@ describe('WatsonxDataV2', () => {
     describe('positive tests', () => {
       // Request models needed by this operation.
 
-      // PrestoEnginePropertiesCatalog
-      const prestoEnginePropertiesCatalogModel = {
-        catalog_name: 'testString',
+      // EnginePropertiesCatalog
+      const enginePropertiesCatalogModel = {
+        coordinator: { 'key1': 'testString' },
+        worker: { 'key1': 'testString' },
       };
 
-      // NodeDescriptionBody
-      const nodeDescriptionBodyModel = {
-        node_type: 'worker',
-        quantity: 38,
+      // PrestoEnginePropertiesCatalog
+      const prestoEnginePropertiesCatalogModel = {
+        catalog_name: enginePropertiesCatalogModel,
       };
 
       // EnginePropertiesOaiGen1Configuration
       const enginePropertiesOaiGen1ConfigurationModel = {
-        coordinator: nodeDescriptionBodyModel,
-        worker: nodeDescriptionBodyModel,
+        coordinator: { 'key1': 'testString' },
+        worker: { 'key1': 'testString' },
       };
 
       // PrestoEnginePropertiesEventListener
@@ -5960,8 +6065,8 @@ describe('WatsonxDataV2', () => {
 
       // EnginePropertiesOaiGen1Jvm
       const enginePropertiesOaiGen1JvmModel = {
-        coordinator: nodeDescriptionBodyModel,
-        worker: nodeDescriptionBodyModel,
+        coordinator: { 'key1': 'testString' },
+        worker: { 'key1': 'testString' },
       };
 
       // PrestoEnginePropertiesJMX
@@ -5972,8 +6077,8 @@ describe('WatsonxDataV2', () => {
 
       // EnginePropertiesLogConfiguration
       const enginePropertiesLogConfigurationModel = {
-        coordinator: nodeDescriptionBodyModel,
-        worker: nodeDescriptionBodyModel,
+        coordinator: { 'key1': 'testString' },
+        worker: { 'key1': 'testString' },
       };
 
       // PrestoEngineEngineProperties
@@ -8638,6 +8743,7 @@ describe('WatsonxDataV2', () => {
         const engineDisplayName = 'test-native';
         const status = 'testString';
         const tags = ['testString'];
+        const type = 'spark';
         const authInstanceId = 'testString';
         const createSparkEngineParams = {
           origin,
@@ -8647,6 +8753,7 @@ describe('WatsonxDataV2', () => {
           engineDisplayName,
           status,
           tags,
+          type,
           authInstanceId,
         };
 
@@ -8673,6 +8780,7 @@ describe('WatsonxDataV2', () => {
         expect(mockRequestOptions.body.engine_display_name).toEqual(engineDisplayName);
         expect(mockRequestOptions.body.status).toEqual(status);
         expect(mockRequestOptions.body.tags).toEqual(tags);
+        expect(mockRequestOptions.body.type).toEqual(type);
       }
 
       test('should pass the right params to createRequest with enable and disable retries', () => {
@@ -13215,12 +13323,10 @@ describe('WatsonxDataV2', () => {
         while (pager.hasNext()) {
           const nextPage = await pager.getNext();
           expect(nextPage).not.toBeNull();
-          if (Array.isArray(nextPage)) {
-            allResults.push(...nextPage);
-          }
+          allResults.push(...nextPage);
         }
         expect(allResults).not.toBeNull();
-        expect(allResults).toHaveLength(0);
+        expect(allResults).toHaveLength(2);
       });
 
       test('getAll()', async () => {
@@ -13231,7 +13337,7 @@ describe('WatsonxDataV2', () => {
         const pager = new WatsonxDataV2.IngestionJobsPager(watsonxDataService, params);
         const allResults = await pager.getAll();
         expect(allResults).not.toBeNull();
-        expect(allResults).toHaveLength(0);
+        expect(allResults).toHaveLength(2);
       });
     });
   });
@@ -13861,6 +13967,213 @@ describe('WatsonxDataV2', () => {
         // invoke the method with no parameters
         watsonxDataService.getEndpoints({});
         checkForSuccessfulExecution(createRequestMock);
+      });
+    });
+  });
+
+  describe('registerTable', () => {
+    describe('positive tests', () => {
+      function __registerTableTest() {
+        // Construct the params object for operation registerTable
+        const catalogId = 'testString';
+        const schemaId = 'testString';
+        const metadataLocation = 's3a://bucketname/path/to/table/metadata_location/_delta_log';
+        const tableName = 'table1';
+        const authInstanceId = 'testString';
+        const registerTableParams = {
+          catalogId,
+          schemaId,
+          metadataLocation,
+          tableName,
+          authInstanceId,
+        };
+
+        const registerTableResult = watsonxDataService.registerTable(registerTableParams);
+
+        // all methods should return a Promise
+        expectToBePromise(registerTableResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/register',
+          'POST'
+        );
+        const expectedAccept = 'application/json';
+        const expectedContentType = 'application/json';
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
+        expect(mockRequestOptions.body.metadata_location).toEqual(metadataLocation);
+        expect(mockRequestOptions.body.table_name).toEqual(tableName);
+        expect(mockRequestOptions.path.catalog_id).toEqual(catalogId);
+        expect(mockRequestOptions.path.schema_id).toEqual(schemaId);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __registerTableTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.enableRetries();
+        __registerTableTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.disableRetries();
+        __registerTableTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const catalogId = 'testString';
+        const schemaId = 'testString';
+        const metadataLocation = 's3a://bucketname/path/to/table/metadata_location/_delta_log';
+        const tableName = 'table1';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const registerTableParams = {
+          catalogId,
+          schemaId,
+          metadataLocation,
+          tableName,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        watsonxDataService.registerTable(registerTableParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await watsonxDataService.registerTable({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await watsonxDataService.registerTable();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+    });
+  });
+
+  describe('loadTable', () => {
+    describe('positive tests', () => {
+      function __loadTableTest() {
+        // Construct the params object for operation loadTable
+        const catalogId = 'testString';
+        const schemaId = 'testString';
+        const tableId = 'testString';
+        const authInstanceId = 'testString';
+        const loadTableParams = {
+          catalogId,
+          schemaId,
+          tableId,
+          authInstanceId,
+        };
+
+        const loadTableResult = watsonxDataService.loadTable(loadTableParams);
+
+        // all methods should return a Promise
+        expectToBePromise(loadTableResult);
+
+        // assert that create request was called
+        expect(createRequestMock).toHaveBeenCalledTimes(1);
+
+        const mockRequestOptions = getOptions(createRequestMock);
+
+        checkUrlAndMethod(
+          mockRequestOptions,
+          '/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/metadata',
+          'GET'
+        );
+        const expectedAccept = 'application/json';
+        const expectedContentType = undefined;
+        checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'AuthInstanceId', authInstanceId);
+        expect(mockRequestOptions.path.catalog_id).toEqual(catalogId);
+        expect(mockRequestOptions.path.schema_id).toEqual(schemaId);
+        expect(mockRequestOptions.path.table_id).toEqual(tableId);
+      }
+
+      test('should pass the right params to createRequest with enable and disable retries', () => {
+        // baseline test
+        __loadTableTest();
+
+        // enable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.enableRetries();
+        __loadTableTest();
+
+        // disable retries and test again
+        createRequestMock.mockClear();
+        watsonxDataService.disableRetries();
+        __loadTableTest();
+      });
+
+      test('should prioritize user-given headers', () => {
+        // parameters
+        const catalogId = 'testString';
+        const schemaId = 'testString';
+        const tableId = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
+        const loadTableParams = {
+          catalogId,
+          schemaId,
+          tableId,
+          headers: {
+            Accept: userAccept,
+            'Content-Type': userContentType,
+          },
+        };
+
+        watsonxDataService.loadTable(loadTableParams);
+        checkMediaHeaders(createRequestMock, userAccept, userContentType);
+      });
+    });
+
+    describe('negative tests', () => {
+      test('should enforce required parameters', async () => {
+        let err;
+        try {
+          await watsonxDataService.loadTable({});
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
+      });
+
+      test('should reject promise when required params are not given', async () => {
+        let err;
+        try {
+          await watsonxDataService.loadTable();
+        } catch (e) {
+          err = e;
+        }
+
+        expect(err.message).toMatch(/Missing required parameters/);
       });
     });
   });
